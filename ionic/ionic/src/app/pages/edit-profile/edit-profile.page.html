@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button style="color: white;"></ion-back-button>
+    </ion-buttons>
+    <ion-title><h5 style="text-align: center;">แก้ไขโปรไฟล์</h5></ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="profile">
+
+  <ion-card no-margin>
+
+    <ion-card-content class="bg-profile">
+      <img src="assets/img/avatar.jpeg">
+      <h1 class="fw500">แบงค์ หงิด</h1>
+      <ion-button icon-left color="secondary">
+        <ion-icon name="photos"></ion-icon> 
+        แก้ไข / เพิ่มรูปภาพ
+      </ion-button>
+    </ion-card-content>
+
+    <h5 style="font-weight: bold;">ชื่อ:</h5>
+    <ion-item>
+    <ion-input type="name" placeholder="ชื่อ" value=""></ion-input>
+    </ion-item>
+
+    <h5 style="font-weight: bold;">นามสกุล:</h5>
+    <ion-item>
+    <ion-input type="name" placeholder="นามสกุล" value=""></ion-input>
+    </ion-item>
+
+    <h5 style="font-weight: bold;">ชื่อผู้ใช้:</h5>
+    <ion-item>
+    <ion-input type="name" placeholder="ชื่อผู้ใช้" value=""></ion-input>
+    </ion-item>
+
+    <h5 style="font-weight: bold;">รหัสผ่าน:</h5>
+    <ion-item>
+    <ion-input type="name" placeholder="รหัสผ่าน" value=""></ion-input>
+    </ion-item>
+
+  </ion-card>
+  <ion-button expand="full" color="primary" (click)="sendData()">บันทึก</ion-button>
+  
+</ion-content>

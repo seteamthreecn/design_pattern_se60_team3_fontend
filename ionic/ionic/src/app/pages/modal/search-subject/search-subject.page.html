@@ -1,0 +1,79 @@
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <ion-button color="primary" (click)="closeModal()">
+                <ion-icon name="close" color="light"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+        <ion-title>
+            <h5 style="text-align: center;">ค้นหาขั้นสูง</h5>
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+
+<ion-content padding>
+
+
+    <!-- Part Of Search From Channel Subject -->
+    <ion-label>
+        <ion-text color="dark" class="fw500">ช่องทางการติดต่อ : </ion-text>
+    </ion-label>
+    <br>
+    <ion-select placeholder=" - เลือก -">
+        <ion-select-option value="จดหมายเรื่องร้องเรียน">จดหมายเรื่องร้องเรียน</ion-select-option>
+        <ion-select-option value="โทรศัพท์">โทรศัพท์</ion-select-option>
+        <ion-select-option value="แบบคำร้องทั่วไป">แบบคำร้องทั่วไป</ion-select-option>
+    </ion-select>
+
+    <!-- Part Of Search From Type Subject -->
+    <ion-label>
+        <ion-text color="dark" class="fw500">ประเภทเรื่องร้องเรียน : </ion-text>
+    </ion-label>
+    <br>
+    <ion-select placeholder=" - เลือก -">
+        <ion-select-option value="กระทำผิดที่สาธารณะ">กระทำผิดที่สาธารณะ</ion-select-option>
+        <ion-select-option value="ขยะตกค้าง">ขยะตกค้าง</ion-select-option>
+        <ion-select-option value="ข้าราชการ/พนักงานเมืองพัทยา">ข้าราชการ/พนักงานเมืองพัทยา</ion-select-option>
+        <ion-select-option value="เจ้าหน้าที่จากหน่วยอื่นๆ">เจ้าหน้าที่จากหน่วยอื่นๆ</ion-select-option>
+        <ion-select-option value="อื่นๆ">อื่นๆ</ion-select-option>
+    </ion-select>
+
+    <!-- Part Of Search From Status Subject -->
+    <ion-item>
+        <ion-label class="fw500" color="dark">สถานะ</ion-label>
+        <ion-select [(ngModel)]="organizeby">
+            <ion-select-option>ใช้งาน</ion-select-option>
+            <ion-select-option>ไม่ใช้งาน</ion-select-option>
+        </ion-select>
+    </ion-item>
+
+    <br>
+    <!-- Part Of Search From Start Date Subject -->
+    <ion-label>
+        <ion-text color="dark" class="fw500">วันที่เริ่มต้น : </ion-text>
+    </ion-label>
+    <br>
+    <ion-item>
+        <ion-datetime value="" placeholder="เลือกวันที่"></ion-datetime>
+    </ion-item>
+
+    <!-- Part Of Search From End Date Subject -->
+    <ion-label>
+        <ion-text color="dark" class="fw500">วันที่เสร็จสิ้น : </ion-text>
+    </ion-label>
+    <br>
+    <ion-item>
+        <ion-datetime value="" placeholder="เลือกวันที่"></ion-datetime>
+    </ion-item>
+
+    <!-- Part Of Search From Keyword Subject -->
+    <ion-item margin-bottom>
+        <ion-label color="primary" stacked>
+            <ion-text color="dark" class="fw500">คำค้นหา</ion-text>
+        </ion-label>
+        <ion-input type="name" placeholder="ระบุคำค้นหา"></ion-input>
+    </ion-item>
+
+    <ion-button expand="full" color="primary" (click)="closeModal()">ค้นหา</ion-button>
+</ion-content>

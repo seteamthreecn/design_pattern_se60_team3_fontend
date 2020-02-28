@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar color="primary">
+      <ion-buttons slot="start">
+          <ion-menu-button color="secondary"></ion-menu-button>
+      </ion-buttons>
+      <ion-title>
+          <ion-text color="light">
+              <h6 style="text-align: center;">
+                กราฟแสดงยอดรายรับ-รายจ่าย
+              </h6>
+          </ion-text>
+      </ion-title>
+      <!-- <ion-buttons slot="end">
+          <ion-button color="primary">
+              <ion-icon name="add-circle" color="light" size=""></ion-icon>
+          </ion-button>
+      </ion-buttons> -->
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+    <h5 style="text-align: center;">เลือกประเภทของการแสดงข้อมูล</h5>
+    <ion-item>
+        <ion-label>เลือกประเภท</ion-label>
+        <ion-select ok-text="ตกลง" cancel-text="ยกเลิก">
+          <ion-select-option value="dos">รายสัปดาห์</ion-select-option>
+          <ion-select-option value="lunix">รายเดือน</ion-select-option>
+          <ion-select-option value="mac7">รายปี</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-card class="welcome-card">
+        <ion-card-header>
+          <ion-card-title style="text-align: center;">ข้อมูล รายเดือน</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <div id="highcharts" style="width:100%; height:400px;"></div>
+        </ion-card-content>
+    </ion-card>
+
+</ion-content>

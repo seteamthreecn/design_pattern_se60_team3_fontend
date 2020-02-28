@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start" (click)="closeModal()">
+      <ion-button color="primary" (click)="closeModal()">
+        <ion-icon name="close" color="light"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+      <ion-title>
+          <h6 style="text-align: center;">แก้ไขข้อมูลส่วนตัว</h6>
+      </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <br>
+  <h5 style="font-weight: bold;">ชื่อ:</h5>
+  <ion-item>
+  <ion-input type="name" placeholder="ชื่อ" value=""></ion-input>
+  </ion-item>
+
+  <h5 style="font-weight: bold;">นามสกุล:</h5>
+  <ion-item>
+  <ion-input type="name" placeholder="นามสกุล" value=""></ion-input>
+  </ion-item>
+
+  <h5 style="font-weight: bold;">ชื่อผู้ใช้:</h5>
+  <ion-item>
+  <ion-input type="name" placeholder="ชื่อผู้ใช้" value=""></ion-input>
+  </ion-item>
+
+  <h5 style="font-weight: bold;">รหัสผ่าน:</h5>
+  <ion-item>
+  <ion-input type="name" placeholder="รหัสผ่าน" value=""></ion-input>
+  </ion-item>
+
+  <ion-button expand="full" color="primary" (click)="edit_profile()">บันทึก</ion-button>
+
+</ion-content>

@@ -1,0 +1,72 @@
+<ion-content padding class="animated fadeIn login auth-page">
+  <div class="theme-bg"></div>
+  <div class="auth-content">
+
+    <!-- Logo -->
+    <div padding-horizontal text-center class="animated fadeInDown">
+      <div class="logo"></div>
+      <!-- <ion-img style="width: 60px; height: 60px; align-items: center;" src="../../../asset/img/icon-page.png"></ion-img> -->
+      <h5 no-margin>
+        <ion-text color="light" class="fw700">
+          OPPA WALLET
+        </ion-text>
+      </h5>
+    </div>
+    <br>
+
+    <!-- Login form -->
+    <h3 style="text-align: center; color: white;">เข้าสู่ระบบ</h3>
+    <form [formGroup]="onLoginForm" class="list-form">
+      <ion-item no-padding class="animated fadeInUp">
+        <ion-label position="floating">
+          <ion-icon name="contact" item-start></ion-icon>
+          ชื่อผู้ใช้
+        </ion-label>
+        <ion-input color="secondary" type="email" formControlName="email"></ion-input>
+      </ion-item>
+      <p ion-text class="text08" *ngIf="onLoginForm.get('email').touched && onLoginForm.get('email').hasError('required')">
+        <ion-text color="warning">
+          กรุณากรอกข้อมูล
+        </ion-text>
+      </p>
+
+      <ion-item no-padding class="animated fadeInUp">
+        <ion-label position="floating">
+          <ion-icon name="lock" item-start></ion-icon>
+          รหัสผ่าน
+        </ion-label>
+        <ion-input color="secondary" type="password" formControlName="password"></ion-input>
+      </ion-item>
+      <p ion-text color="warning" class="text08" *ngIf="onLoginForm.get('password').touched && onLoginForm.get('password').hasError('required')">
+        <ion-text color="warning">
+          กรุณากรอกข้อมูล
+        </ion-text>
+        </p>
+    </form>
+
+    <p text-right tappable (click)="forgotPass()" class="paz">
+      <ion-text color="light">
+        <strong>ลืมรหัสผ่าน?</strong>
+      </ion-text>
+    </p>
+
+    <div>
+      <ion-button icon-left size="medium" expand="full" shape="round" color="dark" (click)="goToHome()" [disabled]="!onLoginForm.valid" tappable>
+        <ion-icon name="log-in"></ion-icon>
+        ยืนยัน
+      </ion-button>
+
+    </div>
+
+    <!-- Other links -->
+    <div text-center margin-top>
+      <h6 style="color: white;">ยังไม่มีบัญชีผู้ใช้งาน ?</h6>
+      <span (click)="contractLogin()" class="paz" tappable>
+        <ion-text color="light">
+          <strong><u>สมัครใช้งานได้ที่นี่</u></strong>
+        </ion-text>
+      </span>
+    </div>
+
+  </div>
+</ion-content>

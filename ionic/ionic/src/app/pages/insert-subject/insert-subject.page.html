@@ -1,0 +1,244 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button color="secondary"></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+        <ion-text color="light">
+          <h6 style="text-align: center;">
+          <ion-text color="light" class="fw700">บันทึกเรื่องร้องเรียน</ion-text>
+          </h6>
+        </ion-text>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen>
+
+  <ion-card>
+  <!-- Part Of First Input Data -->
+  <h3 style="text-align: center;"><ion-icon name="clipboard"></ion-icon> ข้อมูลเบื้องต้น</h3>
+      <!-- Part Of Input Name Subject -->
+      <ion-label>
+          <ion-text color="dark" class="fw500">เรื่อง : </ion-text>
+          <ion-text style="color: red;" class="fw500">*</ion-text>
+      </ion-label>
+        <br>
+        <ion-input type="name" placeholder="ชื่อเรื่อง" style="border: 1px black;"></ion-input>
+
+      <!-- Part Of Input Date Subject -->
+        <ion-label>
+            <ion-text color="dark" class="fw500">วันที่ : </ion-text>
+            <ion-text style="color: red;" class="fw500">*</ion-text>
+        </ion-label>
+          <br>
+        <ion-item>
+              <ion-datetime value="" placeholder="เลือกวันที่"></ion-datetime>
+        </ion-item>
+
+      <br>
+      <!-- Part Of Input Date Subject -->
+        <ion-label>
+            <ion-text color="dark" class="fw500">เวลา : </ion-text>
+            <ion-text style="color: red;" class="fw500">*</ion-text>
+        </ion-label>
+                <br>
+        <ion-item>
+            <ion-datetime display-format="h:mm A" picker-format="h:mm A" value="" placeholder="เลือกเวลา"></ion-datetime>
+        </ion-item>
+
+    <br>
+  </ion-card>
+
+  <ion-card>
+  <!-- Part Of Second Input Data -->
+  <h3 style="text-align: center;"><ion-icon name="clipboard"></ion-icon> ข้อมูลเรื่องร้องเรียน</h3>
+  <br>
+      <!-- Part Of Input Channel Subject -->
+      <ion-label>
+        <ion-text color="dark" class="fw500">ช่องทางแหล่งข้อมูล : </ion-text>
+        <ion-text style="color: red;" class="fw500">*</ion-text>
+      </ion-label>
+      <br>
+      <ion-select placeholder=" - เลือก -">
+        <ion-select-option value="จดหมายเรื่องร้องเรียน">จดหมายเรื่องร้องเรียน</ion-select-option>
+        <ion-select-option value="โทรศัพท์">โทรศัพท์</ion-select-option>
+        <ion-select-option value="แบบคำร้องทั่วไป">แบบคำร้องทั่วไป</ion-select-option>
+      </ion-select>
+
+      <!-- Part Of Input Type Subject -->
+      <ion-label>
+        <ion-text color="dark" class="fw500">ประเภทเรื่องร้องเรียน : </ion-text>
+        <ion-text style="color: red;" class="fw500">*</ion-text>
+      </ion-label>
+        <br>
+      <ion-select placeholder=" - เลือก -">
+        <ion-select-option value="กระทำผิดที่สาธารณะ">กระทำผิดที่สาธารณะ</ion-select-option>
+        <ion-select-option value="ขยะตกค้าง">ขยะตกค้าง</ion-select-option>
+        <ion-select-option value="ข้าราชการ/พนักงานเมืองพัทยา">ข้าราชการ/พนักงานเมืองพัทยา</ion-select-option>
+        <ion-select-option value="เจ้าหน้าที่จากหน่วยอื่นๆ">เจ้าหน้าที่จากหน่วยอื่นๆ</ion-select-option>
+        <ion-select-option value="อื่นๆ">อื่นๆ</ion-select-option>
+        </ion-select>
+
+      <!-- Part Of Input Type Other Subject -->
+      <ion-label>
+        <ion-text color="dark" class="fw500">โปรดระบุ (ประเภทเรื่องร้องเรียนอื่นๆ) : </ion-text>
+      </ion-label>
+      <br>
+      <ion-input type="name" placeholder="ระบุ..." style="border: 1px black;" disabled="true"></ion-input>
+
+      <!-- Part Of Input Description Subject -->
+      <ion-label>
+        <ion-text color="dark" class="fw500">รายละเอียด : </ion-text>
+        <ion-text style="color: red;" class="fw500">*</ion-text>
+      </ion-label>
+      <ion-item>
+        <ion-textarea placeholder="รายละเอียด"></ion-textarea>
+      </ion-item>
+      <br>
+
+      <!-- Part Of Input Address -->
+      <ion-label>
+          <ion-text color="dark" class="fw500">สถานที่/บริเวณที่เกิดเหตุ : </ion-text>
+          <ion-text style="color: red;" class="fw500">*</ion-text>
+      </ion-label>
+      <ion-item>
+            <ion-textarea placeholder="ระบุสถานที่/บริเวณ"></ion-textarea>
+      </ion-item>
+      <br>
+
+      <!-- Part Of Input Interval Department -->
+      <ion-label>
+          <ion-text color="dark" class="fw500">หน่วยงานที่รับผิดชอบ : </ion-text>
+          <ion-text style="color: red;" class="fw500">*</ion-text>
+        </ion-label>
+          <br>
+        <ion-select placeholder=" - เลือก -">
+          <ion-select-option value="สำนักปลัดเมืองพัทยา">สำนักปลัดเมืองพัทยา</ion-select-option>
+          <ion-select-option value="สำนักยุทธศาสตร์และงบประมาณ">สำนักยุทธศาสตร์และงบประมาณ</ion-select-option>
+          </ion-select>
+
+      <!-- Part Of Input External Department -->
+      <ion-label>
+          <ion-text color="dark" class="fw500">หน่วยงานที่ประสานงาน : </ion-text>
+        </ion-label>
+          <br>
+        <ion-select placeholder=" - เลือก -">
+          <ion-select-option value="การไฟฟ้าส่วนภูมิภาคบางละมุง">การไฟฟ้าส่วนภูมิภาคบางละมุง</ion-select-option>
+          <ion-select-option value="ไปรษณีย์พัทยา">ไปรษณีย์พัทยา</ion-select-option>
+          </ion-select>
+
+      <!-- Part Of Input Description Subject -->
+      <ion-label>
+        <ion-text color="dark" class="fw500">สิ่งที่ต้องการให้ดำเนินการ : </ion-text>
+      </ion-label>
+      <ion-label>
+        <ion-textarea placeholder="สิ่งที่ต้องการให้ดำเนินการ"></ion-textarea>
+      </ion-label>
+
+      <br>
+      <!-- Part Of Input Staff Subject -->
+      <ion-label>
+        <ion-text color="dark" class="fw500">เจ้าหน้าที่ผู้รับผิดชอบ : </ion-text>
+        <ion-text style="color: red;" class="fw500">*</ion-text>
+      </ion-label>
+      <ion-item>
+        <ion-input type="name" placeholder="ชื่อ-สกุล" style="border: 1px black;"></ion-input>
+      </ion-item>
+
+      <br>
+      <!-- Part Of Input Day Follow Subject -->
+      <ion-label>
+        <ion-text color="dark" class="fw500">ระยะเวลาติดตามผลการดำเนินงาน : </ion-text>
+      </ion-label>
+      <br>
+      <ion-label>
+        <br>
+        <ion-checkbox color="primary" slot="start"></ion-checkbox>
+        <ion-text style="text-align: left;"> แจ้งเตือนเมื่อถึงเวลากำหนด </ion-text>
+
+      </ion-label>
+
+      <ion-item>
+      <ion-row>
+          <ion-input type="number" style="border: 10px black;" placeholder="ระบุจำนวนวัน"></ion-input>
+          <h3 style="text-align: right;">วัน</h3>
+      </ion-row>
+      </ion-item>
+
+
+      <br><br>
+      <!-- Part Of Input File Subject -->
+      <ion-label>
+          <ion-text color="dark" class="fw500">เอกสารหรือไฟล์ประกอบ : </ion-text>
+        </ion-label>
+        <br>
+        <input type="file" class="fileInput">
+
+  <br><br>
+  </ion-card>
+
+  <ion-card>
+  <!-- Part Of Third Input Data -->
+  <h3 style="text-align: center;"><ion-icon name="clipboard"></ion-icon> ข้อมูลผู้แจ้งเรื่องร้องเรียน</h3>
+        <!-- Part Of Input Name-Surname Contact -->
+      <ion-label>
+          <ion-text color="dark" class="fw500">ชื่อ-สกุล : </ion-text>
+          <ion-text style="color: red;" class="fw500">*</ion-text>
+      </ion-label>
+        <br>
+        <ion-input type="name" placeholder="ชื่อ-สกุล" style="border: 1px black;"></ion-input>
+
+        <!-- Part Of Input Tel Contact -->
+      <ion-label>
+          <ion-text color="dark" class="fw500">โทรศัพท์ : </ion-text>
+      </ion-label>
+        <br>
+        <ion-input type="name" placeholder="โทรศัพท์" style="border: 1px black;"></ion-input>
+
+        <!-- Part Of Input E-mail Contact -->
+      <ion-label>
+          <ion-text color="dark" class="fw500">E-mail : </ion-text>
+      </ion-label>
+        <br>
+        <ion-input type="name" placeholder="E-mail" style="border: 1px black;"></ion-input>
+
+        <!-- Part Of Input Verify Subject -->
+        ผู้แจ้งเรื่องร้องเรียนยินดีให้เปิดเผยข้อมูล หรือ ปกปิดข้อมูล
+          <ion-select>
+            <ion-select-option value="ปกปิด" selected>ปกปิด</ion-select-option>
+            <ion-select-option value="เปิดเผย">เปิดเผย</ion-select-option>
+          </ion-select>
+
+  <br>
+  </ion-card>
+
+  <ion-card>
+  <!-- Part Of Fourth Input Data -->
+  <h3 style="text-align: center;"><ion-icon name="clipboard"></ion-icon> สถานะเรื่องร้องเรียน</h3>
+        <!-- Part Of Input Status Subject -->
+        <ion-item>
+            <ion-label color="dark">กรุณาเลือกสถานะ</ion-label>
+            <ion-select>
+              <ion-select-option value="" selected>ฉบับร่าง</ion-select-option>
+              <ion-select-option value="">ได้ข้อยุติ</ion-select-option>
+              <ion-select-option value="">ระหว่างดำเนินการ</ion-select-option>
+              <ion-select-option value="">ไม่สามารถดำเนินการได้</ion-select-option>
+            </ion-select>
+          </ion-item>
+          <br>
+
+        <!-- Part Of Input Note Subject -->
+          <ion-label>
+              <ion-text color="dark" class="fw500">หมายเหตุ : </ion-text>
+          </ion-label>
+          <ion-item>
+          <ion-textarea placeholder="หมายเหตุ"></ion-textarea>
+          </ion-item>
+  </ion-card>
+
+  <!-- Part Of Save Data -->
+  <ion-button expand="full" color="primary" (click)="save_data()">บันทึก</ion-button>
+
+</ion-content>
+  

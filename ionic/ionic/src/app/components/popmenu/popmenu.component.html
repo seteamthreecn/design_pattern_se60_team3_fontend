@@ -1,0 +1,45 @@
+<ion-fab vertical="bottom" horizontal="center" slot="fixed" class="animated fadeInDown">
+  <ion-fab-button (click)="togglePopupMenu()">
+    <ion-ripple-effect></ion-ripple-effect>
+    <ion-icon name="apps"></ion-icon>
+  </ion-fab-button>
+</ion-fab>
+
+<div class="popup-menu">
+  <div class="popup-menu-overlay" [ngClass]="{'in': openMenu}"></div>
+  <div class="popup-menu-panel" [ngClass]="{'in': openMenu}">
+    <div class="popup-menu-item" (click)="open_insert_income()">
+      <ion-icon name="add-circle" slot="middle" size="large"></ion-icon>
+      <span>บันทึกรายรับ</span>
+    </div>
+    <div class="popup-menu-item" (click)="open_insert_outcome()">
+      <ion-icon name="remove-circle" slot="middle" size="large"></ion-icon>
+      <span>บันทึกรายจ่าย</span>
+    </div>
+
+    <!-- <div class="popup-menu-item" (click)="open_insert_subject()">
+      <ion-icon name="add-circle" slot="middle" size="large"></ion-icon>
+      <span>บันทึก<br>เรื่องร้องเรียน</span>
+    </div>
+    <div class="popup-menu-item" (click)="open_list_subject()">
+      <ion-icon name="list-box" slot="middle" size="large"></ion-icon>
+      <span>รายการ<br>เรื่องร้องเรียน</span>
+    </div>
+    <div class="popup-menu-item" (click)="open_department_internal()">
+      <ion-icon name="logo-buffer" slot="middle" size="large"></ion-icon>
+      <span>รายการ<br>หน่วยงานภายใน</span>
+    </div>
+    <div class="popup-menu-item" (click)="open_department__external()">
+      <ion-icon name="logo-buffer" slot="middle" size="large"></ion-icon>
+      <span>รายการ<br>หน่วยงานภายนอก</span>
+    </div>
+    <div class="popup-menu-item" (click)="open_department__channel()">
+      <ion-icon name="logo-buffer" slot="middle" size="large"></ion-icon>
+      <span>รายการ<br>ช่องทางแหล่งข้อมูล</span>
+    </div>
+    <div class="popup-menu-item" (click)="open_department__category()">
+      <ion-icon name="logo-buffer" slot="middle" size="large"></ion-icon>
+      <span>รายการ<br>ประเภทเรื่องร้องเรียน</span>
+    </div> -->
+  </div>
+</div>

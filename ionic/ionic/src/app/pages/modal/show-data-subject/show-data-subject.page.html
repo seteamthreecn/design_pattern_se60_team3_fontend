@@ -1,0 +1,212 @@
+<style>
+    b,
+    ion-text {
+        font-size: 15px;
+    }
+</style>
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <ion-button color="primary" (click)="closeModal()">
+                <ion-icon name="close" color="light"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+        <ion-title>
+            <h6 style="text-align: center;">ข้อมูลเรื่องร้องเรียน</h6>
+        </ion-title>
+        <!-- <ion-buttons slot="end" *ngIf=" report_list[0].case_status_id == '1' || report_list[0].case_status_id == '2' || report_list[0].case_status_id == '4' || report_list[0].case_status_id == '5'">
+            <ion-button color="primary" (click)="edit_status()">
+                <ion-icon name="create" color="light" size=""></ion-icon>
+            </ion-button>
+        </ion-buttons> -->
+    </ion-toolbar>
+</ion-header>
+
+
+<ion-content padding>
+
+    <!-- Part Of Manage Data -->
+      <ion-fab horizontal="end" vertical="bottom" slot="fixed" *ngIf=" report_list[0].case_status_id == '1' || report_list[0].case_status_id == '2' || report_list[0].case_status_id == '4' || report_list[0].case_status_id == '5'" >
+        <ion-fab-button color="primary">
+          <ion-icon name="cog" size="large"></ion-icon>
+        </ion-fab-button>
+        <ion-fab-list side="top">
+          <ion-fab-button color="warning" size="large" (click)="edit_status()">
+            <ion-icon name="create"></ion-icon>
+          </ion-fab-button>
+        </ion-fab-list>
+        <ion-fab-list side="start">
+          <ion-fab-button color="danger" size="large" (click)="delete_subject()">
+            <ion-icon name="trash"></ion-icon>
+          </ion-fab-button>
+        </ion-fab-list>
+      </ion-fab>
+
+    <!-- Part Of Status Subject -->
+    <ion-card *ngIf=" report_list[0].case_status_id == '1'" style="background-color: #AAAAAA; border: solid 2px #515151;">
+        <ion-text style="color: white;">
+            สถานะเรื่องร้องเรียน :
+        </ion-text>
+        <ion-text>
+            <h2 style="text-align: center; color: white;">ฉบับร่าง</h2>
+        </ion-text>
+    </ion-card>
+
+    <ion-card *ngIf=" report_list[0].case_status_id == '2'" style="background-color: #3581D8; border: solid 2px #071E43;">
+        <ion-text style="color: white;">
+            สถานะเรื่องร้องเรียน :
+        </ion-text>
+        <ion-text>
+            <h2 style="text-align: center; color: white;">กำลังดำเนินการ</h2>
+        </ion-text>
+    </ion-card>
+
+    <ion-card *ngIf=" report_list[0].case_status_id == '3'" style="background-color: #3DC094; border: solid 2px #1E6D4F;">
+        <ion-text style="color: white;">
+            สถานะเรื่องร้องเรียน :
+        </ion-text>
+        <ion-text>
+
+            <h2 style="text-align: center; color: white;">ดำเนินการเสร็จสิ้น</h2>
+        </ion-text>
+    </ion-card>
+
+    <ion-card *ngIf=" report_list[0].case_status_id == '4' || report_list[0].case_status_id == '5'" style="background-color: #DE000E; border: solid 2px #A60031;">
+        <ion-text style="color: white;">
+            สถานะเรื่องร้องเรียน :
+        </ion-text>
+        <ion-text>
+            <h2 style="text-align: center; color: white;">ไม่สามารถดำเนินการได้</h2>
+        </ion-text>
+    </ion-card>
+    <br>
+    
+
+    <!-- Part Of Detail Subject -->
+    <ion-text>
+        <b>เรื่อง : </b><br>{{report_list[0].subject}}<br>
+    </ion-text>
+    <br>
+    <ion-text>
+        <b>วันที่ : </b>
+        <br>{{report_list[0].case_date + " " + report_list[0].case_month + " " + report_list[0].case_year}} &emsp; <br><br>
+        <b>เวลา : </b>
+        <br>{{report_list[0].case_hour + ":" + report_list[0].case_min + " น."}}<br>
+    </ion-text>
+    <br>
+    <ion-text>
+        <b>ช่องทางแหล่งข้อมูล : </b>
+        <br>{{report_list[0].channel_name}}<br>
+    </ion-text>
+    <br>
+    <ion-text>
+        <b>ประเภทเรื่องร้องเรียน : </b>
+        <br>{{report_list[0].category_name}}<br>
+    </ion-text>
+    <br>
+
+    <ion-text *ngIf=" report_list[0].description == ''">
+        <b>รายละเอียด : </b>
+        <br>-<br>
+    </ion-text>
+    <ion-text *ngIf=" report_list[0].description != ''">
+        <b>รายละเอียด : </b>
+        <br>{{report_list[0].description}}<br>
+    </ion-text>
+    <br>
+
+    <ion-text *ngIf=" report_list[0].requirement == ''">
+        <b>สิ่งที่ต้องการให้ดำเนินการ : </b>
+        <br>-<br>
+    </ion-text>
+    <ion-text *ngIf=" report_list[0].requirement != ''">
+        <b>สิ่งที่ต้องการให้ดำเนินการ : </b>
+        <br>{{report_list[0].requirement}}<br>
+    </ion-text>
+    <br>
+
+    <ion-text *ngIf=" report_list[0].internal_department_name == ''">
+        <b>หน่วยงานที่รับผิดชอบ : </b>
+        <br>-<br>
+    </ion-text>
+    <ion-text *ngIf=" report_list[0].internal_department_name != ''">
+        <b>หน่วยงานที่รับผิดชอบ : </b>
+        <br>{{report_list[0].internal_department_name}}<br>
+    </ion-text>
+    <br>
+
+    <ion-text *ngIf=" report_list[0].external_department_name == ''">
+        <b>หน่วยงานที่ประสานงาน : </b>
+        <br>-<br>
+    </ion-text>
+    <ion-text *ngIf=" report_list[0].external_department_name != ''">
+        <b>หน่วยงานที่ประสานงาน : </b>
+        <br>{{report_list[0].external_department_name}}<br>
+    </ion-text>
+    <br>
+
+    <ion-text>
+        <b>สถานที่/บริเวณเกิดเหตุ : </b>
+        <br>{{report_list[0].location}}<br>
+    </ion-text>
+    <br>
+    <ion-text>
+        <b>เจ้าหน้าที่ผู้รับผิดชอบ : </b>
+        <br>{{report_list[0].staff_name}}<br>
+    </ion-text>
+    <br>
+
+    <ion-text *ngIf=" report_list[0].case_file_name == ''">
+        <b>เอกสารหรือไฟล์ประกอบ : </b>
+        <br>-<br>
+    </ion-text>
+    <ion-text *ngIf=" report_list[0].case_file_name != ''">
+        <b>เอกสารหรือไฟล์ประกอบ : </b>
+        <br>{{report_list[0].case_file_name}}<br>
+    </ion-text>
+
+    <br>
+    <ion-text>
+        <b>ผู้แจ้งเรื่องร้องเรียน: </b>
+        <br>{{report_list[0].if_name}}<br>
+    </ion-text>
+    <br>
+
+    <ion-text *ngIf=" report_list[0].if_phone_no == ''">
+        <b>โทรศัพท์ : </b>
+        <br>-<br>
+    </ion-text>
+    <ion-text *ngIf=" report_list[0].if_phone_no != ''">
+        <b>โทรศัพท์ : </b>
+        <br>{{report_list[0].if_phone_no}}<br>
+    </ion-text>
+    <br>
+
+    <ion-text *ngIf=" report_list[0].if_email == ''">
+        <b>อีเมล : </b>
+        <br>-<br>
+    </ion-text>
+    <ion-text *ngIf=" report_list[0].if_email != ''">
+        <b>อีเมล : </b>
+        <br>{{report_list[0].if_email}}<br>
+    </ion-text>
+    <br>
+
+    <ion-text *ngIf=" report_list[0].is_disclosed == '1'">
+        <b>การยินยอมให้เปิดเผยข้อมูล : </b><br>เปิดเผย<br>
+    </ion-text>
+    <ion-text *ngIf=" report_list[0].is_disclosed == '0'">
+        <b>การยินยอมให้เปิดเผยข้อมูล : </b><br>ปกปิด<br>
+    </ion-text>
+
+    <!-- Part Of Staff Input Subject -->
+    <ion-card style="background-color: black; border: solid 1px;">
+        <ion-text style="color: white;">
+            ผู้รับเรื่อง :
+        </ion-text>
+        <ion-text>
+            <h2 style="text-align: center; color: white;">{{report_list[0].name}}</h2>
+        </ion-text>
+    </ion-card>
+
+</ion-content>

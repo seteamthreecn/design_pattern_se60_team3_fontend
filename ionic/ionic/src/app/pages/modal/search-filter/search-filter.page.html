@@ -1,0 +1,146 @@
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <ion-button color="primary" (click)="closeModal()">
+                <ion-icon name="close" color="light"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+        <ion-title>
+            <h5 style="text-align: center;">กรุณาเลือกสถานะที่ต้องการ</h5>
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+
+<ion-content  *ngIf="case_status_id == '1'">
+    <br>
+    <ion-row>
+        <ion-col>
+            <ion-checkbox color="secondary" (ionChange)="check_draft($event)" checked></ion-checkbox>
+            <ion-text style="color:black">&emsp;ฉบับร่าง&emsp;</ion-text>
+        </ion-col>
+    </ion-row>
+    <br>
+    <ion-row>
+        <ion-col>
+            <ion-checkbox color="secondary" (ionChange)="check_doing($event)"></ion-checkbox>
+            <ion-text style="color:black">&emsp;กำลังดำเนินการ&emsp;</ion-text>
+        </ion-col>
+    </ion-row>
+    <br>
+    <ion-row >
+        <ion-col>
+            <ion-checkbox color="secondary" (ionChange)="check_done($event)"></ion-checkbox>
+            <ion-text style="color:black">&emsp;ดำเนินการเสร็จสิ้น&emsp;</ion-text>
+        </ion-col>
+    </ion-row>
+    <br>
+    <ion-row >
+        <ion-col>
+            <ion-checkbox color="secondary" (ionChange)="check_fail($event)"></ion-checkbox>
+            <ion-text style="color:black">&emsp;ไม่สามารถดำเนินการได้&emsp;</ion-text>
+        </ion-col>
+    </ion-row>
+
+    
+</ion-content>
+
+<ion-content  *ngIf="case_status_id == '2'">
+    <br>
+    <ion-row>
+        <ion-col>
+            <ion-checkbox color="secondary" (ionChange)="check_draft($event)"></ion-checkbox>
+            <ion-text style="color:black">&emsp;ฉบับร่าง&emsp;</ion-text>
+        </ion-col>
+    </ion-row>
+    <br>
+    <ion-row>
+        <ion-col>
+            <ion-checkbox color="secondary" (ionChange)="check_doing($event)" checked></ion-checkbox>
+            <ion-text style="color:black">&emsp;กำลังดำเนินการ&emsp;</ion-text>
+        </ion-col>
+    </ion-row>
+    <br>
+    <ion-row >
+        <ion-col>
+            <ion-checkbox color="secondary" (ionChange)="check_done($event)"></ion-checkbox>
+            <ion-text style="color:black">&emsp;ดำเนินการเสร็จสิ้น&emsp;</ion-text>
+        </ion-col>
+    </ion-row>
+    <br>
+    <ion-row >
+        <ion-col>
+            <ion-checkbox color="secondary" (ionChange)="check_fail($event)"></ion-checkbox>
+            <ion-text style="color:black">&emsp;ไม่สามารถดำเนินการได้&emsp;</ion-text>
+        </ion-col>
+    </ion-row>
+
+    
+</ion-content>
+
+
+<ion-content  *ngIf="case_status_id == '3'">
+    <br>
+    <ion-row>
+        <ion-col>
+            <ion-checkbox color="secondary" (ionChange)="check_draft($event)"></ion-checkbox>
+            <ion-text style="color:black">&emsp;ฉบับร่าง&emsp;</ion-text>
+        </ion-col>
+    </ion-row>
+    <br>
+    <ion-row>
+        <ion-col>
+            <ion-checkbox color="secondary" (ionChange)="check_doing($event)"></ion-checkbox>
+            <ion-text style="color:black">&emsp;กำลังดำเนินการ&emsp;</ion-text>
+        </ion-col>
+    </ion-row>
+    <br>
+    <ion-row >
+        <ion-col>
+            <ion-checkbox color="secondary" (ionChange)="check_done($event)" checked></ion-checkbox>
+            <ion-text style="color:black">&emsp;ดำเนินการเสร็จสิ้น&emsp;</ion-text>
+        </ion-col>
+    </ion-row>
+    <br>
+    <ion-row >
+        <ion-col>
+            <ion-checkbox color="secondary" (ionChange)="check_fail($event)"></ion-checkbox>
+            <ion-text style="color:black">&emsp;ไม่สามารถดำเนินการได้&emsp;</ion-text>
+        </ion-col>
+    </ion-row>
+
+    
+</ion-content>
+
+<ion-content  *ngIf="case_status_id == '4' || case_status_id == '5'">
+    <br>
+    <ion-row>
+        <ion-col>
+            <ion-checkbox color="secondary" (ionChange)="check_draft($event)"></ion-checkbox>
+            <ion-text style="color:black">&emsp;ฉบับร่าง&emsp;</ion-text>
+        </ion-col>
+    </ion-row>
+    <br>
+    <ion-row>
+        <ion-col>
+            <ion-checkbox color="secondary" (ionChange)="check_doing($event)"></ion-checkbox>
+            <ion-text style="color:black">&emsp;กำลังดำเนินการ&emsp;</ion-text>
+        </ion-col>
+    </ion-row>
+    <br>
+    <ion-row >
+        <ion-col>
+            <ion-checkbox color="secondary" (ionChange)="check_done($event)"></ion-checkbox>
+            <ion-text style="color:black">&emsp;ดำเนินการเสร็จสิ้น&emsp;</ion-text>
+        </ion-col>
+    </ion-row>
+    <br>
+    <ion-row >
+        <ion-col>
+            <ion-checkbox color="secondary" (ionChange)="check_fail($event)" checked></ion-checkbox>
+            <ion-text style="color:black">&emsp;ไม่สามารถดำเนินการได้&emsp;</ion-text>
+        </ion-col>
+    </ion-row>
+
+    
+</ion-content>

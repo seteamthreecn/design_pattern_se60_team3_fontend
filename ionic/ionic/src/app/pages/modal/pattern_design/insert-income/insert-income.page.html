@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start" (click)="closeModal()">
+      <ion-button color="primary" (click)="closeModal()">
+        <ion-icon name="close" color="light"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+      <ion-title>
+          <h6 style="text-align: center;">บันทึกรายรับ</h6>
+      </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+<h5 style="font-weight: bold;">ประเภทของรายรับ:</h5> 
+    <ion-select placeholder="เลือกประเภทของรายรับ">
+        <ion-select-option>เงินเดือน</ion-select-option>
+        <ion-select-option>โบนัส</ion-select-option>
+        <ion-select-option>อื่นๆ</ion-select-option>
+    </ion-select>
+
+<h5 style="font-weight: bold;">วันที่:</h5>
+<ion-item>
+  <ion-datetime value="" placeholder="เลือกวันที่"></ion-datetime>
+</ion-item>
+
+<h5 style="font-weight: bold;">เวลา:</h5>
+<ion-item>
+  <ion-datetime display-format="h:mm A" picker-format="h:mm A" value="" placeholder="เลือกเวลา"></ion-datetime>
+</ion-item>
+
+<h5 style="font-weight: bold;">จำนวนเงิน:</h5>
+<ion-item>
+    <ion-input type="name" placeholder="บาท" value=""></ion-input>
+</ion-item>
+
+<h5 style="font-weight: bold;">รายละเอียด:</h5>
+<ion-item>
+  <ion-textarea placeholder="รายละเอียด"></ion-textarea>
+</ion-item>
+
+<ion-button expand="full" color="primary" (click)="save_data()">บันทึก</ion-button>
+
+</ion-content>
