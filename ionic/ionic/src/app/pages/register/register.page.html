@@ -19,11 +19,11 @@
           <ion-icon name="person" item-start></ion-icon>
           ชื่อจริง
         </ion-label>
-        <ion-input color="secondary" type="text" formControlName="fullName"></ion-input>
+        <ion-input color="secondary" type="text" formControlName="firstName" [(ngModel)]="fname"></ion-input>
       </ion-item>
-      <p ion-text class="text08" *ngIf="onRegisterForm.get('fullName').touched && onRegisterForm.get('fullName').hasError('required')">
+      <p ion-text class="text08" *ngIf="onRegisterForm.get('firstName').touched && onRegisterForm.get('firstName').hasError('required')">
         <ion-text color="warning">
-          กรุณากรอกข้อมูล
+          กรุณากรอกชื่อจริง
         </ion-text>
       </p>
 
@@ -32,11 +32,11 @@
           <ion-icon name="person" item-start></ion-icon>
           นามสกุล
         </ion-label>
-        <ion-input color="secondary" type="text" formControlName="fullName"></ion-input>
+        <ion-input color="secondary" type="text" formControlName="lastName" [(ngModel)]="lname"></ion-input>
       </ion-item>
-      <p ion-text class="text08" *ngIf="onRegisterForm.get('fullName').touched && onRegisterForm.get('fullName').hasError('required')">
+      <p ion-text class="text08" *ngIf="onRegisterForm.get('lastName').touched && onRegisterForm.get('lastName').hasError('required')">
         <ion-text color="warning">
-          กรุณากรอกข้อมูล
+          กรุณากรอกนามสกุล
         </ion-text>
       </p>
 
@@ -45,11 +45,11 @@
           <ion-icon name="contact" item-start></ion-icon>
           ชื่อผู้ใช้
         </ion-label>
-        <ion-input color="secondary" type="text" formControlName="fullName"></ion-input>
+        <ion-input color="secondary" type="text" formControlName="username" [(ngModel)]="username"></ion-input>
       </ion-item>
-      <p ion-text class="text08" *ngIf="onRegisterForm.get('fullName').touched && onRegisterForm.get('fullName').hasError('required')">
+      <p ion-text class="text08" *ngIf="onRegisterForm.get('username').touched && onRegisterForm.get('username').hasError('required')">
         <ion-text color="warning">
-          กรุณากรอกข้อมูล
+          กรุณากรอกชื่อผู้ใช้งาน
         </ion-text>
       </p>
 
@@ -58,11 +58,11 @@
           <ion-icon name="lock" item-start></ion-icon>
           รหัสผ่าน
         </ion-label>
-        <ion-input color="secondary" type="password" formControlName="password"></ion-input>
+        <ion-input color="secondary" type="password" formControlName="password" [(ngModel)]="password"></ion-input>
       </ion-item>
       <p ion-text color="warning" class="text08" *ngIf="onRegisterForm.get('password').touched && onRegisterForm.get('password').hasError('required')">
         <ion-text color="warning">
-          กรุณากรอกข้อมูล
+          กรุณากรอกรหัสผ่าน
         </ion-text>
       </p>
 
@@ -71,18 +71,18 @@
           <ion-icon name="lock" item-start></ion-icon>
           ยืนยันรหัสผ่าน
         </ion-label>
-        <ion-input color="secondary" type="password" formControlName="password"></ion-input>
+        <ion-input color="secondary" type="password" formControlName="password2" [(ngModel)]="password2"></ion-input>
       </ion-item>
-      <p ion-text color="warning" class="text08" *ngIf="onRegisterForm.get('password').touched && onRegisterForm.get('password').hasError('required')">
+      <p ion-text color="warning" class="text08" *ngIf="onRegisterForm.get('password2').touched && onRegisterForm.get('password2').hasError('required')">
         <ion-text color="warning">
-          กรุณากรอกข้อมูล
+          กรุณากรอกรหัสผ่านครั้งที่ 2
         </ion-text>
       </p>
 
     </form>
 
     <div margin-top>
-      <ion-button icon-left size="medium" expand="full" shape="round" color="dark" (click)="signUp()"
+      <ion-button icon-left size="medium" expand="full" shape="round" color="dark" (click)="sign_up()"
         tappable>
         <ion-icon name="log-in"></ion-icon>
         สร้างบัญชีผู้ใช้งาน

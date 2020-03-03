@@ -22,11 +22,11 @@
           <ion-icon name="contact" item-start></ion-icon>
           ชื่อผู้ใช้
         </ion-label>
-        <ion-input color="secondary" [(ngModel)]="username" type="email" formControlName="email"></ion-input>
+        <ion-input color="secondary" type="text" formControlName="username" [(ngModel)]="username"></ion-input>
       </ion-item>
-      <p ion-text class="text08" *ngIf="onLoginForm.get('email').touched && onLoginForm.get('email').hasError('required')">
+      <p ion-text class="text08" *ngIf="onLoginForm.get('username').touched && onLoginForm.get('username').hasError('required')">
         <ion-text color="warning">
-          กรุณากรอกข้อมูล
+          กรุณากรอกชื่อผู้ใช้งาน
         </ion-text>
       </p>
 
@@ -35,11 +35,11 @@
           <ion-icon name="lock" item-start></ion-icon>
           รหัสผ่าน
         </ion-label>
-        <ion-input color="secondary" [(ngModel)]="userpassword" type="password" formControlName="password"></ion-input>
+        <ion-input color="secondary" type="password" formControlName="password" [(ngModel)]="password"></ion-input>
       </ion-item>
       <p ion-text color="warning" class="text08" *ngIf="onLoginForm.get('password').touched && onLoginForm.get('password').hasError('required')">
         <ion-text color="warning">
-          กรุณากรอกข้อมูล
+          กรุณากรอกรหัสผ่าน
         </ion-text>
         </p>
     </form>
@@ -51,7 +51,7 @@
     </p>
 
     <div>
-      <ion-button icon-left size="medium" expand="full" shape="round" color="dark" (click)="goToHome()" [disabled]="!onLoginForm.valid" tappable>
+      <ion-button icon-left size="medium" expand="full" shape="round" color="dark" (click)="check_authentication()" [disabled]="!onLoginForm.valid" tappable>
         <ion-icon name="log-in"></ion-icon>
         ยืนยัน
       </ion-button>

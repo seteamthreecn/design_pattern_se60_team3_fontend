@@ -1,5 +1,9 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { RetUserService } from "../../service/ret-user.service";
+import { Storage } from "@ionic/storage";
+import { UserService } from "src/app/services/user.service";
+
 import {
   NavController,
   AlertController,
@@ -9,9 +13,6 @@ import {
   ModalController,
   LoadingController
 } from "@ionic/angular";
-import { UserService } from "src/app/services/user.service";
-import { RegisterPage } from "../../pages/register/register.page";
-import { Storage } from "@ionic/storage";
 
 @Component({
   selector: "app-login",
@@ -23,6 +24,9 @@ export class LoginPage implements OnInit {
   private username: string;
   private userpassword: string;
 
+  private password: String;
+  private user_list: any = [];
+
   constructor(
     public navCtrl: NavController,
     public menuCtrl: MenuController,
@@ -32,8 +36,9 @@ export class LoginPage implements OnInit {
     public toastCtrl: ToastController,
     public loadingCtrl: LoadingController,
     private formBuilder: FormBuilder,
-    private storage: Storage,
-    private UserService: UserService
+    private RetUserService: RetUserService,
+    private UserService: UserService,
+    private storage: Storage
   ) {}
 
   ionViewWillEnter() {
@@ -42,7 +47,7 @@ export class LoginPage implements OnInit {
 
   ngOnInit() {
     this.onLoginForm = this.formBuilder.group({
-      email: [null, Validators.compose([Validators.required])],
+      username: [null, Validators.compose([Validators.required])],
       password: [null, Validators.compose([Validators.required])]
     });
   }
@@ -93,7 +98,6 @@ export class LoginPage implements OnInit {
     await alert.present();
   }
 
-  // // //
   async contractLogin() {
     this.navCtrl.navigateRoot("/register");
   }
@@ -111,5 +115,39 @@ export class LoginPage implements OnInit {
         }
       });
     });
+  }
+
+  check_authentication() {
+    this.RetUserService.get_all().subscribe(result => {
+      this.user_list = result;
+      let check_authentication = false;
+      for (let i = 0; i < this.user_list.length; i++) {
+        if (
+          this.user_list[i].user_username == this.username &&
+          this.user_list[i].user_password == this.password
+        ) {
+          check_authentication = true;
+          break;
+        }
+      }
+      if (check_authentication) {
+        this.goToHome();
+      } else {
+        this.login_authentication_fail_alert();
+      }
+    });
+  }
+
+  async login_authentication_fail_alert() {
+    const alert = await this.alertCtrl.create({
+      header: "ชื่อผู้ใช้งานหรือรหัสผ่านไม่ถูกต้อง กรุณาทำการเข้าสู่ระบบใหม่!",
+      buttons: [
+        {
+          text: "ปิด",
+          handler: async () => {}
+        }
+      ]
+    });
+    await alert.present();
   }
 }
