@@ -7,7 +7,7 @@ import 'rxjs/add/operator/map';
 })
 export class RetUserService {
 
-  constructor(private http: Http) { }
+  constructor(private http: Http) {}
 
   get_all() {
     return this.http.post("http://localhost:83/ret_user","").map(res => res.json());
