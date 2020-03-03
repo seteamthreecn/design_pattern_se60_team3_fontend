@@ -22,11 +22,11 @@
           <ion-icon name="contact" item-start></ion-icon>
           ชื่อผู้ใช้
         </ion-label>
-        <ion-input color="secondary" type="email" formControlName="email" [(ngModel)]="username"></ion-input>
+        <ion-input color="secondary" type="text" formControlName="username" [(ngModel)]="username"></ion-input>
       </ion-item>
-      <p ion-text class="text08" *ngIf="onLoginForm.get('email').touched && onLoginForm.get('email').hasError('required')">
+      <p ion-text class="text08" *ngIf="onLoginForm.get('username').touched && onLoginForm.get('username').hasError('required')">
         <ion-text color="warning">
-          กรุณากรอกข้อมูล
+          กรุณากรอกชื่อผู้ใช้งาน
         </ion-text>
       </p>
 
@@ -39,7 +39,7 @@
       </ion-item>
       <p ion-text color="warning" class="text08" *ngIf="onLoginForm.get('password').touched && onLoginForm.get('password').hasError('required')">
         <ion-text color="warning">
-          กรุณากรอกข้อมูล
+          กรุณากรอกรหัสผ่าน
         </ion-text>
         </p>
     </form>
