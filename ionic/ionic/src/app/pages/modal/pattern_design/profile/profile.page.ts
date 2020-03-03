@@ -2,6 +2,8 @@ import { Component, OnInit } from "@angular/core";
 import { ModalController } from "@ionic/angular";
 import { UserService } from "src/app/services/user.service";
 import { Storage } from "@ionic/storage";
+import { RetUserService } from "src/app/service/ret-user.service";
+
 import {
   AlertController,
   ToastController,
@@ -28,7 +30,7 @@ export class ProfilePage implements OnInit {
     public toastCtrl: ToastController,
     public alertCtrl: AlertController,
     public loadingCtrl: LoadingController,
-    private UserService: UserService,
+    private RetUserService: RetUserService,
     private storage: Storage
   ) {}
 
@@ -50,13 +52,10 @@ export class ProfilePage implements OnInit {
   get_user_data_by_user_name() {
     // Or to get a key/value pair
     this.storage.get("user_username").then(data => {
-      console.log("Your user_username is", data);
-      this.UserService.get_user_data_by_user_username(data).subscribe(
+      this.RetUserService.get_user_data_by_user_username(data).subscribe(
         result => {
           console.log(result);
           this.user_data = result;
-          console.log(this.user_data[0].user_fname)
-          console.log(result[0].user_fname)
         }
       );
     });

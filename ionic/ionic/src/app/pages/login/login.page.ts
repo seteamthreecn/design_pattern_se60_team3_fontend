@@ -2,7 +2,6 @@ import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { RetUserService } from "../../service/ret-user.service";
 import { Storage } from "@ionic/storage";
-import { UserService } from "src/app/services/user.service";
 
 import {
   NavController,
@@ -37,7 +36,6 @@ export class LoginPage implements OnInit {
     public loadingCtrl: LoadingController,
     private formBuilder: FormBuilder,
     private RetUserService: RetUserService,
-    private UserService: UserService,
     private storage: Storage
   ) {}
 
@@ -103,18 +101,7 @@ export class LoginPage implements OnInit {
   }
 
   goToHome() {
-    this.UserService.get_all().subscribe(result => {
-      result.forEach(element => {
-        if (
-          this.username == element.user_username &&
-          this.userpassword == element.user_password
-        ) {
-          this.storage.set("user_username", this.username);
-          this.storage.set("user_password", this.userpassword);
-          this.navCtrl.navigateRoot("/home-results");
-        }
-      });
-    });
+    this.navCtrl.navigateRoot("/home-results");
   }
 
   check_authentication() {
@@ -126,6 +113,8 @@ export class LoginPage implements OnInit {
           this.user_list[i].user_username == this.username &&
           this.user_list[i].user_password == this.password
         ) {
+          this.storage.set("user_username", this.username);
+          this.storage.set("user_password", this.userpassword);
           check_authentication = true;
           break;
         }
