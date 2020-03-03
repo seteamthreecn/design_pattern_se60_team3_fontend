@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { RetUserService } from "../../service/ret-user.service";
+
 import {
   NavController,
   AlertController,
@@ -9,8 +11,6 @@ import {
   ModalController,
   LoadingController
 } from '@ionic/angular';
-import { SearchChannelPage } from '../../pages/modal/search-channel/search-channel.page';
-import { RegisterPage } from '../../pages/register/register.page';
 
 @Component({
   selector: 'app-login',
@@ -20,6 +20,10 @@ import { RegisterPage } from '../../pages/register/register.page';
 export class LoginPage implements OnInit {
   public onLoginForm: FormGroup;
 
+  private username: String;
+  private password: String;
+  private user_list: any = [];
+
   constructor(
     public navCtrl: NavController,
     public menuCtrl: MenuController,
@@ -28,7 +32,8 @@ export class LoginPage implements OnInit {
     public modalCtrl: ModalController,
     public toastCtrl: ToastController,
     public loadingCtrl: LoadingController,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private RetUserService: RetUserService
   ) { }
 
   ionViewWillEnter() {
@@ -45,6 +50,7 @@ export class LoginPage implements OnInit {
         Validators.required
       ])]
     });
+
   }
 
   async forgotPass() {
@@ -92,13 +98,43 @@ export class LoginPage implements OnInit {
     await alert.present();
   }
 
-  // // //
   async contractLogin() {
     this.navCtrl.navigateRoot('/register');
   }
 
   goToHome() {
     this.navCtrl.navigateRoot('/home-results');
+  }
+
+  check_authentication() {
+    this.RetUserService.get_all().subscribe(result => {
+      this.user_list = result;
+      let check_authentication = false
+      for (let i = 0; i < this.user_list.length; i++) {
+        if (this.user_list[i].user_username == this.username && this.user_list[i].user_password == this.password) {
+          check_authentication = true
+          break
+        }
+      }
+      if (check_authentication) {
+        this.goToHome()
+      } else {
+        this.login_authentication_fail_alert()
+      }
+    });
+  }
+
+  async login_authentication_fail_alert() {
+    const alert = await this.alertCtrl.create({
+      header: 'ชื่อผู้ใช้งานหรือรหัสผ่านไม่ถูกต้อง กรุณาทำการเข้าสู่ระบบใหม่!',
+      buttons: [{
+        text: 'ปิด',
+        handler: async () => {
+        }
+      }
+      ]
+    });
+    await alert.present();
   }
 
 }
