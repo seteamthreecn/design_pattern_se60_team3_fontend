@@ -44,13 +44,27 @@ export class RetUserService {
       .map(res => res.json());
   }
 
-  update_ret_user_by_user_username(
+  get_user_data_by_user_id(user_id: number) {
+    let data = { user_id: user_id };
+    return this.http
+      .post("http://localhost:83/ret_user_by_user_id/", data)
+      .map(res => res.json());
+  }
+
+  update_ret_user_by_user_id(
     user_username: string,
     user_fname: string,
     user_lname: string,
-    user_email: string
+    user_email: string,
+    user_id: number
   ) {
-    let data = { user_username: user_username };
+    let data = {
+      user_username: user_username,
+      user_fname: user_fname,
+      user_lname: user_lname,
+      user_email: user_email,
+      user_id: user_id
+    };
     return this.http
       .post("http://localhost:83/update_ret_user/", data)
       .map(res => res.json());

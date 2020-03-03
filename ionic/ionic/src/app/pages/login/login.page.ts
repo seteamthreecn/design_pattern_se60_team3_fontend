@@ -21,7 +21,6 @@ import {
 export class LoginPage implements OnInit {
   public onLoginForm: FormGroup;
   private username: string;
-  private userpassword: string;
 
   private password: String;
   private user_list: any = [];
@@ -114,7 +113,8 @@ export class LoginPage implements OnInit {
           this.user_list[i].user_password == this.password
         ) {
           this.storage.set("user_username", this.username);
-          this.storage.set("user_password", this.userpassword);
+          this.storage.set("user_password", this.password);
+          this.storage.set("user_id", this.user_list[i].user_id);
           check_authentication = true;
           break;
         }
