@@ -5,45 +5,56 @@
         <ion-icon name="close" color="light"></ion-icon>
       </ion-button>
     </ion-buttons>
-      <ion-title>
-          <h6 style="text-align: center;">PROFILE</h6>
-      </ion-title>
+    <ion-title>
+      <h6 style="text-align: center;">PROFILE</h6>
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
-
   <div style="align-items: center;">
-    <ion-img style="width: 30%; height: 30%; border-radius: 50%;" src="assets/img/avatar.jpeg"></ion-img>  
- </div>
-<br>
+    <ion-img
+      justify-content-center
+      style="width: 30%; height: 30%; border-radius: 50%;"
+      src="assets/img/avatar.jpeg"
+    ></ion-img>
+  </div>
+  <br />
 
-<ion-label>
-  <ion-row>
-    <ion-col style="text-align: center; color: black;"><b>ชื่อ : </b>แบงค์</ion-col>
-  </ion-row>
-</ion-label>
-<br>
-<ion-label>
-  <ion-row>
-    <ion-col style="text-align: center; color: black;"><b>นามสกุล : </b>หงิด</ion-col>
-  </ion-row>
-</ion-label>
-<br>
-<ion-label>
-  <ion-row>
-    <ion-col style="text-align: center; color: black;"><b>ชื่อผู้ใช้งาน : </b>60160025</ion-col>
-  </ion-row>
-</ion-label>
-<br>
-<ion-label>
-  <ion-row>
-    <ion-col style="text-align: center; color: black;"><b>รหัสผ่าน : </b>60160025</ion-col>
-  </ion-row>
-</ion-label>
+  <ion-label>
+    <ion-row>
+      <ion-col style="text-align: center; color: black;"
+        ><b>ชื่อ : </b>{{user_data[0].user_fname}}</ion-col
+      >
+    </ion-row>
+  </ion-label>
+  <br />
+  <ion-label>
+    <ion-row>
+      <ion-col style="text-align: center; color: black;"
+        ><b>นามสกุล : </b>{{user_data[0].user_lname}}</ion-col
+      >
+    </ion-row>
+  </ion-label>
+  <br />
+  <ion-label>
+    <ion-row>
+      <ion-col style="text-align: center; color: black;"
+        ><b>ชื่อผู้ใช้งาน : </b>{{user_data[0].user_username}}</ion-col
+      >
+    </ion-row>
+  </ion-label>
+  <br />
+  <ion-label>
+    <ion-row>
+      <ion-col style="text-align: center; color: black;"
+        ><b>อีเมล : </b>{{user_data[0].user_email}}</ion-col
+      >
+    </ion-row>
+  </ion-label>
 
-<br><br>
-<ion-button expand="full" color="secondary" (click)="edit_profile()">แก้ไข</ion-button>
-
-
+  <br /><br />
+  <ion-button expand="full" color="secondary" (click)="edit_profile()"
+    >แก้ไข</ion-button
+  >
 </ion-content>
