@@ -15,24 +15,24 @@
   <br>
   <h5 style="font-weight: bold;">ชื่อ:</h5>
   <ion-item>
-  <ion-input type="name" placeholder="ชื่อ" value=""></ion-input>
+  <ion-input type="name" placeholder="ชื่อ" value="" [(ngModel)]='user_fname'></ion-input>
   </ion-item>
 
   <h5 style="font-weight: bold;">นามสกุล:</h5>
   <ion-item>
-  <ion-input type="name" placeholder="นามสกุล" value=""></ion-input>
+  <ion-input type="name" placeholder="นามสกุล" value="" [(ngModel)]='user_lname'></ion-input>
   </ion-item>
 
   <h5 style="font-weight: bold;">ชื่อผู้ใช้:</h5>
   <ion-item>
-  <ion-input type="name" placeholder="ชื่อผู้ใช้" value=""></ion-input>
+  <ion-input type="name" placeholder="ชื่อผู้ใช้" value="" [(ngModel)]='user_username'></ion-input>
   </ion-item>
 
-  <h5 style="font-weight: bold;">รหัสผ่าน:</h5>
+  <h5 style="font-weight: bold;">อีเมล:</h5>
   <ion-item>
-  <ion-input type="name" placeholder="รหัสผ่าน" value=""></ion-input>
+  <ion-input type="name" placeholder="อีเมล" value="" [(ngModel)]='user_email'></ion-input>
   </ion-item>
 
-  <ion-button expand="full" color="primary" (click)="edit_profile()">บันทึก</ion-button>
+  <ion-button expand="full" color="primary" (click)="update_profile()">บันทึก</ion-button>
 
 </ion-content>

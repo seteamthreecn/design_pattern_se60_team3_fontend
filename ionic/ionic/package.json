@@ -31,6 +31,7 @@
     "@ionic/pro": "2.0.4",
     "@ionic/storage": "^2.2.0",
     "chart.js": "^2.9.3",
+    "cordova-plugin-nativestorage": "^2.3.2",
     "cordova-sqlite-storage": "^4.0.0",
     "core-js": "^2.6.11",
     "highcharts": "^7.2.1",
@@ -68,6 +69,7 @@
   },
   "cordova": {
     "plugins": {
+      "cordova-plugin-nativestorage": {},
       "cordova-sqlite-storage": {}
     }
   }

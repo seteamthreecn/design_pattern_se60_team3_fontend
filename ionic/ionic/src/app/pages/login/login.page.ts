@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit } from "@angular/core";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { RetUserService } from "../../service/ret-user.service";
+import { Storage } from "@ionic/storage";
 
 import {
   NavController,
@@ -10,17 +11,17 @@ import {
   PopoverController,
   ModalController,
   LoadingController
-} from '@ionic/angular';
+} from "@ionic/angular";
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.page.html',
-  styleUrls: ['./login.page.scss'],
+  selector: "app-login",
+  templateUrl: "./login.page.html",
+  styleUrls: ["./login.page.scss"]
 })
 export class LoginPage implements OnInit {
   public onLoginForm: FormGroup;
+  private username: string;
 
-  private username: String;
   private password: String;
   private user_list: any = [];
 
@@ -33,47 +34,43 @@ export class LoginPage implements OnInit {
     public toastCtrl: ToastController,
     public loadingCtrl: LoadingController,
     private formBuilder: FormBuilder,
-    private RetUserService: RetUserService
-  ) { }
+    private RetUserService: RetUserService,
+    private storage: Storage
+  ) {}
 
   ionViewWillEnter() {
     this.menuCtrl.enable(false);
   }
 
   ngOnInit() {
-
     this.onLoginForm = this.formBuilder.group({
-      'username': [null, Validators.compose([
-        Validators.required
-      ])],
-      'password': [null, Validators.compose([
-        Validators.required
-      ])]
+      username: [null, Validators.compose([Validators.required])],
+      password: [null, Validators.compose([Validators.required])]
     });
-
   }
 
   async forgotPass() {
     const alert = await this.alertCtrl.create({
-      header: 'ลืมรหัสผ่าน?',
-      message: 'กรอกเบอร์โทรศัพท์ของท่านเพื่อแจ้งรหัสผ่าน.',
+      header: "ลืมรหัสผ่าน?",
+      message: "กรอกเบอร์โทรศัพท์ของท่านเพื่อแจ้งรหัสผ่าน.",
       inputs: [
         {
-          name: 'tel',
-          type: 'tel',
-          placeholder: 'กรุณากรอกเบอร์โทรศัพท์'
+          name: "tel",
+          type: "tel",
+          placeholder: "กรุณากรอกเบอร์โทรศัพท์"
         }
       ],
       buttons: [
         {
-          text: 'ยกเลิก',
-          role: 'cancel',
-          cssClass: 'secondary',
+          text: "ยกเลิก",
+          role: "cancel",
+          cssClass: "secondary",
           handler: () => {
-            console.log('Confirm Cancel');
+            console.log("Confirm Cancel");
           }
-        }, {
-          text: 'ยืนยัน',
+        },
+        {
+          text: "ยืนยัน",
           handler: async () => {
             const loader = await this.loadingCtrl.create({
               duration: 2000
@@ -83,9 +80,9 @@ export class LoginPage implements OnInit {
             loader.onWillDismiss().then(async l => {
               const toast = await this.toastCtrl.create({
                 showCloseButton: true,
-                message: 'เรียบร้อย! กรุณาตรวจสอบที่ข้อความของคุณ',
+                message: "เรียบร้อย! กรุณาตรวจสอบที่ข้อความของคุณ",
                 duration: 3000,
-                position: 'bottom'
+                position: "bottom"
               });
 
               toast.present();
@@ -99,42 +96,47 @@ export class LoginPage implements OnInit {
   }
 
   async contractLogin() {
-    this.navCtrl.navigateRoot('/register');
+    this.navCtrl.navigateRoot("/register");
   }
 
   goToHome() {
-    this.navCtrl.navigateRoot('/home-results');
+    this.navCtrl.navigateRoot("/home-results");
   }
 
   check_authentication() {
     this.RetUserService.get_all().subscribe(result => {
       this.user_list = result;
-      let check_authentication = false
+      let check_authentication = false;
       for (let i = 0; i < this.user_list.length; i++) {
-        if (this.user_list[i].user_username == this.username && this.user_list[i].user_password == this.password) {
-          check_authentication = true
-          break
+        if (
+          this.user_list[i].user_username == this.username &&
+          this.user_list[i].user_password == this.password
+        ) {
+          this.storage.set("user_username", this.username);
+          this.storage.set("user_password", this.password);
+          this.storage.set("user_id", this.user_list[i].user_id);
+          check_authentication = true;
+          break;
         }
       }
       if (check_authentication) {
-        this.goToHome()
+        this.goToHome();
       } else {
-        this.login_authentication_fail_alert()
+        this.login_authentication_fail_alert();
       }
     });
   }
 
   async login_authentication_fail_alert() {
     const alert = await this.alertCtrl.create({
-      header: 'ชื่อผู้ใช้งานหรือรหัสผ่านไม่ถูกต้อง กรุณาทำการเข้าสู่ระบบใหม่!',
-      buttons: [{
-        text: 'ปิด',
-        handler: async () => {
+      header: "ชื่อผู้ใช้งานหรือรหัสผ่านไม่ถูกต้อง กรุณาทำการเข้าสู่ระบบใหม่!",
+      buttons: [
+        {
+          text: "ปิด",
+          handler: async () => {}
         }
-      }
       ]
     });
     await alert.present();
   }
-
 }

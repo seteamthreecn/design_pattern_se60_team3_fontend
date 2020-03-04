@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild } from "@angular/core";
 import {
   NavController,
   AlertController,
@@ -7,33 +7,33 @@ import {
   PopoverController,
   ModalController,
   LoadingController
-} from '@ionic/angular';
+} from "@ionic/angular";
 
 //Input Data
-import { InsertIncomePage } from '../modal/pattern_design/insert-income/insert-income.page';
-import { InsertOutcomePage } from '../modal/pattern_design/insert-outcome/insert-outcome.page';
+import { InsertIncomePage } from "../modal/pattern_design/insert-income/insert-income.page";
+import { InsertOutcomePage } from "../modal/pattern_design/insert-outcome/insert-outcome.page";
 
 //Show Data
-import { EditDataIncomePage } from '../modal/pattern_design/edit-data-income/edit-data-income.page';
-import { EditDataOutcomePage } from '../modal/pattern_design/edit-data-outcome/edit-data-outcome.page';
+import { EditDataIncomePage } from "../modal/pattern_design/edit-data-income/edit-data-income.page";
+import { EditDataOutcomePage } from "../modal/pattern_design/edit-data-outcome/edit-data-outcome.page";
 
 //Edit Data
-import { ShowDataIncomePage } from '../modal/pattern_design/show-data-income/show-data-income.page';
-import { ShowDataOutcomePage } from '../modal/pattern_design/show-data-outcome/show-data-outcome.page';
-
-
+import { ShowDataIncomePage } from "../modal/pattern_design/show-data-income/show-data-income.page";
+import { ShowDataOutcomePage } from "../modal/pattern_design/show-data-outcome/show-data-outcome.page";
+import { UserService } from "src/app/services/user.service";
+import { Storage } from "@ionic/storage";
 
 @Component({
-  selector: 'app-home-results',
-  templateUrl: './home-results.page.html',
-  styleUrls: ['./home-results.page.scss']
+  selector: "app-home-results",
+  templateUrl: "./home-results.page.html",
+  styleUrls: ["./home-results.page.scss"]
 })
 export class HomeResultsPage {
-  searchKey = '';
-  yourLocation = '123 Test Street';
-  themeCover = 'assets/img/ionic4-Start-Theme-cover.jpg';
+  searchKey = "";
+  yourLocation = "123 Test Street";
+  themeCover = "assets/img/ionic4-Start-Theme-cover.jpg";
 
-  @ViewChild('barChart', { static: true }) barChart;
+  @ViewChild("barChart", { static: true }) barChart;
 
   bars: any;
   colorArray: any;
@@ -46,55 +46,56 @@ export class HomeResultsPage {
     public alertCtrl: AlertController,
     public modalCtrl: ModalController,
     public toastCtrl: ToastController,
-    public loadingCtrl: LoadingController
-  ) {
-
-  }
+    public loadingCtrl: LoadingController,
+    private UserService: UserService,
+    private storage: Storage
+  ) {}
 
   async logout_page() {
-    this.navCtrl.navigateRoot('/login');
+    this.navCtrl.navigateRoot("/login");
   }
-  
+
   //Function Of Chart
   ngOnInit() {
-
   }
+
+
   ionViewWillEnter() {
     this.menuCtrl.enable(true);
   }
 
   settings() {
-    this.navCtrl.navigateForward('settings');
+    this.navCtrl.navigateForward("settings");
   }
 
   async alertLocation() {
     const changeLocation = await this.alertCtrl.create({
-      header: 'Change Location',
-      message: 'Type your Address.',
+      header: "Change Location",
+      message: "Type your Address.",
       inputs: [
         {
-          name: 'location',
-          placeholder: 'Enter your new Location',
-          type: 'text'
-        },
+          name: "location",
+          placeholder: "Enter your new Location",
+          type: "text"
+        }
       ],
       buttons: [
         {
-          text: 'Cancel',
+          text: "Cancel",
           handler: data => {
-            console.log('Cancel clicked');
+            console.log("Cancel clicked");
           }
         },
         {
-          text: 'Change',
-          handler: async (data) => {
-            console.log('Change clicked', data);
+          text: "Change",
+          handler: async data => {
+            console.log("Change clicked", data);
             this.yourLocation = data.location;
             const toast = await this.toastCtrl.create({
-              message: 'Location was change successfully',
+              message: "Location was change successfully",
               duration: 3000,
-              position: 'top',
-              closeButtonText: 'OK',
+              position: "top",
+              closeButtonText: "OK",
               showCloseButton: true
             });
 
@@ -154,17 +155,17 @@ export class HomeResultsPage {
               duration: 2000
             });
             loader.present();
-                  loader.onWillDismiss().then(async l => {
-                    const toast = await this.toastCtrl.create({
-                      showCloseButton: true,
-                      message: "ลบข้อมูลสำเร็จ",
-                      duration: 3000,
-                      position: "bottom"
-                    });
-                    this.modalCtrl.dismiss();
-                    toast.present();
-                    location.reload();
-                  });
+            loader.onWillDismiss().then(async l => {
+              const toast = await this.toastCtrl.create({
+                showCloseButton: true,
+                message: "ลบข้อมูลสำเร็จ",
+                duration: 3000,
+                position: "bottom"
+              });
+              this.modalCtrl.dismiss();
+              toast.present();
+              location.reload();
+            });
           }
         }
       ]
@@ -172,5 +173,4 @@ export class HomeResultsPage {
 
     await alert.present();
   }
-
 }
