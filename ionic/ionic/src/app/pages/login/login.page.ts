@@ -36,7 +36,7 @@ export class LoginPage implements OnInit {
     private formBuilder: FormBuilder,
     private RetUserService: RetUserService,
     private storage: Storage
-  ) {}
+  ) { }
 
   ionViewWillEnter() {
     this.menuCtrl.enable(false);
@@ -133,7 +133,7 @@ export class LoginPage implements OnInit {
       buttons: [
         {
           text: "ปิด",
-          handler: async () => {}
+          handler: async () => { }
         }
       ]
     });
