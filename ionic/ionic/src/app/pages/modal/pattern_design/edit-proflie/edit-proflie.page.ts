@@ -2,7 +2,9 @@ import { Component, OnInit } from "@angular/core";
 import { ModalController } from "@ionic/angular";
 import { NativeStorage } from "@ionic-native/native-storage/ngx";
 import { Storage } from "@ionic/storage";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { RetUserService } from "src/app/service/ret-user.service";
+import { ProfilePage } from "src/app/pages/modal/pattern_design/profile/profile.page";
 import {
   AlertController,
   ToastController,
@@ -21,10 +23,12 @@ export class EditProfliePage implements OnInit {
   private user_fname: string;
   private user_username: string;
   private user_email: string;
+  private url: string | ArrayBuffer;
   public minmaxprice = {
     upper: 500,
     lower: 10
   };
+
   constructor(
     private modalCtrl: ModalController,
     public toastCtrl: ToastController,
@@ -59,6 +63,10 @@ export class EditProfliePage implements OnInit {
     this.modalCtrl.dismiss();
   }
 
+  goToHome() {
+    this.navCtrl.navigateRoot("/home-results");
+  }
+
   async edit_profile() {
     const loader = await this.loadingCtrl.create({
       duration: 2000
@@ -73,9 +81,10 @@ export class EditProfliePage implements OnInit {
         position: "bottom"
       });
       toast.present();
-      this.closeModal();
-      location.reload();
       // this.navCtrl.navigateForward("/profile");
+      // this.closeModal();
+      // this.goToHome();
+      location.reload();
     });
   }
 

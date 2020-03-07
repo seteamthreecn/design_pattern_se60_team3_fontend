@@ -1,8 +1,10 @@
-import { Component, OnInit } from "@angular/core";
+import { Input, Component, OnInit } from "@angular/core";
 import { ModalController } from "@ionic/angular";
 import { UserService } from "src/app/services/user.service";
 import { Storage } from "@ionic/storage";
 import { RetUserService } from "src/app/service/ret-user.service";
+import { Guid } from "guid-typescript";
+import { Http } from "@angular/http";
 
 import {
   AlertController,
@@ -19,8 +21,14 @@ import { EditProfliePage } from "../edit-proflie/edit-proflie.page";
   styleUrls: ["./profile.page.scss"]
 })
 export class ProfilePage implements OnInit {
+  private user_fname: string;
+  private user_lname: string;
+  private user_username: string;
+  private user_email: string;
   public radiusmiles = 1;
   private user_data: any = [];
+  private url: string | ArrayBuffer;
+  public id: Guid;
   public minmaxprice = {
     upper: 500,
     lower: 10
@@ -35,6 +43,8 @@ export class ProfilePage implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.id = Guid.create();
+    console.log(this.id);
     this.get_user_data_by_user_id();
   }
 
@@ -56,6 +66,10 @@ export class ProfilePage implements OnInit {
         if (typeof result[0].user_email != "undefined") {
           result[0].user_email = "-";
         }
+        this.user_fname = result[0].user_fname;
+        this.user_lname = result[0].user_lname;
+        this.user_username = result[0].user_username;
+        this.user_email = result[0].user_email;
         this.user_data = result;
       });
     });
