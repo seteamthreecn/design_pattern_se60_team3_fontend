@@ -35,6 +35,7 @@ export class ProfilePage implements OnInit {
   ) {}
 
   ngOnInit() {
+    console.log("eiei")
     this.get_user_data_by_user_name();
   }
 
@@ -51,6 +52,7 @@ export class ProfilePage implements OnInit {
 
   get_user_data_by_user_name() {
     // Or to get a key/value pair
+    console.log("00000")
     this.storage.get("user_username").then(data => {
       this.RetUserService.get_user_data_by_user_username(data).subscribe(
         result => {
