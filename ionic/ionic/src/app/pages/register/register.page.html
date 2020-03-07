@@ -82,7 +82,7 @@
     </form>
 
     <div margin-top>
-      <ion-button icon-left size="medium" expand="full" shape="round" color="dark" (click)="sign_up()"
+      <ion-button icon-left size="medium" expand="full" shape="round" color="dark" (click)="sign_up()" [disabled]="!onRegisterForm.valid"
         tappable>
         <ion-icon name="log-in"></ion-icon>
         สร้างบัญชีผู้ใช้งาน

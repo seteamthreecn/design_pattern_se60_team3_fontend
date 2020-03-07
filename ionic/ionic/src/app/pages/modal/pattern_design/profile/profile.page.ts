@@ -35,8 +35,7 @@ export class ProfilePage implements OnInit {
   ) {}
 
   ngOnInit() {
-    console.log("eiei")
-    this.get_user_data_by_user_name();
+    this.get_user_data_by_user_id();
   }
 
   closeModal() {
@@ -50,16 +49,15 @@ export class ProfilePage implements OnInit {
     return await modal.present();
   }
 
-  get_user_data_by_user_name() {
+  get_user_data_by_user_id() {
     // Or to get a key/value pair
-    console.log("00000")
-    this.storage.get("user_username").then(data => {
-      this.RetUserService.get_user_data_by_user_username(data).subscribe(
-        result => {
-          console.log(result);
-          this.user_data = result;
+    this.storage.get("user_id").then(data => {
+      this.RetUserService.get_user_data_by_user_id(data).subscribe(result => {
+        if (typeof result[0].user_email != "undefined") {
+          result[0].user_email = "-";
         }
-      );
+        this.user_data = result;
+      });
     });
   }
 }
