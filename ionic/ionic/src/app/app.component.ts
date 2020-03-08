@@ -108,6 +108,7 @@ export class AppComponent {
     ];
 
     this.initializeApp();
+    this.get_user_data_by_user_id();
   }
 
   initializeApp() {
@@ -123,10 +124,12 @@ export class AppComponent {
   get_user_data_by_user_id() {
     this.user_id = +localStorage.getItem("user_id");
     // this.storage.get("user_id").then(data => {
-    this.RetUserService.get_user_data_by_user_id(this.user_id).subscribe(result => {
-      this.fname = result[0].user_fname;
-      this.lname = result[0].user_lname;
-    });
+    this.RetUserService.get_user_data_by_user_id(this.user_id).subscribe(
+      result => {
+        this.fname = result[0].user_fname;
+        this.lname = result[0].user_lname;
+      }
+    );
     // });
   }
 

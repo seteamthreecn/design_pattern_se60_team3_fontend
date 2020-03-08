@@ -66,7 +66,8 @@ export class ProfilePage implements OnInit {
     // this.storage.get("user_id").then(data => {
     this.RetUserService.get_user_data_by_user_id(this.user_id).subscribe(
       result => {
-        if (typeof result[0].user_email != "undefined") {
+        console.log(result)
+        if (typeof result[0].user_email === "undefined" ||result[0].user_email === "" ) {
           result[0].user_email = "-";
         }
         this.user_fname = result[0].user_fname;
