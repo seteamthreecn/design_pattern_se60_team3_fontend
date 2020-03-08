@@ -20,6 +20,7 @@ export class AppComponent {
   private fname: string = "";
   private lname: string = "";
   public url = "";
+  user_id: number;
 
   constructor(
     private platform: Platform,
@@ -110,8 +111,6 @@ export class AppComponent {
   }
 
   initializeApp() {
-    this.get_user_data_by_user_id();
-
     this.platform
       .ready()
       .then(() => {
@@ -122,12 +121,13 @@ export class AppComponent {
   }
 
   get_user_data_by_user_id() {
-    this.storage.get("user_id").then(data => {
-      this.RetUserService.get_user_data_by_user_id(data).subscribe(result => {
-        this.fname = result[0].user_fname;
-        this.lname = result[0].user_lname;
-      });
+    this.user_id = +localStorage.getItem("user_id");
+    // this.storage.get("user_id").then(data => {
+    this.RetUserService.get_user_data_by_user_id(this.user_id).subscribe(result => {
+      this.fname = result[0].user_fname;
+      this.lname = result[0].user_lname;
     });
+    // });
   }
 
   async show_profile() {

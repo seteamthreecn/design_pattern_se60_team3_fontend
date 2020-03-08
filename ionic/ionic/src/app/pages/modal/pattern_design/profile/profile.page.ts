@@ -28,6 +28,7 @@ export class ProfilePage implements OnInit {
   public radiusmiles = 1;
   private user_data: any = [];
   private url: string | ArrayBuffer;
+  private user_id: number;
   public id: Guid;
   public minmaxprice = {
     upper: 500,
@@ -61,8 +62,10 @@ export class ProfilePage implements OnInit {
 
   get_user_data_by_user_id() {
     // Or to get a key/value pair
-    this.storage.get("user_id").then(data => {
-      this.RetUserService.get_user_data_by_user_id(data).subscribe(result => {
+    this.user_id = +localStorage.getItem("user_id");
+    // this.storage.get("user_id").then(data => {
+    this.RetUserService.get_user_data_by_user_id(this.user_id).subscribe(
+      result => {
         if (typeof result[0].user_email != "undefined") {
           result[0].user_email = "-";
         }
@@ -71,7 +74,8 @@ export class ProfilePage implements OnInit {
         this.user_username = result[0].user_username;
         this.user_email = result[0].user_email;
         this.user_data = result;
-      });
-    });
+      }
+    );
+    // });
   }
 }

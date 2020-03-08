@@ -57,6 +57,7 @@ export class HomeResultsPage {
 
   //Function Of Chart
   ngOnInit() {
+    
   }
 
 
