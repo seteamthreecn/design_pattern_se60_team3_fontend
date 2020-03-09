@@ -5,34 +5,62 @@
         <ion-icon name="close" color="light"></ion-icon>
       </ion-button>
     </ion-buttons>
-      <ion-title>
-          <h6 style="text-align: center;">แก้ไขข้อมูลส่วนตัว</h6>
-      </ion-title>
+    <ion-title>
+      <h6 style="text-align: center;">แก้ไขข้อมูลส่วนตัว</h6>
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <br>
+  <img [src]="imgURL" *ngIf="imgURL" />
+  <br />
   <h5 style="font-weight: bold;">ชื่อ:</h5>
   <ion-item>
-  <ion-input type="name" placeholder="ชื่อ" value="" [(ngModel)]='user_fname'></ion-input>
+    <ion-input
+      type="name"
+      placeholder="ชื่อ"
+      value=""
+      [(ngModel)]="user_fname"
+    ></ion-input>
   </ion-item>
 
   <h5 style="font-weight: bold;">นามสกุล:</h5>
   <ion-item>
-  <ion-input type="name" placeholder="นามสกุล" value="" [(ngModel)]='user_lname'></ion-input>
+    <ion-input
+      type="name"
+      placeholder="นามสกุล"
+      value=""
+      [(ngModel)]="user_lname"
+    ></ion-input>
   </ion-item>
 
   <h5 style="font-weight: bold;">ชื่อผู้ใช้:</h5>
   <ion-item>
-  <ion-input type="name" placeholder="ชื่อผู้ใช้" value="" [(ngModel)]='user_username'></ion-input>
+    <ion-input
+      type="name"
+      placeholder="ชื่อผู้ใช้"
+      value=""
+      [(ngModel)]="user_username"
+    ></ion-input>
   </ion-item>
 
   <h5 style="font-weight: bold;">อีเมล:</h5>
   <ion-item>
-  <ion-input type="name" placeholder="อีเมล" value="" [(ngModel)]='user_email'></ion-input>
+    <ion-input
+      type="name"
+      placeholder="อีเมล"
+      value=""
+      [(ngModel)]="user_email"
+    ></ion-input>
   </ion-item>
 
-  <ion-button expand="full" color="primary" (click)="update_profile()">บันทึก</ion-button>
+  <h5 style="font-weight: bold;">เลือกรูป profile :</h5>
+  <ion-item>
+    <span style="color:red;" *ngIf="message">{{message}}</span>
+    <input #file type="file" accept="image/*" (change)="preview(file.files)" />
+  </ion-item>
 
+  <ion-button expand="full" color="primary" (click)="update_profile()"
+    >บันทึก</ion-button
+  >
 </ion-content>

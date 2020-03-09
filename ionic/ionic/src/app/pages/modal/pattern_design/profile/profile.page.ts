@@ -4,7 +4,6 @@ import { UserService } from "src/app/services/user.service";
 import { Storage } from "@ionic/storage";
 import { RetUserService } from "src/app/service/ret-user.service";
 import { Guid } from "guid-typescript";
-import { Http } from "@angular/http";
 
 import {
   AlertController,
@@ -29,7 +28,6 @@ export class ProfilePage implements OnInit {
   private user_data: any = [];
   private url: string | ArrayBuffer;
   private user_id: number;
-  public id: Guid;
   public minmaxprice = {
     upper: 500,
     lower: 10
@@ -44,8 +42,6 @@ export class ProfilePage implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.id = Guid.create();
-    console.log(this.id);
     this.get_user_data_by_user_id();
   }
 

@@ -69,4 +69,10 @@ export class RetUserService {
       .post("http://localhost:83/update_ret_user/", data)
       .map(res => res.json());
   }
+
+  uploadimage(formData) {
+    this.http.post("http://localhost:83/upload", formData).subscribe(response => {
+      console.log("response received is ", response);
+    });
+  }
 }

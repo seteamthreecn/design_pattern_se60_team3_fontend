@@ -4,7 +4,7 @@ import { NativeStorage } from "@ionic-native/native-storage/ngx";
 import { Storage } from "@ionic/storage";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { RetUserService } from "src/app/service/ret-user.service";
-import { ProfilePage } from "src/app/pages/modal/pattern_design/profile/profile.page";
+import { Guid } from "guid-typescript";
 import {
   AlertController,
   ToastController,
@@ -25,6 +25,11 @@ export class EditProfliePage implements OnInit {
   private user_email: string;
   private url: string | ArrayBuffer;
   private user_id: number;
+  public imagePath;
+  private uploadedFiles;
+  imgURL: any;
+  public message: string;
+  public Guid: Guid;
   public minmaxprice = {
     upper: 500,
     lower: 10
@@ -63,15 +68,43 @@ export class EditProfliePage implements OnInit {
     // });
   }
 
+  preview(files) {
+    if (files.length === 0) return;
+
+    this.uploadedFiles = files;
+    console.log(this.uploadedFiles);
+    var mimeType = files[0].type;
+    if (mimeType.match(/image\/*/) == null) {
+      this.message = "Only images are supported.";
+      return;
+    }
+
+    var reader = new FileReader();
+    this.imagePath = files;
+    reader.readAsDataURL(files[0]);
+    reader.onload = _event => {
+      this.imgURL = reader.result;
+    };
+  }
+
+  upload() {
+    let formData = new FormData();
+    for (var i = 0; i < this.uploadedFiles.length; i++) {
+      formData.append(
+        "uploads[]",
+        this.uploadedFiles[i],
+        this.uploadedFiles[i].name
+      );
+    }
+    this.RetUserService.uploadimage(formData);
+  }
+
   closeModal() {
     this.modalCtrl.dismiss();
   }
 
-  goToHome() {
-    this.navCtrl.navigateRoot("/home-results");
-  }
-
   async edit_profile() {
+    this.upload();
     const loader = await this.loadingCtrl.create({
       duration: 2000
     });
@@ -87,7 +120,6 @@ export class EditProfliePage implements OnInit {
       toast.present();
       // this.navCtrl.navigateForward("/profile");
       // this.closeModal();
-      // this.goToHome();
       location.reload();
     });
   }
