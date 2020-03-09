@@ -3,14 +3,16 @@
     <ion-menu>
       <ion-header>
         <ion-toolbar color="dark" class="user-profile">
-
           <ion-item margin-bottom>
             <ion-avatar slot="start" class="user-avatar">
               <img src="assets/img/avatar.jpeg">
+              
             </ion-avatar>
             <ion-label>
               <ion-text color="medium">
-                <h3><strong>แบงค์ หงิด</strong></h3>
+                <h3>
+                  <strong>{{ fname }} {{ lname }}</strong>
+                </h3>
               </ion-text>
               <ion-menu-toggle class="mto" auto-hide="false">
                 <a class="text08" tappable (click)="show_profile()">
@@ -18,7 +20,8 @@
                     <ion-icon name="contact"></ion-icon>
                     <strong>PROFILE</strong>
                   </ion-text>
-                </a> <ion-text color="secondary"> | </ion-text> 
+                </a>
+                <ion-text color="secondary"> | </ion-text>
                 <a class="text08" tappable (click)="logout()">
                   <ion-text color="medium">
                     <ion-icon name="log-out"></ion-icon>
@@ -28,7 +31,6 @@
               </ion-menu-toggle>
             </ion-label>
           </ion-item>
-
         </ion-toolbar>
       </ion-header>
 
@@ -42,7 +44,7 @@
             <ion-item [routerLink]="[p.url]" color="primary">
               <ion-icon slot="start" [name]="p.icon" color="light"></ion-icon>
               <ion-label>
-                <h6>{{p.title}}</h6>
+                <h6>{{ p.title }}</h6>
               </ion-label>
             </ion-item>
           </ion-menu-toggle>

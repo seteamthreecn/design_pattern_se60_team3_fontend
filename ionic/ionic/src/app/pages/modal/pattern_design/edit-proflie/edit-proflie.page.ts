@@ -2,7 +2,9 @@ import { Component, OnInit } from "@angular/core";
 import { ModalController } from "@ionic/angular";
 import { NativeStorage } from "@ionic-native/native-storage/ngx";
 import { Storage } from "@ionic/storage";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { RetUserService } from "src/app/service/ret-user.service";
+import { ProfilePage } from "src/app/pages/modal/pattern_design/profile/profile.page";
 import {
   AlertController,
   ToastController,
@@ -21,10 +23,13 @@ export class EditProfliePage implements OnInit {
   private user_fname: string;
   private user_username: string;
   private user_email: string;
+  private url: string | ArrayBuffer;
+  private user_id: number;
   public minmaxprice = {
     upper: 500,
     lower: 10
   };
+
   constructor(
     private modalCtrl: ModalController,
     public toastCtrl: ToastController,
@@ -42,21 +47,28 @@ export class EditProfliePage implements OnInit {
 
   get_user_data_by_user_id() {
     // Or to get a key/value pair
-    this.storage.get("user_id").then(data => {
-      this.RetUserService.get_user_data_by_user_id(data).subscribe(result => {
-        if (typeof result[0].user_email != "undefined") {
+    this.user_id = +localStorage.getItem("user_id");
+    // this.storage.get("user_id").then(data => {
+    this.RetUserService.get_user_data_by_user_id(this.user_id).subscribe(
+      result => {
+        if (typeof result[0].user_email === "undefined") {
           result[0].user_email = "";
         }
         this.user_fname = result[0].user_fname;
         this.user_lname = result[0].user_lname;
         this.user_username = result[0].user_username;
         this.user_email = result[0].user_email;
-      });
-    });
+      }
+    );
+    // });
   }
 
   closeModal() {
     this.modalCtrl.dismiss();
+  }
+
+  goToHome() {
+    this.navCtrl.navigateRoot("/home-results");
   }
 
   async edit_profile() {
@@ -73,9 +85,10 @@ export class EditProfliePage implements OnInit {
         position: "bottom"
       });
       toast.present();
-      this.closeModal();
-      location.reload();
       // this.navCtrl.navigateForward("/profile");
+      // this.closeModal();
+      // this.goToHome();
+      location.reload();
     });
   }
 
@@ -103,44 +116,45 @@ export class EditProfliePage implements OnInit {
     ) {
       this.empty_alert();
     } else {
-      this.storage.get("user_id").then(user_id => {
-        this.RetUserService.get_user_data_by_user_id(user_id).subscribe(
-          user_data => {
-            if (this.user_username == user_data[0].user_username) {
-              this.RetUserService.update_ret_user_by_user_id(
-                this.user_username,
-                this.user_fname,
-                this.user_lname,
-                this.user_email,
-                user_id
-              ).subscribe(result => {
-                console.log("update success");
-                this.edit_profile();
-              });
-            } else {
-              this.RetUserService.get_user_data_by_user_username(
-                this.user_username
-              ).subscribe(result => {
-                if (result.length != 0) {
-                  this.name_duplicatealert();
-                } else {
-                  this.RetUserService.update_ret_user_by_user_id(
-                    this.user_username,
-                    this.user_fname,
-                    this.user_lname,
-                    this.user_email,
-                    user_id
-                  ).subscribe(success => {
-                    console.log("update success");
-                    this.storage.set("user_username", this.user_username);
-                    this.edit_profile();
-                  });
-                }
-              });
-            }
+      this.user_id = +localStorage.getItem("user_id");
+      // this.storage.get("user_id").then(user_id => {
+      this.RetUserService.get_user_data_by_user_id(this.user_id).subscribe(
+        user_data => {
+          if (this.user_username == user_data[0].user_username) {
+            this.RetUserService.update_ret_user_by_user_id(
+              this.user_username,
+              this.user_fname,
+              this.user_lname,
+              this.user_email,
+              this.user_id
+            ).subscribe(result => {
+              console.log("update success");
+              this.edit_profile();
+            });
+          } else {
+            this.RetUserService.get_user_data_by_user_username(
+              this.user_username
+            ).subscribe(result => {
+              if (result.length != 0) {
+                this.name_duplicatealert();
+              } else {
+                this.RetUserService.update_ret_user_by_user_id(
+                  this.user_username,
+                  this.user_fname,
+                  this.user_lname,
+                  this.user_email,
+                  this.user_id
+                ).subscribe(success => {
+                  console.log("update success");
+                  this.storage.set("user_username", this.user_username);
+                  this.edit_profile();
+                });
+              }
+            });
           }
-        );
-      });
+        }
+      );
+      // });
     }
   }
 }
