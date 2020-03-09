@@ -12,9 +12,8 @@
 </ion-header>
 
 <ion-content padding>
-  <div style="align-items: center;">
+  <div style="align-items: center;" text-center>
     <ion-img
-      justify-content-center
       style="width: 30%; height: 30%; border-radius: 50%;"
       src="assets/img/avatar.jpeg"
     ></ion-img>
@@ -24,7 +23,7 @@
   <ion-label>
     <ion-row>
       <ion-col style="text-align: center; color: black;"
-        ><b>ชื่อ : </b>{{user_data[0].user_fname}}</ion-col
+        ><b>ชื่อ : </b>{{user_fname}}</ion-col
       >
     </ion-row>
   </ion-label>
@@ -32,7 +31,7 @@
   <ion-label>
     <ion-row>
       <ion-col style="text-align: center; color: black;"
-        ><b>นามสกุล : </b>{{user_data[0].user_lname}}</ion-col
+        ><b>นามสกุล : </b>{{user_lname}}</ion-col
       >
     </ion-row>
   </ion-label>
@@ -40,7 +39,7 @@
   <ion-label>
     <ion-row>
       <ion-col style="text-align: center; color: black;"
-        ><b>ชื่อผู้ใช้งาน : </b>{{user_data[0].user_username}}</ion-col
+        ><b>ชื่อผู้ใช้งาน : </b>{{user_username}}</ion-col
       >
     </ion-row>
   </ion-label>
@@ -48,7 +47,7 @@
   <ion-label>
     <ion-row>
       <ion-col style="text-align: center; color: black;"
-        ><b>อีเมล : </b>{{user_data[0].user_email}}</ion-col
+        ><b>อีเมล : </b>{{user_email}}</ion-col
       >
     </ion-row>
   </ion-label>

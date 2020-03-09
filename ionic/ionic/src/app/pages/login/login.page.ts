@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { RetUserService } from "../../service/ret-user.service";
 import { Storage } from "@ionic/storage";
+import { AppComponent } from "../../app.component";
 
 import {
   NavController,
@@ -35,8 +36,9 @@ export class LoginPage implements OnInit {
     public loadingCtrl: LoadingController,
     private formBuilder: FormBuilder,
     private RetUserService: RetUserService,
-    private storage: Storage
-  ) { }
+    private storage: Storage,
+    private appcomponent: AppComponent
+  ) {}
 
   ionViewWillEnter() {
     this.menuCtrl.enable(false);
@@ -112,9 +114,11 @@ export class LoginPage implements OnInit {
           this.user_list[i].user_username == this.username &&
           this.user_list[i].user_password == this.password
         ) {
-          this.storage.set("user_username", this.username);
-          this.storage.set("user_password", this.password);
-          this.storage.set("user_id", this.user_list[i].user_id);
+          // this.storage.set("user_username", this.username);
+          // this.storage.set("user_password", this.password);
+          // this.storage.set("user_id", this.user_list[i].user_id);
+          localStorage.setItem("user_id",this.user_list[i].user_id)
+          this.appcomponent.get_user_data_by_user_id()
           check_authentication = true;
           break;
         }
@@ -133,7 +137,7 @@ export class LoginPage implements OnInit {
       buttons: [
         {
           text: "ปิด",
-          handler: async () => { }
+          handler: async () => {}
         }
       ]
     });
