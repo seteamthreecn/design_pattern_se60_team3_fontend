@@ -72,6 +72,7 @@ export class EditProfliePage implements OnInit {
     if (files.length === 0) return;
 
     this.uploadedFiles = files;
+    console.log(this.uploadedFiles[0].name);
     console.log(this.uploadedFiles);
     var mimeType = files[0].type;
     if (mimeType.match(/image\/*/) == null) {
@@ -89,14 +90,18 @@ export class EditProfliePage implements OnInit {
 
   upload() {
     let formData = new FormData();
-    for (var i = 0; i < this.uploadedFiles.length; i++) {
-      formData.append(
-        "uploads[]",
-        this.uploadedFiles[i],
-        this.uploadedFiles[i].name
-      );
+    if (typeof this.uploadedFiles != "undefined") {
+      for (var i = 0; i < this.uploadedFiles.length; i++) {
+        console.log(this.uploadedFiles)
+        // this.uploadedFiles[i].name = localStorage.getItem("user_id");
+        formData.append(
+          "uploads[]",
+          this.uploadedFiles[i],
+          this.uploadedFiles[i].name
+        );
+      }
+      this.RetUserService.uploadimage(formData);
     }
-    this.RetUserService.uploadimage(formData);
   }
 
   closeModal() {

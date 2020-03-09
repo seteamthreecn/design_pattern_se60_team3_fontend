@@ -59,11 +59,13 @@ export class ProfilePage implements OnInit {
   get_user_data_by_user_id() {
     // Or to get a key/value pair
     this.user_id = +localStorage.getItem("user_id");
-    // this.storage.get("user_id").then(data => {
     this.RetUserService.get_user_data_by_user_id(this.user_id).subscribe(
       result => {
-        console.log(result)
-        if (typeof result[0].user_email === "undefined" ||result[0].user_email === "" ) {
+        console.log(result);
+        if (
+          typeof result[0].user_email === "undefined" ||
+          result[0].user_email === ""
+        ) {
           result[0].user_email = "-";
         }
         this.user_fname = result[0].user_fname;
@@ -73,6 +75,5 @@ export class ProfilePage implements OnInit {
         this.user_data = result;
       }
     );
-    // });
   }
 }
