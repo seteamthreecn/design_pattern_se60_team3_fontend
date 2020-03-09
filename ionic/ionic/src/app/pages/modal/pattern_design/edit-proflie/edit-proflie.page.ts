@@ -92,14 +92,17 @@ export class EditProfliePage implements OnInit {
     let formData = new FormData();
     if (typeof this.uploadedFiles != "undefined") {
       for (var i = 0; i < this.uploadedFiles.length; i++) {
-        console.log(this.uploadedFiles)
+        console.log(this.uploadedFiles);
         // this.uploadedFiles[i].name = localStorage.getItem("user_id");
         formData.append(
           "uploads[]",
           this.uploadedFiles[i],
-          this.uploadedFiles[i].name
+          localStorage.getItem("user_id")+"//"+this.uploadedFiles[i].name
         );
+        console.log(localStorage.getItem("user_id")+"//"+this.uploadedFiles[i].name)
       }
+      // formData.append(this.user_id)
+      this.user_id = +localStorage.getItem("user_id");
       this.RetUserService.uploadimage(formData);
     }
   }
@@ -154,7 +157,6 @@ export class EditProfliePage implements OnInit {
       this.empty_alert();
     } else {
       this.user_id = +localStorage.getItem("user_id");
-      // this.storage.get("user_id").then(user_id => {
       this.RetUserService.get_user_data_by_user_id(this.user_id).subscribe(
         user_data => {
           if (this.user_username == user_data[0].user_username) {
@@ -191,7 +193,6 @@ export class EditProfliePage implements OnInit {
           }
         }
       );
-      // });
     }
   }
 }

@@ -20,6 +20,7 @@ export class AppComponent {
   private fname: string = "";
   private lname: string = "";
   public url = "";
+  imgURL: any;
   user_id: number;
 
   constructor(
@@ -126,6 +127,15 @@ export class AppComponent {
     // this.storage.get("user_id").then(data => {
     this.RetUserService.get_user_data_by_user_id(this.user_id).subscribe(
       result => {
+        if (
+          typeof result[0].user_guid_img === "undefined" ||
+          result[0].user_guid_img == "" ||
+          result[0].user_guid_img == null
+        ) {
+          this.imgURL = "default.png";
+        } else {
+          this.imgURL = result[0].user_guid_img;
+        }
         this.fname = result[0].user_fname;
         this.lname = result[0].user_lname;
       }

@@ -119,13 +119,21 @@ export class RetUserService {
    * @Modify Date 2563-03-09
    */
   uploadimage(formData) {
-    this.http
-      .post("http://localhost:83/upload", formData)
-      .subscribe(response => {
-        console.log("response received is ", response);
-      });
+    // let data = {formData};
+    console.log(formData);
+    this.http.post("http://localhost:83/upload", formData).subscribe(response => {
+      console.log("response received is ", response);
+    });
   }
 
+  /*
+   * get_img_profile
+   * ..
+   * @input guid
+   * @output -
+   * @author Chalongchai
+   * @Modify Date 2563-03-09
+   */
   get_img_profile(guid) {
     return this.http.get("http://localhost:83/" + guid);
   }

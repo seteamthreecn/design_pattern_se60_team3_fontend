@@ -27,6 +27,7 @@ export class ProfilePage implements OnInit {
   private user_data: any = [];
   private url: string | ArrayBuffer;
   private user_id: number;
+  imgURL: any;
   public minmaxprice = {
     upper: 500,
     lower: 10
@@ -61,11 +62,17 @@ export class ProfilePage implements OnInit {
     this.RetUserService.get_user_data_by_user_id(this.user_id).subscribe(
       result => {
         console.log(result);
+        console.log(result[0].user_guid_img)
         if (
           typeof result[0].user_email === "undefined" ||
-          result[0].user_email === ""
+          result[0].user_email == ""
         ) {
           result[0].user_email = "-";
+        }
+        if (typeof result[0].user_guid_img === "undefined" || result[0].user_guid_img == "" || result[0].user_guid_img == null) {
+          this.imgURL = "default.png";
+        }else{
+          this.imgURL = result[0].user_guid_img;
         }
         this.user_fname = result[0].user_fname;
         this.user_lname = result[0].user_lname;
