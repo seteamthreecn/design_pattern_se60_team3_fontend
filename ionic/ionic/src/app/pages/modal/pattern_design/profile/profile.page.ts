@@ -1,6 +1,5 @@
 import { Input, Component, OnInit } from "@angular/core";
 import { ModalController } from "@ionic/angular";
-import { UserService } from "src/app/services/user.service";
 import { Storage } from "@ionic/storage";
 import { RetUserService } from "src/app/service/ret-user.service";
 import { Guid } from "guid-typescript";

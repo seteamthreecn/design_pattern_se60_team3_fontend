@@ -1,5 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ReportListService } from '../../../services/report-list.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {
   NavController,
@@ -26,7 +25,7 @@ export class SearchFilterPage implements OnInit {
   @Input() case_status_id: number;
   private is_self: boolean = true;
 
-  constructor(private ReportListService: ReportListService,
+  constructor(
     public menuCtrl: MenuController,
     public popoverCtrl: PopoverController,
     public alertCtrl: AlertController,
@@ -56,9 +55,7 @@ export class SearchFilterPage implements OnInit {
           text: 'ยืนยัน',
           handler: () => {
             this.closeModal()
-            this.ReportListService.update_report(this.case_id, this.case_status_id).subscribe(result => {
-              console.log("update success")
-            })
+            
             window.location.reload();
           }
         }

@@ -20,7 +20,6 @@ import { EditDataOutcomePage } from "../modal/pattern_design/edit-data-outcome/e
 //Edit Data
 import { ShowDataIncomePage } from "../modal/pattern_design/show-data-income/show-data-income.page";
 import { ShowDataOutcomePage } from "../modal/pattern_design/show-data-outcome/show-data-outcome.page";
-import { UserService } from "src/app/services/user.service";
 import { Storage } from "@ionic/storage";
 
 @Component({
@@ -47,7 +46,6 @@ export class HomeResultsPage {
     public modalCtrl: ModalController,
     public toastCtrl: ToastController,
     public loadingCtrl: LoadingController,
-    private UserService: UserService,
     private storage: Storage
   ) {}
 
