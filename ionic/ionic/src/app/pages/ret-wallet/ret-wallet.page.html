@@ -1,0 +1,148 @@
+<ion-header>
+    <ion-toolbar color="primary">
+      <ion-buttons slot="start">
+        <ion-menu-button color="secondary"></ion-menu-button>
+      </ion-buttons>
+      <ion-title>
+          <ion-text color="light">
+            <h6 style="text-align: center;">
+            หน้าแรก
+            </h6>
+          </ion-text>
+      </ion-title>
+  </ion-header>
+  
+  <ion-content>
+  
+    <!-- Part Of All Data -->
+    <h3 style="text-align: center; color: #10476E; font-weight: bold;">เงินในกระเป๋า :</h3>
+    <ion-card style="background-color: #10476E;">
+      <ion-card-content style="text-align: center; color: white;">
+            <ion-icon name="cash" style="color: white;" size="medium"></ion-icon>
+             1,001,600 บาท
+      </ion-card-content>
+    </ion-card>
+    
+    <h5 style="text-align: center; font-weight: bold;"> รายการรายรับ-รายจ่าย</h5>
+  
+    <!-- Part of List All Data -->
+    <ion-list>
+      <ion-item-sliding>
+        <ion-item>
+          <ion-label>
+            <ion-row>
+              <ion-col style="text-align: left; color: black; font-weight: bold;">วันที่</ion-col>
+              <ion-col style="text-align: right; color: black; font-weight: bold;">จำนวนเงิน</ion-col>
+              </ion-row>
+              <ion-row>
+                  <ion-col style="text-align: left; color: black;"><h6>3 มี.ค. 2562</h6></ion-col>
+                  <ion-col style="text-align: right; color: black;"><h6>+1,000 บาท</h6></ion-col>
+              </ion-row>
+          </ion-label>
+        </ion-item>
+        <ion-item-options>
+          <ion-item-option style="background-color: #2F4169;" (click)="show_data_income()">
+            <ion-icon slot="start" name="information-circle"></ion-icon>
+            ข้อมูล
+          </ion-item-option>
+          <ion-item-option style="background-color: #FFF5DA; color: #2F4169;" (click)="edit_data_income()">
+            <ion-icon slot="start" name="create"></ion-icon>
+            แก้ไข
+          </ion-item-option>
+          <ion-item-option style="background-color: #DE3401;" (click)="delete_data()">
+            <ion-icon slot="start" name="trash"></ion-icon>
+            ลบ
+          </ion-item-option>
+        </ion-item-options>
+      </ion-item-sliding>
+      <ion-item-sliding>
+        <ion-item>
+          <ion-label>
+            <ion-row>
+              <ion-col style="text-align: left; color: black; font-weight: bold;">วันที่</ion-col>
+              <ion-col style="text-align: right; color: black; font-weight: bold;">จำนวนเงิน</ion-col>
+              </ion-row>
+              <ion-row>
+                  <ion-col style="text-align: left; color: black;"><h6>1 มี.ค. 2562</h6></ion-col>
+                  <ion-col style="text-align: right; color: black;"><h6>+300 บาท</h6></ion-col>
+              </ion-row>
+          </ion-label>
+        </ion-item>
+        <ion-item-options>
+          <ion-item-option style="background-color: #2F4169;" (click)="show_data_income()">
+            <ion-icon slot="start" name="information-circle"></ion-icon>
+            ข้อมูล
+          </ion-item-option>
+          <ion-item-option style="background-color: #FFF5DA; color: #2F4169;" (click)="edit_data_income()">
+            <ion-icon slot="start" name="create"></ion-icon>
+            แก้ไข
+          </ion-item-option>
+          <ion-item-option style="background-color: #DE3401;" (click)="delete_data()">
+            <ion-icon slot="start" name="trash"></ion-icon>
+            ลบ
+          </ion-item-option>
+        </ion-item-options>
+      </ion-item-sliding>
+      <ion-item-sliding>
+        <ion-item>
+          <ion-label>
+            <ion-row>
+              <ion-col style="text-align: left; color: black; font-weight: bold;">วันที่</ion-col>
+              <ion-col style="text-align: right; color: black; font-weight: bold;">จำนวนเงิน</ion-col>
+              </ion-row>
+              <ion-row>
+                  <ion-col style="text-align: left; color: black;"><h6>1 มี.ค. 2562</h6></ion-col>
+                  <ion-col style="text-align: right; color: black;"><h6>-1200 บาท</h6></ion-col>
+              </ion-row>
+          </ion-label>
+        </ion-item>
+        <ion-item-options>
+          <ion-item-option style="background-color: #2F4169;" (click)="show_data_income()">
+            <ion-icon slot="start" name="information-circle"></ion-icon>
+            ข้อมูล
+          </ion-item-option>
+          <ion-item-option style="background-color: #FFF5DA; color: #2F4169;" (click)="edit_data_income()">
+            <ion-icon slot="start" name="create"></ion-icon>
+            แก้ไข
+          </ion-item-option>
+          <ion-item-option style="background-color: #DE3401;" (click)="delete_data()">
+            <ion-icon slot="start" name="trash"></ion-icon>
+            ลบ
+          </ion-item-option>
+        </ion-item-options>
+      </ion-item-sliding>
+  
+      <ion-item-sliding>
+        <ion-item>
+          <ion-label>
+            <ion-row>
+              <ion-col style="text-align: left; color: black; font-weight: bold;">วันที่</ion-col>
+              <ion-col style="text-align: right; color: black; font-weight: bold;">จำนวนเงิน</ion-col>
+              </ion-row>
+              <ion-row>
+                  <ion-col style="text-align: left; color: black;"><h6>23 ก.พ. 2562</h6></ion-col>
+                  <ion-col style="text-align: right; color: black;"><h6>+1500 บาท</h6></ion-col>
+              </ion-row>
+          </ion-label>
+        </ion-item>
+        <ion-item-options>
+          <ion-item-option style="background-color: #2F4169;" (click)="show_data_outcome()">
+            <ion-icon slot="start" name="information-circle"></ion-icon>
+            ข้อมูล
+          </ion-item-option>
+          <ion-item-option style="background-color: #FFF5DA; color: #2F4169;" (click)="edit_data_outcome()">
+            <ion-icon slot="start" name="create"></ion-icon>
+            แก้ไข
+          </ion-item-option>
+          <ion-item-option style="background-color: #DE3401;" (click)="delete_data()">
+            <ion-icon slot="start" name="trash"></ion-icon>
+            ลบ
+          </ion-item-option>
+        </ion-item-options>
+      </ion-item-sliding>
+    </ion-list>
+  
+    <popmenu horizontal="end" vertical="bottom" slot="fixed"></popmenu>
+  
+  </ion-content>
+    
