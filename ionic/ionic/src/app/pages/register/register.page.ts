@@ -145,7 +145,7 @@ export class RegisterPage implements OnInit {
 
 
   insert_user() {
-    this.RetUserService.insert_user(this.username, this.password, this.fname, this.lname, this.phone_no, this.email, this.guid_img).subscribe(result => {
+    this.RetUserService.insert(this.username, this.password, this.fname, this.lname, this.phone_no, this.email, this.guid_img).subscribe(result => {
     });
   }
 }

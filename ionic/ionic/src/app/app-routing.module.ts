@@ -40,7 +40,11 @@ const routes: Routes = [
   { path: 'edit-data-outcome', loadChildren: './pages/modal/pattern_design/edit-data-outcome/edit-data-outcome.module#EditDataOutcomePageModule' },
   { path: 'edit-data-income', loadChildren: './pages/modal/pattern_design/edit-data-income/edit-data-income.module#EditDataIncomePageModule' },
   { path: 'profile', loadChildren: './pages/modal/pattern_design/profile/profile.module#ProfilePageModule' },
-  { path: 'edit-proflie', loadChildren: './pages/modal/pattern_design/edit-proflie/edit-proflie.module#EditProfliePageModule' }
+  { path: 'edit-proflie', loadChildren: './pages/modal/pattern_design/edit-proflie/edit-proflie.module#EditProfliePageModule' },
+  { path: 'ret-wallet', loadChildren: './pages/ret-wallet/ret-wallet.module#RetWalletPageModule' },
+  { path: 'ret-detail-sub-type', loadChildren: './pages/ret-detail-sub-type/ret-detail-sub-type.module#RetDetailSubTypePageModule' },
+  { path: 'ret-detail-list', loadChildren: './pages/ret-detail-list/ret-detail-list.module#RetDetailListPageModule' },
+  { path: 'ret-detail-list-prototype', loadChildren: './pages/ret-detail-list-prototype/ret-detail-list-prototype.module#RetDetailListPrototypePageModule' }
 ];
 
 @NgModule({
