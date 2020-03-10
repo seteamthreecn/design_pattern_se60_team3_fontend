@@ -6,6 +6,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 import { RetDetailListPrototypePage } from './ret-detail-list-prototype.page';
+import { PopmenuComponent } from './../../components/popmenu/popmenu.component';
 
 const routes: Routes = [
   {
@@ -21,6 +22,6 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [RetDetailListPrototypePage]
+  declarations: [RetDetailListPrototypePage, PopmenuComponent]
 })
 export class RetDetailListPrototypePageModule {}
