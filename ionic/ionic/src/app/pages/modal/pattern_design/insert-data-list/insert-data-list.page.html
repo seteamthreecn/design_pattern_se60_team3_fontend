@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="end" (click)="closeModal()">
+      <ion-button color="primary" (click)="closeModal()">
+        <ion-icon name="close" color="light"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>
+      <h6 style="text-align: center;">บันทึก{{dtl_type_name}}</h6>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+  <h5 style="font-weight: bold;">ประเภทของ{{dtl_type_name}}:</h5>
+  <ion-select placeholder="- เลือกประเภท -" ok-text="ยืนยัน" cancel-text="ยกเลิก" [(ngModel)]="dtl_dts_id">
+    <ion-select-option *ngFor="let sub_type of dts_list" value="{{sub_type.dts_id}}">{{sub_type.dts_name}}
+    </ion-select-option>
+  </ion-select>
+
+  <h5 style="font-weight: bold;">วันที่:</h5>
+  <ion-item>
+    <ion-datetime placeholder="เลือกวันที่" displayFormat="DD MMM YYYY" pickerFormat="DD MMM YYYY" cancelText="ยกเลิก" doneText="ยืนยัน" [(ngModel)]="dtl_date"></ion-datetime>
+  </ion-item>
+
+  <h5 style="font-weight: bold;">จำนวนเงิน:</h5>
+  <ion-item>
+    <ion-input type="number" placeholder="จำนวนเงิน (บาท)" [(ngModel)]="dtl_amount"></ion-input>
+  </ion-item>
+
+  <h5 style="font-weight: bold;">รายละเอียด:</h5>
+  <ion-item>
+    <ion-textarea placeholder="รายละเอียด" [(ngModel)]="dtl_description"></ion-textarea>
+  </ion-item>
+
+  <ion-button expand="full" color="primary" (click)="save_data()">บันทึก</ion-button>
+
+</ion-content>
