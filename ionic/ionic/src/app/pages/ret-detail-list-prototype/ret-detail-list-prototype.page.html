@@ -44,7 +44,8 @@
                 <h6 style="margin-bottom: 2px;">ค้นหา</h6>
             </ion-col>
             <ion-col>
-                <ion-datetime display-format="MMM YYYY" picker-format="MMM YYYY" [(ngModel)]="date_search" (ionChange)="search_list($event)"></ion-datetime>
+                <ion-datetime display-format="MMM YYYY" picker-format="MMM YYYY" [(ngModel)]="date_search"
+                    (ionChange)="search_list($event)"></ion-datetime>
             </ion-col>
             <ion-col>
 
@@ -58,7 +59,15 @@
         </ion-fab-button>
     </ion-fab>
 
-    <!-- Part of List All Data -->
+    <div *ngIf="data_list.length == 0">
+        <ion-list>
+            <ion-item >
+                <ion-label style="text-align: center;">ไม่มีรายการข้อมูลในระบบ</ion-label>
+            </ion-item>
+        </ion-list>
+    </div>
+    
+
     <ion-list *ngFor="let list of data_list">
         <ion-item-sliding>
             <ion-item>
