@@ -102,7 +102,7 @@ export class LoginPage implements OnInit {
   }
 
   goToHome() {
-    this.navCtrl.navigateRoot("/home-results");
+    this.navCtrl.navigateRoot("/ret-detail-list-prototype/0");
   }
 
   check_authentication() {

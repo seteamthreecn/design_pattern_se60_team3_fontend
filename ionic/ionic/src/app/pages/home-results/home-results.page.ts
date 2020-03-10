@@ -14,12 +14,10 @@ import { InsertIncomePage } from "../modal/pattern_design/insert-income/insert-i
 import { InsertOutcomePage } from "../modal/pattern_design/insert-outcome/insert-outcome.page";
 
 //Show Data
-import { EditDataIncomePage } from "../modal/pattern_design/edit-data-income/edit-data-income.page";
-import { EditDataOutcomePage } from "../modal/pattern_design/edit-data-outcome/edit-data-outcome.page";
+import { EditDataListPage } from '../modal/pattern_design/edit-data-list/edit-data-list.page';
 
 //Edit Data
-import { ShowDataIncomePage } from "../modal/pattern_design/show-data-income/show-data-income.page";
-import { ShowDataOutcomePage } from "../modal/pattern_design/show-data-outcome/show-data-outcome.page";
+import { ShowDataListPage } from '../modal/pattern_design/show-data-list/show-data-list.page';
 import { Storage } from "@ionic/storage";
 
 @Component({
@@ -108,28 +106,28 @@ export class HomeResultsPage {
 
   async show_data_income() {
     const modal = await this.modalCtrl.create({
-      component: ShowDataIncomePage
+      component: EditDataListPage
     });
     return await modal.present();
   }
 
   async show_data_outcome() {
     const modal = await this.modalCtrl.create({
-      component: ShowDataOutcomePage
+      component: ShowDataListPage
     });
     return await modal.present();
   }
 
   async edit_data_income() {
     const modal = await this.modalCtrl.create({
-      component: EditDataIncomePage
+      component: EditDataListPage
     });
     return await modal.present();
   }
 
   async edit_data_outcome() {
     const modal = await this.modalCtrl.create({
-      component: EditDataOutcomePage
+      component: ShowDataListPage
     });
     return await modal.present();
   }

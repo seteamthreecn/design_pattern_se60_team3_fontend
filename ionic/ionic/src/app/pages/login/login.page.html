@@ -5,7 +5,6 @@
     <!-- Logo -->
     <div padding-horizontal text-center class="animated fadeInDown">
       <div class="logo"></div>
-      <!-- <ion-img style="width: 60px; height: 60px; align-items: center;" src="../../../asset/img/icon-page.png"></ion-img> -->
       <h5 no-margin>
         <ion-text color="light" class="fw700">
           OPPA WALLET
@@ -43,12 +42,6 @@
         </ion-text>
         </p>
     </form>
-
-    <p text-right tappable (click)="forgotPass()" class="paz">
-      <ion-text color="light">
-        <strong>ลืมรหัสผ่าน ?</strong>
-      </ion-text>
-    </p>
 
     <div>
       <ion-button icon-left size="medium" expand="full" shape="round" color="dark" (click)="check_authentication()" [disabled]="!onLoginForm.valid" tappable>

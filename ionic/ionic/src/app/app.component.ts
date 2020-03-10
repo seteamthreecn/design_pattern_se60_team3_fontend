@@ -35,19 +35,19 @@ export class AppComponent {
     this.appPages = [
       {
         title: "หน้าแรก",
-        url: "/home-results",
+        url: "/ret-detail-list-prototype/0",
         direct: "root",
         icon: "home"
       },
       {
         title: "รายรับทั้งหมด",
-        url: "/income-all",
+        url: "ret-detail-list-prototype/1",
         direct: "forward",
         icon: "add-circle"
       },
       {
         title: "รายจ่ายทั้งหมด",
-        url: "/outcome-all",
+        url: "ret-detail-list-prototype/2",
         direct: "forward",
         icon: "remove-circle"
       },
@@ -57,55 +57,6 @@ export class AppComponent {
         direct: "forward",
         icon: "stats"
       }
-
-      // {
-      //   title: 'บันทึกเรื่องร้องเรียน',
-      //   url: '/insert-subject',
-      //   direct: 'forward',
-      //   icon: 'add-circle'
-      // },
-
-      // {
-      //   title: 'รายการเรื่องร้องเรียน',
-      //   url: '/about',
-      //   direct: 'forward',
-      //   icon: 'list-box'
-      // },
-
-      // {
-      //   title: 'รายการหน่วยงานภายใน',
-      //   url: '/master-data',
-      //   direct: 'forward',
-      //   icon: 'logo-buffer'
-      // },
-
-      // {
-      //   title: 'รายการหน่วยงานภายนอก',
-      //   url: '/master-data-external',
-      //   direct: 'forward',
-      //   icon: 'logo-buffer'
-      // },
-
-      // {
-      //   title: 'รายการช่องทางแหล่งข้อมูล',
-      //   url: '/master-data-channel',
-      //   direct: 'forward',
-      //   icon: 'logo-buffer'
-      // },
-
-      // {
-      //   title: 'รายการประเภทเรื่องร้องเรียน',
-      //   url: '/master-data-category',
-      //   direct: 'forward',
-      //   icon: 'logo-buffer'
-      // }
-
-      // {
-      //   title: 'ตั้งค่า',
-      //   url: '/settings',
-      //   direct: 'forward',
-      //   icon: 'cog'
-      // }
     ];
 
     this.initializeApp();
@@ -149,9 +100,6 @@ export class AppComponent {
     });
     return await modal.present();
   }
-  // goToEditProgile() {
-  //   this.navCtrl.navigateForward('edit-profile');
-  // }
 
   logout() {
     this.navCtrl.navigateRoot("/");

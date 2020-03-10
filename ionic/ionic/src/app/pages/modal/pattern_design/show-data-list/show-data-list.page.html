@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="end" (click)="closeModal()">
+      <ion-button color="primary"(click)="closeModal()">
+        <ion-icon name="close" color="light"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+      <ion-title>
+          <h6 style="text-align: center;">ข้อมูล{{dtl_type_name}}</h6>
+      </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+<label>
+<h5 style="font-weight: bold;">วันที่: <span style="font-weight: normal !important;">{{dtl_day + " " + dtl_month + " พ.ศ. " + dtl_year}}</span></h5>
+
+</label>
+<br>
+<label>
+<h5 style="font-weight: bold;">ประเภทของรายรับ: <span style="font-weight: normal !important;">{{dtl_dts_name}}</span></h5>
+
+</label> 
+<br>
+<label>
+<h5 style="font-weight: bold;">จำนวนเงิน: <span style="font-weight: normal !important;">{{dtl_amount}} บาท</span></h5>
+
+</label>
+<br>
+<label>
+<h5 style="font-weight: bold;">รายละเอียด: <span style="font-weight: normal !important;">{{dtl_description}}</span></h5>
+
+</label>
+
+
+</ion-content>
