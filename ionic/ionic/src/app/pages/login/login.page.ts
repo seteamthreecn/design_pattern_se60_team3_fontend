@@ -114,9 +114,6 @@ export class LoginPage implements OnInit {
           this.user_list[i].user_username == this.username &&
           this.user_list[i].user_password == this.password
         ) {
-          // this.storage.set("user_username", this.username);
-          // this.storage.set("user_password", this.password);
-          // this.storage.set("user_id", this.user_list[i].user_id);
           localStorage.setItem("user_id",this.user_list[i].user_id)
           this.appcomponent.get_user_data_by_user_id()
           check_authentication = true;
