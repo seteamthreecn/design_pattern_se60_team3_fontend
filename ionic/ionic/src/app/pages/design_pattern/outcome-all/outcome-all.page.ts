@@ -13,10 +13,10 @@ import {
 import { InsertOutcomePage } from "../../modal/pattern_design/insert-outcome/insert-outcome.page";
 
 //Show Data
-import { EditDataOutcomePage } from "../../modal/pattern_design/edit-data-outcome/edit-data-outcome.page";
+import { EditDataListPage } from "../../modal/pattern_design/edit-data-list/edit-data-list.page";
 
 //Edit Data
-import { ShowDataOutcomePage } from "../../modal/pattern_design/show-data-outcome/show-data-outcome.page";
+import { ShowDataListPage } from "../../modal/pattern_design/show-data-list/show-data-list.page";
 
 import { RetDetailSubTypeService } from "src/app/service/ret-detail-sub-type.service";
 
@@ -94,14 +94,14 @@ export class OutcomeAllPage implements OnInit {
 
   async edit_data_outcome() {
     const modal = await this.modalCtrl.create({
-      component: EditDataOutcomePage
+      component: EditDataListPage
     });
     return await modal.present();
   }
 
   async show_data_outcome() {
     const modal = await this.modalCtrl.create({
-      component: ShowDataOutcomePage
+      component: ShowDataListPage
     });
     return await modal.present();
   }

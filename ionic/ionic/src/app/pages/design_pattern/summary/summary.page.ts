@@ -1,52 +1,123 @@
-import { Component, OnInit,ViewChild } from '@angular/core';
-import { Chart } from 'chart.js';
-import * as HighCharts from 'highcharts';
+import { Component, OnInit, ViewChild } from "@angular/core";
+import { Chart } from "chart.js";
+import * as HighCharts from "highcharts";
+import { RetDetailListService } from "src/app/service/ret-detail-list.service";
 
 @Component({
-  selector: 'app-summary',
-  templateUrl: './summary.page.html',
-  styleUrls: ['./summary.page.scss'],
+  selector: "app-summary",
+  templateUrl: "./summary.page.html",
+  styleUrls: ["./summary.page.scss"]
 })
 export class SummaryPage implements OnInit {
+  user_id: number;
+  private type: string = "month";
+  constructor(private RetDetailListService: RetDetailListService) {}
 
-  constructor() { }
-
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   ionViewDidEnter() {
     this.plotSimpleBarChart();
   }
 
-  plotSimpleBarChart() {
-    let myChart = HighCharts.chart('highcharts', {
-      chart: {
-        type: 'bar',
-      },
-      title: {
-        text: ' '
-      },
-      xAxis: {
-        categories: ['มกราคม', 'กุมภาพันธ์', 'มีนาคม', 'เมษายน', 'พฤษภาคม', 'มิถุนายน', 'กรกฎาคม', 'สิงหาคม', 'กันยายน', 'ตุลาคม', 'พฤศจิกายน', 'ธันวาคม']
-      },
-      yAxis: {
-        title: {
-          text: 'จำนวนเงิน (บาท)'
-        }
-      },
-      series: [
-        {
-          name: 'รายรับ',
-          type: undefined,
-          data: [65000, 62000, 75000, 70000, 87400, 65600, 65000, 62000, 75000, 70000, 87400, 65600]
-        },
-        {
-          name: 'รายจ่าย',
-          type: undefined,
-          data: [45000, 35000, 60000, 48000, 62000, 87500, 45000, 35000, 60000, 48000, 62000, 87500]
-        }]
-    });
+  change($event: any){
+    this.type = $event.target.value
+    this.plotSimpleBarChart()
   }
 
+  plotSimpleBarChart() {
+    
+    var income = [];
+    var outcome = [];
+    var categories = [];
+    this.user_id = +localStorage.getItem("user_id");
 
+    if (this.type == "month") {
+      this.RetDetailListService.get_static_data_month(this.user_id).subscribe(
+        result => {
+          console.log(result);
+          result.forEach(element => {
+            categories.push(element.month_name);
+            if (element.type_list == "รายรับ") {
+              income.push(element.amount);
+            } else {
+              outcome.push(element.amount);
+            }
+          });
+          let myChart = HighCharts.chart("highcharts", {
+            chart: {
+              type: "bar"
+            },
+            title: {
+              text: " "
+            },
+            xAxis: {
+              categories: categories
+            },
+            yAxis: {
+              title: {
+                text: "จำนวนเงิน (บาท)"
+              }
+            },
+            series: [
+              {
+                name: "รายรับ",
+                type: undefined,
+                data: income
+              },
+              {
+                name: "รายจ่าย",
+                type: undefined,
+                data: outcome
+              }
+            ]
+          });
+        }
+      );
+    } else {
+      this.RetDetailListService.get_static_data_yaer(this.user_id).subscribe(
+        result => {
+          console.log(result);
+          result.forEach(element => {
+            categories.push(element.YEAR);
+            if (element.type_list == "รายรับ") {
+              income.push(element.amount);
+            } else {
+              outcome.push(element.amount);
+            }
+          });
+          let myChart = HighCharts.chart("highcharts", {
+            chart: {
+              type: "bar"
+            },
+            title: {
+              text: " "
+            },
+            xAxis: {
+              categories: categories
+            },
+            yAxis: {
+              title: {
+                text: "จำนวนเงิน (บาท)"
+              }
+            },
+            series: [
+              {
+                name: "รายรับ",
+                type: undefined,
+                data: income
+              },
+              {
+                name: "รายจ่าย",
+                type: undefined,
+                data: outcome
+              }
+            ]
+          });
+        }
+      );
+    }
+    console.log(income);
+    console.log(outcome);
+    console.log(categories);
+  }
 }
