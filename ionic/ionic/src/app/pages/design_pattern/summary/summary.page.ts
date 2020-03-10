@@ -60,11 +60,13 @@ export class SummaryPage implements OnInit {
             },
             series: [
               {
+                color: '#48046D',
                 name: "รายรับ",
                 type: undefined,
                 data: income
               },
               {
+                color: '#D93E5D',
                 name: "รายจ่าย",
                 type: undefined,
                 data: outcome
@@ -101,16 +103,19 @@ export class SummaryPage implements OnInit {
                 text: "จำนวนเงิน (บาท)",
               }
             },
+            
             series: [
               {
+                color: '#48046D',
                 name: "รายรับ",
                 type: undefined,
-                data: income,
+                data: income
               },
               {
+                color: '#D93E5D',
                 name: "รายจ่าย",
                 type: undefined,
-                data: outcome,
+                data: outcome
               }
             ]
           });
