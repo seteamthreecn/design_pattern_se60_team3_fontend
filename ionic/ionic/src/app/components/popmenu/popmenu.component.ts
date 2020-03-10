@@ -9,8 +9,7 @@ import {
 } from '@ionic/angular';
 
 //Input Data
-import { InsertIncomePage } from '../../pages/modal/pattern_design/insert-income/insert-income.page';
-import { InsertOutcomePage } from '../../pages/modal/pattern_design/insert-outcome/insert-outcome.page';
+import { InsertDataListPage } from '../../pages/modal/pattern_design/insert-data-list/insert-data-list.page';
 
 @Component({
   selector: 'popmenu',
@@ -34,37 +33,23 @@ export class PopmenuComponent implements OnInit {
 
   async open_insert_income() {
     const modal = await this.modalCtrl.create({
-      component: InsertIncomePage
+      component: InsertDataListPage,
+      componentProps: {
+        dts_type: 1
+      }
     });
     return await modal.present();
   }
 
   async open_insert_outcome() {
     const modal = await this.modalCtrl.create({
-      component: InsertOutcomePage
+      component: InsertDataListPage,
+      componentProps: {
+        dts_type: 2
+      }
     });
     return await modal.present();
   }
-
-  // async open_list_subject() {
-  //   this.navCtrl.navigateRoot('/about');
-  // }
-
-  // async open_department_internal() {
-  //   this.navCtrl.navigateRoot('/master-data');
-  // }
-
-  // async open_department__external() {
-  //   this.navCtrl.navigateRoot('/master-data-external');
-  // }
-
-  // async open_department__channel() {
-  //   this.navCtrl.navigateRoot('/master-data-channel');
-  // }
-
-  // async open_department__category() {
-  //   this.navCtrl.navigateRoot('/master-data-category');
-  // }
 
   togglePopupMenu() {
     return this.openMenu = !this.openMenu;
