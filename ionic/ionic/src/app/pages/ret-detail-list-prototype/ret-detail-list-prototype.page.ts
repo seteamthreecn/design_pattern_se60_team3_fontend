@@ -104,50 +104,50 @@ export class RetDetailListPrototypePage implements OnInit {
 
     this.RetWalletService.get_wallet_list(this.month_search, this.year_search, this.path_type_id, null, localStorage.getItem('user_id')).subscribe(result => {
       console.log(result[0])
-      if (result[0].name_list != null) {
-        this.name_list = result[0].name_list.split(',');
-      } else {
-        this.name_list = result[0].sub_type_list.split(',');
-      }
-
-      this.amount_list = result[0].amount_list.split(',');
-      this.sub_type_list = result[0].sub_type_list.split(',');
-
-      this.id_list = result[0].id_list.split(',');
-
-
-      this.day_list = result[0].day_list.split(',');
-      this.month_list = result[0].month_list.split(',');
-      this.year_list = result[0].year_list.split(',');
-
-      this.type_name = result[0].type_list
-      this.type_list = result[0].dtl_type_list.split(',');
-      this.month_name = result[0].month_name
-
-      this.dtl_type_id = result[0].dtl_type_id;
-
-      for (let i = 0; i < this.amount_list.length; i++) {
-
-        let prototype_obj = {} as RetDetailListPage;
-        prototype_obj.dtl_id = this.id_list[i]
-        prototype_obj.dtl_amount = this.amount_list[i]
-        prototype_obj.dtl_date = this.day_list[i] + " " + this.month_list[i] + " " + this.year_list[i]
-        prototype_obj.dtl_type = this.type_list[i]
-        prototype_obj.dtl_description = this.name_list[i]
-        prototype_obj.dtl_dts_name = this.sub_type_list[i]
-
-        if(this.type_name != 'รายรับ - รายจ่าย'){
-          this.sum_amount += Number(this.amount_list[i])
-        }else{
-          if(this.type_list[i] == 1){
+      if(result[0].amount_list != null){
+        if (result[0].name_list != null) {
+          this.name_list = result[0].name_list.split(',');
+        } else {
+          this.name_list = result[0].sub_type_list.split(',');
+        }
+  
+        this.amount_list = result[0].amount_list.split(',');
+        this.sub_type_list = result[0].sub_type_list.split(',');
+  
+        this.id_list = result[0].id_list.split(',');
+  
+  
+        this.day_list = result[0].day_list.split(',');
+        this.month_list = result[0].month_list.split(',');
+        this.year_list = result[0].year_list.split(',');
+  
+        this.type_name = result[0].type_list
+        this.type_list = result[0].dtl_type_list.split(',');
+        this.month_name = result[0].month_name
+  
+        this.dtl_type_id = result[0].dtl_type_id;
+  
+        for (let i = 0; i < this.amount_list.length; i++) {
+  
+          let prototype_obj = {} as RetDetailListPage;
+          prototype_obj.dtl_id = this.id_list[i]
+          prototype_obj.dtl_amount = this.amount_list[i]
+          prototype_obj.dtl_date = this.day_list[i] + " " + this.month_list[i] + " " + this.year_list[i]
+          prototype_obj.dtl_type = this.type_list[i]
+          prototype_obj.dtl_description = this.name_list[i]
+          prototype_obj.dtl_dts_name = this.sub_type_list[i]
+  
+          if(this.type_name != 'รายรับ - รายจ่าย'){
             this.sum_amount += Number(this.amount_list[i])
           }else{
-            this.sum_amount -= Number(this.amount_list[i])
+            if(this.type_list[i] == 1){
+              this.sum_amount += Number(this.amount_list[i])
+            }else{
+              this.sum_amount -= Number(this.amount_list[i])
+            }
           }
+          this.data_list[i] = prototype_obj
         }
-         
-
-        this.data_list[i] = prototype_obj
       }
     })
   }
@@ -155,8 +155,6 @@ export class RetDetailListPrototypePage implements OnInit {
   search_list($event: any){
     this.year_search = $event.detail.value.substr(0,4)
     this.month_search = $event.detail.value.substr(5,2)
-    console.log(this.month_search)
-    console.log(this.year_search)
     this.sum_amount = 0;
     this.data_list = []
     this.get_all()

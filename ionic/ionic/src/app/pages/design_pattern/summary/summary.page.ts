@@ -19,13 +19,12 @@ export class SummaryPage implements OnInit {
     this.plotSimpleBarChart();
   }
 
-  change($event: any){
-    this.type = $event.target.value
-    this.plotSimpleBarChart()
+  change($event: any) {
+    this.type = $event.target.value;
+    this.plotSimpleBarChart();
   }
 
   plotSimpleBarChart() {
-    
     var income = [];
     var outcome = [];
     var categories = [];
@@ -43,6 +42,7 @@ export class SummaryPage implements OnInit {
               outcome.push(element.amount);
             }
           });
+          categories = Array.from(new Set(categories));
           let myChart = HighCharts.chart("highcharts", {
             chart: {
               type: "bar"
@@ -117,8 +117,5 @@ export class SummaryPage implements OnInit {
         }
       );
     }
-    console.log(income);
-    console.log(outcome);
-    console.log(categories);
   }
 }
