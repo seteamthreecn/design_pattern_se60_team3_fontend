@@ -62,16 +62,21 @@ export class ProfilePage implements OnInit {
     this.RetUserService.get_user_data_by_user_id(this.user_id).subscribe(
       result => {
         console.log(result);
-        console.log(result[0].user_guid_img)
+        console.log(result[0].user_guid_img);
         if (
           typeof result[0].user_email === "undefined" ||
-          result[0].user_email == ""
+          result[0].user_email == "" ||
+          result[0].user_email == "null"
         ) {
           result[0].user_email = "-";
         }
-        if (typeof result[0].user_guid_img === "undefined" || result[0].user_guid_img == "" || result[0].user_guid_img == null) {
+        if (
+          typeof result[0].user_guid_img === "undefined" ||
+          result[0].user_guid_img == "" ||
+          result[0].user_guid_img == null
+        ) {
           this.imgURL = "default.png";
-        }else{
+        } else {
           this.imgURL = result[0].user_guid_img;
         }
         this.user_fname = result[0].user_fname;

@@ -25,6 +25,7 @@ export class EditProfliePage implements OnInit {
   private user_email: string;
   private url: string | ArrayBuffer;
   private user_id: number;
+  public onLoginForm: FormGroup;
   public imagePath;
   private uploadedFiles;
   imgURL: any;
@@ -56,7 +57,10 @@ export class EditProfliePage implements OnInit {
     // this.storage.get("user_id").then(data => {
     this.RetUserService.get_user_data_by_user_id(this.user_id).subscribe(
       result => {
-        if (typeof result[0].user_email === "undefined") {
+        if (
+          typeof result[0].user_email === "undefined" ||
+          result[0].user_email == "null"
+        ) {
           result[0].user_email = "";
         }
         this.user_fname = result[0].user_fname;
@@ -97,9 +101,11 @@ export class EditProfliePage implements OnInit {
         formData.append(
           "uploads[]",
           this.uploadedFiles[i],
-          localStorage.getItem("user_id")+"//"+this.uploadedFiles[i].name
+          localStorage.getItem("user_id") + "//" + this.uploadedFiles[i].name
         );
-        console.log(localStorage.getItem("user_id")+"//"+this.uploadedFiles[i].name)
+        console.log(
+          localStorage.getItem("user_id") + "//" + this.uploadedFiles[i].name
+        );
       }
       // formData.append(this.user_id)
       this.user_id = +localStorage.getItem("user_id");
