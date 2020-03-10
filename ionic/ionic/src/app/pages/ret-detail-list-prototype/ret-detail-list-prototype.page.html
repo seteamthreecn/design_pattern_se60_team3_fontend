@@ -18,11 +18,11 @@
     </ion-toolbar>
 </ion-header>
 
-<h3 *ngIf="type_name != 'รายรับ - รายจ่าย'" style="text-align: center; color: #10476E; font-weight: bold;">
-    รายการ{{type_name}}ทั้งหมด :</h3>
-<h3 *ngIf="type_name == 'รายรับ - รายจ่าย'" style="text-align: center; color: #10476E; font-weight: bold;">ยอดการใช้จ่าย
+<h3 *ngIf="type_name != 'รายรับ - รายจ่าย'" style="text-align: center; color: #D93E5D; font-weight: bold;">
+    {{type_name}}ทั้งหมด :</h3>
+<h3 *ngIf="type_name == 'รายรับ - รายจ่าย'" style="text-align: center; color: #D93E5D; font-weight: bold;">ยอดการใช้จ่าย
     :</h3>
-<ion-card style="background-color: #10476E;">
+<ion-card style="background-color: #48046D;">
     <ion-card-content style="text-align: center; color: white;">
         <ion-icon name="cash" style="color: white;" size="medium"></ion-icon>
         {{sum_amount}} บาท
@@ -35,8 +35,8 @@
 
 <ion-content>
     <!-- Part Of Search Data-->
-    <ion-toolbar color="dark">
-        <ion-row>
+    <ion-toolbar>
+        <ion-row style="background-color: #D93E5D; color: white;">
             <ion-col>
 
             </ion-col>
@@ -78,16 +78,16 @@
                 </ion-label>
             </ion-item>
             <ion-item-options>
-                <ion-item-option style="background-color: #2F4169;" (click)="show_data(list.dtl_id, list.dtl_type)">
+                <ion-item-option style="background-color: #48046D; color: #FFFFFF" (click)="show_data(list.dtl_id, list.dtl_type)">
                     <ion-icon slot="start" name="information-circle"></ion-icon>
                     ข้อมูล
                 </ion-item-option>
-                <ion-item-option style="background-color: #FFF5DA; color: #2F4169;"
+                <ion-item-option style="background-color: #EF9284; color: #FFFFFF;"
                     (click)="edit_data(list.dtl_id, list.dtl_type)">
                     <ion-icon slot="start" name="create"></ion-icon>
                     แก้ไข
                 </ion-item-option>
-                <ion-item-option style="background-color: #DE3401;" (click)="delete_data(list.dtl_id, list.dtl_type)">
+                <ion-item-option style="background-color: #D93E5D; color: #FFFFFF" (click)="delete_data(list.dtl_id, list.dtl_type)">
                     <ion-icon slot="start" name="trash"></ion-icon>
                     ลบ
                 </ion-item-option>

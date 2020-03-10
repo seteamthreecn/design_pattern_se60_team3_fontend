@@ -94,22 +94,23 @@ export class SummaryPage implements OnInit {
             },
             xAxis: {
               categories: categories
+        
             },
             yAxis: {
               title: {
-                text: "จำนวนเงิน (บาท)"
+                text: "จำนวนเงิน (บาท)",
               }
             },
             series: [
               {
                 name: "รายรับ",
                 type: undefined,
-                data: income
+                data: income,
               },
               {
                 name: "รายจ่าย",
                 type: undefined,
-                data: outcome
+                data: outcome,
               }
             ]
           });

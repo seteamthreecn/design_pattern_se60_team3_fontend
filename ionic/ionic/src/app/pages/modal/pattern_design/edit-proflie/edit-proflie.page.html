@@ -12,6 +12,20 @@
 </ion-header>
 
 <ion-content>
+  <br>
+  <div style="align-items: center;" text-center>
+    <img src="../../../../../assets/img/icon-page.png" style="width: 20%; margin: auto;" class="image-center">
+    <h5 no-margin>
+      <ion-text style="color: #D93E5D;" class="fw700">
+        <b>OPPA WALLET</b>
+      </ion-text>
+    </h5>
+  </div>
+  <br>
+  <div style="text-align: center; color: #D93E5D;">
+    ----------------------------------------
+  </div>
+
   <div style="align-items: center;" text-center *ngIf="imgURL">
     <ion-avatar slot="start" class="user-avatar image-center">
       <img [src]="imgURL" />
@@ -20,7 +34,7 @@
   <span style="color:red;" *ngIf="message">{{message}}</span>
   <div class="box ion-text-center" > 
     <input #file type="file" accept="image/*" name="file-4[]" id="file-4" class="inputfile inputfile-3" data-multiple-caption="{count} files selected" (change)="preview(file.files)" />
-    <label for="file-4"><span>เลือกรูป profile</span></label>
+    <label for="file-4"><span>เปลี่ยนรูป PROFILE</span></label>
   </div>
   <h5 style="font-weight: bold;">ชื่อ:</h5>
   <ion-item>
@@ -72,7 +86,7 @@
   </ion-item> -->
 
 
-  <ion-button expand="full" color="primary" (click)="update_profile()"
-    >บันทึก</ion-button
+  <ion-button expand="full" style="background-color: #D93E5D; color: #48046D;" (click)="update_profile()"
+    ><b>บันทึก</b></ion-button
   >
 </ion-content>
