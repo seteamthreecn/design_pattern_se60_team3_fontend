@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ɵConsole } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import {
@@ -37,9 +37,13 @@ export class ShowDataListPage implements OnInit {
   constructor(private modalCtrl: ModalController) { }
 
   ngOnInit() {
-    if(this.dtl_description == null){
-      this.dtl_description = "-"
+
+    console.log(this.dtl_description )
+    if(this.dtl_description == null || this.dtl_description == "undefined" || this.dtl_description == ""){
+      this.dtl_description = "ไม่ได้ทำการระบุ"
     }
+
+    console.log(this.dtl_description)
   }
 
   closeModal() {
