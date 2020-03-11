@@ -82,6 +82,7 @@ export class SummaryPage implements OnInit {
                 data: outcome
               },
               {
+                color: '#6EC378',
                 name: "คงเหลือ",
                 type: undefined,
                 data: balance
@@ -141,6 +142,7 @@ export class SummaryPage implements OnInit {
                 data: outcome
               },
               {
+                color: '#6EC378',
                 name: "คงเหลือ",
                 type: undefined,
                 data: balance
