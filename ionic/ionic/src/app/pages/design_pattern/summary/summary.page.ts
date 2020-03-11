@@ -27,13 +27,13 @@ export class SummaryPage implements OnInit {
   plotSimpleBarChart() {
     var income = [];
     var outcome = [];
+    var balance = [];
     var categories = [];
     this.user_id = +localStorage.getItem("user_id");
 
     if (this.type == "month") {
       this.RetDetailListService.get_static_data_month(this.user_id).subscribe(
         result => {
-          console.log(result);
           result.forEach(element => {
             categories.push(element.month_name);
             if (element.type_list == "รายรับ") {
@@ -43,6 +43,16 @@ export class SummaryPage implements OnInit {
             }
           });
           categories = Array.from(new Set(categories));
+          for (let i = 0; i < categories.length; i++) {
+            if (typeof income[i] === "undefined") {
+              income[i] = 0;
+            }
+            if (typeof outcome[i] === "undefined") {
+              outcome[i] = 0;
+            }
+            balance.push(Math.abs(income[i] - outcome[i]));
+            // console.log(Math.abs(income[i] - outcome[i]));
+          }
           let myChart = HighCharts.chart("highcharts", {
             chart: {
               type: "bar"
@@ -68,6 +78,11 @@ export class SummaryPage implements OnInit {
                 name: "รายจ่าย",
                 type: undefined,
                 data: outcome
+              },
+              {
+                name: "คงเหลือ",
+                type: undefined,
+                data: balance
               }
             ]
           });
@@ -76,7 +91,6 @@ export class SummaryPage implements OnInit {
     } else {
       this.RetDetailListService.get_static_data_yaer(this.user_id).subscribe(
         result => {
-          console.log(result);
           result.forEach(element => {
             categories.push(element.YEAR);
             if (element.type_list == "รายรับ") {
@@ -85,6 +99,16 @@ export class SummaryPage implements OnInit {
               outcome.push(element.amount);
             }
           });
+          categories = Array.from(new Set(categories));
+          for (let i = 0; i < categories.length; i++) {
+            if (typeof income[i] === "undefined") {
+              income[i] = 0;
+            }
+            if (typeof outcome[i] === "undefined") {
+              outcome[i] = 0;
+            }
+            balance.push(Math.abs(income[i] - outcome[i]));
+          }
           let myChart = HighCharts.chart("highcharts", {
             chart: {
               type: "bar"
@@ -94,23 +118,27 @@ export class SummaryPage implements OnInit {
             },
             xAxis: {
               categories: categories
-        
             },
             yAxis: {
               title: {
-                text: "จำนวนเงิน (บาท)",
+                text: "จำนวนเงิน (บาท)"
               }
             },
             series: [
               {
                 name: "รายรับ",
                 type: undefined,
-                data: income,
+                data: income
               },
               {
                 name: "รายจ่าย",
                 type: undefined,
-                data: outcome,
+                data: outcome
+              },
+              {
+                name: "คงเหลือ",
+                type: undefined,
+                data: balance
               }
             ]
           });
