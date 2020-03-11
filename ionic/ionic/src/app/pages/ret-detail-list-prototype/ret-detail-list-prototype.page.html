@@ -81,7 +81,8 @@
                             <h6>{{list.dtl_date}}</h6>
                         </ion-col>
                         <ion-col style="text-align: right; color: black;">
-                            <h6>{{list.dtl_amount}} บาท</h6>
+                            <h6 *ngIf="list.dtl_type == 1">+ {{list.dtl_amount}} บาท</h6>
+                            <h6 *ngIf="list.dtl_type == 2">- {{list.dtl_amount}} บาท</h6>
                         </ion-col>
                     </ion-row>
                 </ion-label>
