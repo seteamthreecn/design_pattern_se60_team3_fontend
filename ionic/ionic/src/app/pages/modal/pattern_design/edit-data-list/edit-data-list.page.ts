@@ -52,6 +52,10 @@ export class EditDataListPage implements OnInit {
   ngOnInit() {
     this.dropdown_sub_type()
     this.edit_data()
+
+    if(this.dtl_list.dtl_description == null || this.dtl_list.dtl_description == ""){
+      this.dtl_list.dtl_description = ""
+    }
   }
 
   closeModal() {
@@ -64,6 +68,10 @@ export class EditDataListPage implements OnInit {
     console.log(this.dtl_list.dtl_date)
     console.log(this.dtl_list.dtl_amount)
     console.log(this.dtl_list.dtl_description)
+
+    if(this.dtl_list.dtl_description == undefined){
+      this.dtl_list.dtl_description = ""
+    }
 
     this.RetDetailListService.update(this.dtl_list.dtl_id, this.dtl_list.dtl_amount, this.dtl_list.dtl_date, this.dtl_list.dtl_type, this.dtl_list.dtl_dts_id, this.dtl_list.dtl_description).subscribe(result => {
       console.log("update suc")

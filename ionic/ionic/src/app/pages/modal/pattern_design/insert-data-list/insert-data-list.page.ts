@@ -78,6 +78,10 @@ export class InsertDataListPage implements OnInit {
 
   async save_data() {
 
+    if(this.dtl_description == undefined){
+      this.dtl_description = ""
+    }
+
     this.RetDetailListService.insert(this.dtl_amount, this.dtl_date, this.dts_type, this.dtl_dts_id, this.dtl_description).subscribe(result => {
       console.log("insert detail list suc")
       this.RetDetailListService.get_last().subscribe(result => {
