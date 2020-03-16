@@ -25,7 +25,7 @@
 <ion-card style="background-color: #48046D;">
     <ion-card-content style="text-align: center; color: white;">
         <ion-icon name="cash" style="color: white;" size="medium"></ion-icon>
-        {{sum_amount}} บาท
+         {{sum_amount | number: '2.'}} บาท
     </ion-card-content>
 </ion-card>
 <!-- <h5 style="text-align: center; font-weight: bold;">รายการ{{type_name}}ทั้งหมด</h5> -->
@@ -44,8 +44,8 @@
                 <h6 style="margin-bottom: 2px;">ค้นหา</h6>
             </ion-col>
             <ion-col>
-                <ion-datetime display-format="MMM YYYY" picker-format="MMM YYYY" [(ngModel)]="date_search"
-                    (ionChange)="search_list($event)"></ion-datetime>
+                <ion-datetime month-short-names="ม.ค., ก.พ., มี.ค., เม.ย., พ.ค., มิ.ย., ก.ค., ส.ค., ก.ย., ต.ค., พ.ย., ธ.ค." display-format="MMM YYYY" picker-format="MMM YYYY" [(ngModel)]="date_search"
+                    (ionChange)="search_list($event)" cancelText="ยกเลิก" doneText="ยืนยัน"></ion-datetime>
             </ion-col>
             <ion-col>
 
@@ -81,8 +81,8 @@
                             <h6>{{list.dtl_date}}</h6>
                         </ion-col>
                         <ion-col style="text-align: right; color: black;">
-                            <h6 *ngIf="list.dtl_type == 1">+ {{list.dtl_amount}} บาท</h6>
-                            <h6 *ngIf="list.dtl_type == 2">- {{list.dtl_amount}} บาท</h6>
+                            <h6 *ngIf="list.dtl_type == 1">+ {{list.dtl_amount | number: '2.'}} บาท</h6>
+                            <h6 *ngIf="list.dtl_type == 2">- {{list.dtl_amount | number: '2.'}} บาท</h6>
                         </ion-col>
                     </ion-row>
                 </ion-label>
