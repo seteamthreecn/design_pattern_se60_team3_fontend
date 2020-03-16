@@ -37,7 +37,7 @@ export class RetDetailListPage implements OnInit {
   public dtl_dts_name: any;
   public dtl_description: any;
 
-  private dtl_list: any = [];
+  public dtl_list: any = [];
 
   constructor(
     public navCtrl: NavController,
@@ -47,7 +47,7 @@ export class RetDetailListPage implements OnInit {
     public modalCtrl: ModalController,
     public toastCtrl: ToastController,
     public RetDetailListService: RetDetailListService,
-    public RetWalletService:RetWalletService
+    public RetWalletService: RetWalletService
   ) { }
 
   ngOnInit() {
@@ -110,6 +110,32 @@ export class RetDetailListPage implements OnInit {
     })
   }
 
+  /*
+   * get_by_list_type
+   * ..
+   * @input type_list, month_value, year_value, user_id
+   * @output -
+   * @author Chutipong
+   * @Create Date 2563-03-16
+   */
+  public get_by_list_type(type_list: any, month_value: any, year_value: any, user_id: any) {
+    this.RetDetailListService.get_by_list_type(type_list, month_value, year_value, user_id).subscribe(result => {
+      this.dtl_list = result
+    })
+  }
+
+  /*
+   * get_dtl_list
+   * ..
+   * @input -
+   * @output -
+   * @author Chutipong
+   * @Create Date 2563-03-16
+   */
+  public get_dtl_list() {
+    return this.get_dtl_list
+  }
+
   // Input Modal
   async input_data(dts_type: any) {
     console.log(dts_type)
@@ -124,7 +150,6 @@ export class RetDetailListPage implements OnInit {
 
   // Delete Modal
   async delete_data() {
-    
 
     this.RetWalletService.delete(this.dtl_id).subscribe(result => {
       console.log("delete wallet suc")
@@ -185,14 +210,14 @@ export class RetDetailListPage implements OnInit {
     const modal = await this.modalCtrl.create({
       component: ShowDataListPage,
       componentProps: {
-        dtl_id: this.dtl_list[0].dtl_id ,
-        dtl_amount: this.dtl_list[0].dtl_amount ,
-        dtl_day: this.dtl_list[0].dtl_day ,
-        dtl_year: this.dtl_list[0].dtl_year ,
-        dtl_dts_id: this.dtl_list[0].dtl_dts_id ,
-        dtl_description: this.dtl_list[0].dtl_description ,
-        dtl_month: this.dtl_list[0].dtl_month ,
-        dtl_dts_name: this.dtl_list[0].dtl_dts_name ,
+        dtl_id: this.dtl_list[0].dtl_id,
+        dtl_amount: this.dtl_list[0].dtl_amount,
+        dtl_day: this.dtl_list[0].dtl_day,
+        dtl_year: this.dtl_list[0].dtl_year,
+        dtl_dts_id: this.dtl_list[0].dtl_dts_id,
+        dtl_description: this.dtl_list[0].dtl_description,
+        dtl_month: this.dtl_list[0].dtl_month,
+        dtl_dts_name: this.dtl_list[0].dtl_dts_name,
         dtl_type_name: this.dtl_list[0].dtl_type_name
       }
     });
@@ -210,19 +235,15 @@ export class RetDetailListPage implements OnInit {
   public call_modal_by_type(type_modal: any, type_id: any) {
     this.RetDetailListService.get_by_key(this.dtl_id).subscribe(result => {
       this.dtl_list = result
-      if(type_modal == "show_data"){
+      if (type_modal == "show_data") {
         this.show_data()
-      }else if(type_modal == "edit_data"){
+      } else if (type_modal == "edit_data") {
         this.edit_data(type_id)
-      } else if(type_modal ==  "delete_data"){
+      } else if (type_modal == "delete_data") {
         this.delete_data()
-      }else{
+      } else {
         this.input_data(type_id)
       }
     })
   }
-
-
-
-
 }
