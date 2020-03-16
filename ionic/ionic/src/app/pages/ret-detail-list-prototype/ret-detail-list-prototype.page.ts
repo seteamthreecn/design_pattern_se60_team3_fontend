@@ -91,8 +91,6 @@ export class RetDetailListPrototypePage implements OnInit {
   }
 
   get_all() {
-    let detail_obj = new RetDetailListPage(this.navCtrl, this.menuCtrl, this.alertCtrl, this.loadingCtrl, this.modalCtrl, this.toastCtrl, this.RetDetailListService, this.RetWalletService);
-    // detail_obj.get_by_list_type(this.path_type_id, this.month_search, this.year_search, localStorage.getItem('user_id'))
     // console.log(detail_obj.dtl_list)
     this.RetDetailListService.get_by_list_type(this.path_type_id, this.month_search, this.year_search, localStorage.getItem('user_id')).subscribe(result => {
       this.data_list = result
@@ -126,5 +124,10 @@ export class RetDetailListPrototypePage implements OnInit {
     this.data_list = []
     this.get_all()
   }
+
+  // async test_get(){
+  //   let detail_obj = new RetDetailListPage(this.navCtrl, this.menuCtrl, this.alertCtrl, this.loadingCtrl, this.modalCtrl, this.toastCtrl, this.RetDetailListService, this.RetWalletService);
+  //   detail_obj.get_by_list_type(this.path_type_id, this.month_search, this.year_search, localStorage.getItem('user_id'))
+  // }
 
 }
