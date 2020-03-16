@@ -63,11 +63,6 @@ export class EditDataListPage implements OnInit {
   }
 
   async update_data() {
-    console.log(this.dtl_list.dtl_id)
-    console.log(this.dtl_list.dtl_dts_id)
-    console.log(this.dtl_list.dtl_date)
-    console.log(this.dtl_list.dtl_amount)
-    console.log(this.dtl_list.dtl_description)
 
     if(this.dtl_list.dtl_description == undefined){
       this.dtl_list.dtl_description = ""
