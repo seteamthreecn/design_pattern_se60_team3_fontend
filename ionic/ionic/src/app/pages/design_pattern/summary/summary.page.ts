@@ -24,10 +24,6 @@ export class SummaryPage implements OnInit {
     this.plotSimpleBarChart();
   }
 
-  numberWithCommas(x) {
-    return x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
-  }
-
   plotSimpleBarChart() {
     var income = [];
     var outcome = [];
@@ -60,6 +56,7 @@ export class SummaryPage implements OnInit {
       this.RetDetailListService.get_static_data_month(this.user_id).subscribe(
         result => {
           result.forEach(element => {
+            console.log(element)
             if (element.type_list == "รายรับ") {
               if (element.month_name == "1") {
                 if (typeof element.amount === "undefined") {
@@ -202,13 +199,12 @@ export class SummaryPage implements OnInit {
             }
             current_balance = income[i] - outcome[i];
             // current_balance = current_balance + balance_temp;
-            console.log("crr: " + current_balance)
+            // console.log("crr: " + current_balance)
             balance.push(current_balance);
             // balance_temp = current_balance;
           }
 
           console.log(balance);
-          console.log(result);
           console.log(categories);
           console.log(income);
           console.log(outcome);
