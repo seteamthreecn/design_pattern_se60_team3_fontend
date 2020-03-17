@@ -52,7 +52,10 @@ export class EditDataListPage implements OnInit {
   ) {}
 
   ngOnInit() {
-    if (this.dtl_list.dtl_amount == 0) {
+    if (
+      this.dtl_list.dtl_amount == 0 ||
+      typeof this.dtl_list.dtl_amount === "undefined"
+    ) {
       this.class_number = false;
       this.button_disable();
     }
@@ -79,6 +82,7 @@ export class EditDataListPage implements OnInit {
     if (
       this.dtl_list.dtl_amount == 0 ||
       typeof this.dtl_list.dtl_dts_id === "undefined" ||
+      typeof this.dtl_list.dtl_amount === "undefined" ||
       this.dtl_list.dtl_date == ""
     ) {
       this.disabled = true;
@@ -89,7 +93,7 @@ export class EditDataListPage implements OnInit {
 
   validate_number($event: any) {
     var value = $event.target.value;
-    if (value == 0) {
+    if (value == 0 || typeof value === "undefined") {
       this.class_number = false;
     } else {
       this.class_number = true;
@@ -126,10 +130,17 @@ export class EditDataListPage implements OnInit {
       this.dtl_list.dtl_description = "";
     }
 
-    this.RetDetailListService.update(this.dtl_list.dtl_id, Math.round(parseFloat(this.dtl_list.dtl_amount)), this.dtl_list.dtl_date, this.dtl_list.dtl_type, this.dtl_list.dtl_dts_id, this.dtl_list.dtl_description).subscribe(result => {
-      console.log("update suc")
-    })
-    
+    this.RetDetailListService.update(
+      this.dtl_list.dtl_id,
+      Math.round(parseFloat(this.dtl_list.dtl_amount)),
+      this.dtl_list.dtl_date,
+      this.dtl_list.dtl_type,
+      this.dtl_list.dtl_dts_id,
+      this.dtl_list.dtl_description
+    ).subscribe(result => {
+      console.log("update suc");
+    });
+
     const loader = await this.loadingCtrl.create({
       duration: 2000
     });

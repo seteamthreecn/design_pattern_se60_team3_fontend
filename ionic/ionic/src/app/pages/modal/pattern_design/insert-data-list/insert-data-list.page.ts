@@ -58,7 +58,7 @@ export class InsertDataListPage implements OnInit {
 
   ngOnInit() {
     console.log(this.dtl_dts_id);
-    if (this.dtl_amount == 0) {
+    if (this.dtl_amount == 0 || typeof this.dtl_amount === "undefined") {
       this.class_number = false;
       this.button_disable();
     }
@@ -82,6 +82,7 @@ export class InsertDataListPage implements OnInit {
   button_disable() {
     if (
       this.dtl_amount == 0 ||
+      typeof this.dtl_amount === "undefined" ||
       typeof this.dtl_dts_id === "undefined" ||
       this.dtl_date == ""
     ) {
@@ -93,7 +94,7 @@ export class InsertDataListPage implements OnInit {
 
   validate_number($event: any) {
     var value = $event.target.value;
-    if (value == 0) {
+    if (value == 0 || typeof value === "undefined") {
       this.class_number = false;
     } else {
       this.class_number = true;
@@ -137,11 +138,17 @@ export class InsertDataListPage implements OnInit {
 
   async save_data() {
     if (this.dtl_description == undefined) {
-      this.dtl_description = ""
-    }   
+      this.dtl_description = "";
+    }
 
-    this.RetDetailListService.insert(Math.round(parseFloat(this.dtl_amount)), this.dtl_date, this.dts_type, this.dtl_dts_id, this.dtl_description).subscribe(result => {
-      console.log("insert detail list suc")
+    this.RetDetailListService.insert(
+      Math.round(parseFloat(this.dtl_amount)),
+      this.dtl_date,
+      this.dts_type,
+      this.dtl_dts_id,
+      this.dtl_description
+    ).subscribe(result => {
+      console.log("insert detail list suc");
       this.RetDetailListService.get_last().subscribe(result => {
         this.wall_dtl_id = result[0].dtl_id;
         console.log(this.wall_dtl_id);
