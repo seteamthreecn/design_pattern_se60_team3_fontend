@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input } from "@angular/core";
 import {
   NavController,
   AlertController,
@@ -7,7 +7,7 @@ import {
   PopoverController,
   ModalController,
   LoadingController
-} from '@ionic/angular';
+} from "@ionic/angular";
 import { ActivatedRoute } from "@angular/router";
 
 // Service
@@ -18,28 +18,29 @@ import { RetWalletService } from "../../../../service/ret-wallet.service";
 // Import RetWalletPage
 import { RetWalletPage } from "../../../ret-wallet/ret-wallet.page";
 
-
-
 @Component({
-  selector: 'app-insert-data-list',
-  templateUrl: './insert-data-list.page.html',
-  styleUrls: ['./insert-data-list.page.scss'],
+  selector: "app-insert-data-list",
+  templateUrl: "./insert-data-list.page.html",
+  styleUrls: ["./insert-data-list.page.scss"]
 })
 export class InsertDataListPage implements OnInit {
-
-  private dts_list: any = []
+  private dts_list: any = [];
   private dtl_type_name: any;
 
   private dtl_amount = 0;
   private dtl_date: any;
   private dtl_dts_id: any;
+  private disabled = false;
   private dtl_description: any;
+  private hide_type = true;
+  private class_date = true;
+  private class_number = true;
 
   private wall_dtl_id: any;
   private wall_user_id: any;
 
-  @Input() dts_type: any
-  @Input() dtl_id: any
+  @Input() dts_type: any;
+  @Input() dtl_id: any;
 
   constructor(
     public navCtrl: NavController,
@@ -53,17 +54,72 @@ export class InsertDataListPage implements OnInit {
     public RetWalletService: RetWalletService,
     public RetDetailSubTypeService: RetDetailSubTypeService,
     public route: ActivatedRoute
-  ) { }
+  ) {}
 
   ngOnInit() {
-    if (this.dts_type == 1) {
-      this.dtl_type_name = "รายรับ"
-    } else {
-      this.dtl_type_name = "รายจ่าย"
+    console.log(this.dtl_dts_id);
+    if (this.dtl_amount == 0) {
+      this.class_number = false;
+      this.button_disable();
     }
-    this.dropdown_sub_type()
-    this.wall_user_id = localStorage.getItem('user_id')
+    if (typeof this.dtl_dts_id === "undefined") {
+      this.hide_type = false;
+      this.button_disable();
+    }
+    if (this.dtl_date == "") {
+      this.class_date = false;
+      this.button_disable();
+    }
+    if (this.dts_type == 1) {
+      this.dtl_type_name = "รายรับ";
+    } else {
+      this.dtl_type_name = "รายจ่าย";
+    }
+    this.dropdown_sub_type();
+    this.wall_user_id = localStorage.getItem("user_id");
+  }
 
+  button_disable() {
+    if (
+      this.dtl_amount == 0 ||
+      typeof this.dtl_dts_id === "undefined" ||
+      this.dtl_date == ""
+    ) {
+      this.disabled = true;
+    } else {
+      this.disabled = false;
+    }
+  }
+
+  validate_number($event: any) {
+    var value = $event.target.value;
+    if (value == 0) {
+      this.class_number = false;
+    } else {
+      this.class_number = true;
+    }
+    this.button_disable();
+  }
+
+  validate_date($event: any) {
+    var value = $event.target.value;
+    if (value == "") {
+      this.class_date = false;
+    } else {
+      this.class_date = true;
+    }
+    this.button_disable();
+  }
+
+  validate_type($event: any) {
+    console.log(this.dtl_dts_id);
+    var value = $event.target.value;
+    if (typeof value === "undefined") {
+      this.hide_type = false;
+    } else {
+      this.hide_type = true;
+    }
+    this.button_disable();
   }
 
   closeModal() {
@@ -71,30 +127,38 @@ export class InsertDataListPage implements OnInit {
   }
 
   dropdown_sub_type() {
-    this.RetDetailSubTypeService.get_detail_sub_type_by_dts_type_id(this.dts_type).subscribe(result => {
-      this.dts_list = result
-      console.log(this.dts_list)
-    })
+    this.RetDetailSubTypeService.get_detail_sub_type_by_dts_type_id(
+      this.dts_type
+    ).subscribe(result => {
+      this.dts_list = result;
+      console.log(this.dts_list);
+    });
   }
 
   async save_data() {
-
     if (this.dtl_description == undefined) {
-      this.dtl_description = ""
+      this.dtl_description = "";
     }
 
-    this.RetDetailListService.insert(this.dtl_amount, this.dtl_date, this.dts_type, this.dtl_dts_id, this.dtl_description).subscribe(result => {
-      console.log("insert detail list suc")
+    this.RetDetailListService.insert(
+      this.dtl_amount,
+      this.dtl_date,
+      this.dts_type,
+      this.dtl_dts_id,
+      this.dtl_description
+    ).subscribe(result => {
+      console.log("insert detail list suc");
       this.RetDetailListService.get_last().subscribe(result => {
-        this.wall_dtl_id = result[0].dtl_id
-        console.log(this.wall_dtl_id)
-        this.RetWalletService.insert(this.wall_user_id, this.wall_dtl_id).subscribe(result => {
-          console.log("insert suc")
-        })
-      })
-    })
-
-
+        this.wall_dtl_id = result[0].dtl_id;
+        console.log(this.wall_dtl_id);
+        this.RetWalletService.insert(
+          this.wall_user_id,
+          this.wall_dtl_id
+        ).subscribe(result => {
+          console.log("insert suc");
+        });
+      });
+    });
 
     const loader = await this.loadingCtrl.create({
       duration: 2000
@@ -114,5 +178,4 @@ export class InsertDataListPage implements OnInit {
       location.reload();
     });
   }
-
 }
