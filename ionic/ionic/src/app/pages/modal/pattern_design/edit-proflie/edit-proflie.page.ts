@@ -58,46 +58,55 @@ export class EditProfliePage implements OnInit {
   ngOnInit() {
     this.get_user_data_by_user_id();
     if (this.user_fname == "") {
-      this.disabled = true;
+      this.button_disable();
       this.classfname = false;
     }
     if (this.user_lname == "") {
-      this.disabled = true;
+      this.button_disable();
       this.classlname = false;
     }
     if (this.user_username == "") {
-      this.disabled = true;
+      this.button_disable();
       this.classusername = false;
     }
   }
   validate_fname($event: any) {
     var value = $event.target.value;
     if (value == "") {
-      this.disabled = true;
       this.classfname = false;
     } else {
-      this.disabled = false;
       this.classfname = true;
     }
+    this.button_disable();
   }
   validate_lname($event: any) {
     var value = $event.target.value;
     if (value == "") {
-      this.disabled = true;
       this.classlname = false;
     } else {
-      this.disabled = false;
       this.classlname = true;
     }
+    this.button_disable();
   }
   validate_username($event: any) {
     var value = $event.target.value;
     if (value == "") {
-      this.disabled = true;
       this.classusername = false;
     } else {
-      this.disabled = false;
       this.classusername = true;
+    }
+    this.button_disable();
+  }
+
+  button_disable() {
+    if (
+      this.user_fname == "" ||
+      this.user_lname == "" ||
+      this.user_username == ""
+    ) {
+      this.disabled = true;
+    } else {
+      this.disabled = false;
     }
   }
   get_user_data_by_user_id() {

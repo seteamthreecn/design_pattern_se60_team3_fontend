@@ -63,8 +63,8 @@
     </div>
 
 
-    <div *ngFor="let list_date of day_list">
-        <ion-item-divider color="secondary"><ion-icon name="calendar"></ion-icon>&emsp;{{list_date.day + " " + list_date.month + " " + list_date.year}}</ion-item-divider>
+    <div *ngFor="let list_date of day_list" style="color: black;">
+        <ion-item-divider style="color: black;"><ion-icon name="calendar" style="color: black;"></ion-icon>&emsp;{{list_date.day + " " + list_date.month + " " + list_date.year}}</ion-item-divider>
         <ion-item-group *ngFor="let list of data_list">
             <div *ngIf="list.day == list_date.day">  
                 <ion-item-sliding>
