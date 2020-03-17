@@ -11,9 +11,9 @@ import { RetDetailListService } from "src/app/service/ret-detail-list.service";
 export class SummaryPage implements OnInit {
   user_id: number;
   private type: string = "month";
-  constructor(private RetDetailListService: RetDetailListService) {}
+  constructor(private RetDetailListService: RetDetailListService) { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   ionViewDidEnter() {
     this.plotSimpleBarChart();
@@ -22,6 +22,10 @@ export class SummaryPage implements OnInit {
   change($event: any) {
     this.type = $event.target.value;
     this.plotSimpleBarChart();
+  }
+
+  numberWithCommas(x) {
+    return x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
   }
 
   plotSimpleBarChart() {
@@ -181,10 +185,12 @@ export class SummaryPage implements OnInit {
               }
             }
           });
+
           categories = Array.from(new Set(categories));
-          var balance_temp = 0;
+          // var balance_temp = 0;
           var current_balance = 0;
           for (let i = 0; i < categories.length; i++) {
+            current_balance = 0;
             if (typeof income[i] === "undefined") {
               income[i] = 0;
             }
@@ -192,15 +198,18 @@ export class SummaryPage implements OnInit {
               outcome[i] = 0;
             }
             current_balance = income[i] - outcome[i];
-            current_balance = current_balance + balance_temp;
+            // current_balance = current_balance + balance_temp;
+            console.log("crr: " + current_balance)
             balance.push(current_balance);
-            balance_temp = current_balance;
+            // balance_temp = current_balance;
           }
+
           console.log(balance);
           console.log(result);
           console.log(categories);
           console.log(income);
           console.log(outcome);
+
           let myChart = HighCharts.chart("highcharts", {
             chart: {
               type: "bar"
@@ -215,6 +224,14 @@ export class SummaryPage implements OnInit {
               title: {
                 text: "จำนวนเงิน (บาท)"
               }
+            },
+            tooltip: {
+              headerFormat: '<span style="font-size:10px">เดือน{point.key}</span><table>',
+              pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                '<td style="padding:0"><b>&emsp;{point.y} บาท</b></td></tr>',
+              footerFormat: '</table>',
+              shared: true,
+              useHTML: true
             },
             series: [
               {
@@ -274,6 +291,14 @@ export class SummaryPage implements OnInit {
               title: {
                 text: "จำนวนเงิน (บาท)"
               }
+            },
+            tooltip: {
+              headerFormat: '<span style="font-size:10px">เดือน{point.key}</span><table>',
+              pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                '<td style="padding:0"><b>&emsp;{point.y} บาท</b></td></tr>',
+              footerFormat: '</table>',
+              shared: true,
+              useHTML: true
             },
 
             series: [

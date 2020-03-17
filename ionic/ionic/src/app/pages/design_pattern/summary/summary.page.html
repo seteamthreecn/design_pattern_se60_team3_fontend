@@ -14,14 +14,14 @@
 </ion-header>
 
 <ion-content padding>
-  <h3 style="text-align: center; color: #D93E5D; font-weight: bold; border-radius: 35px; ">เลือกประเภทของการแสดงข้อมูล
-  </h3>
+  <h6 style="text-align: center; color: #D93E5D; font-weight: bold; border-radius: 35px; ">เลือกประเภทของการแสดงข้อมูล
+  </h6>
 
   <ion-card style="background-color: #48046D;">
-    <ion-card-content style="text-align: center; color: white;">
+    <ion-card-content>
       <ion-item>
-        <ion-label style="text-align: center; color: white;">เลือกประเภท</ion-label>
-        <ion-select style="text-align: center; color: white;" ok-text="ตกลง" cancel-text="ยกเลิก" [(ngModel)]="type" (ionChange)="change($event)">
+        <ion-label style="color: white;">เลือกประเภท</ion-label>
+        <ion-select style="color: white;" ok-text="ตกลง" cancel-text="ยกเลิก" [(ngModel)]="type" (ionChange)="change($event)">
           <ion-select-option value="month">รายเดือน</ion-select-option>
           <ion-select-option value="year">รายปี</ion-select-option>
         </ion-select>
