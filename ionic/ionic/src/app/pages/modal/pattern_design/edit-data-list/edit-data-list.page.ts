@@ -68,7 +68,7 @@ export class EditDataListPage implements OnInit {
       this.dtl_list.dtl_description = ""
     }
 
-    this.RetDetailListService.update(this.dtl_list.dtl_id, this.dtl_list.dtl_amount, this.dtl_list.dtl_date, this.dtl_list.dtl_type, this.dtl_list.dtl_dts_id, this.dtl_list.dtl_description).subscribe(result => {
+    this.RetDetailListService.update(this.dtl_list.dtl_id, Math.round(parseFloat(this.dtl_list.dtl_amount)), this.dtl_list.dtl_date, this.dtl_list.dtl_type, this.dtl_list.dtl_dts_id, this.dtl_list.dtl_description).subscribe(result => {
       console.log("update suc")
     })
     
