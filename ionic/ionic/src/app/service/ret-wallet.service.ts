@@ -12,7 +12,7 @@ export class RetWalletService {
 
   /*
 	 * get_wallet_list
-	 * ..
+	 * Get
 	 * @input dtl_month, dtl_year, dtl_type
 	 * @output -
 	 * @author Chutipong
@@ -35,7 +35,7 @@ export class RetWalletService {
 
   /*
 	 * insert
-	 * ..
+	 * Insert wallet'data by wall_user_id, wall_dtl_id
 	 * @input wall_user_id, wall_dtl_id
 	 * @output -
 	 * @author Chutipong
@@ -53,8 +53,8 @@ export class RetWalletService {
 
   /*
 	 * delete
-	 * ..
-	 * @input wall_user_id, wall_dtl_id
+	 * Delete wallet's data by wall_dtl_id
+	 * @input wall_dtl_id
 	 * @output -
 	 * @author Chutipong
 	 * @Create Date 2563-03-09
