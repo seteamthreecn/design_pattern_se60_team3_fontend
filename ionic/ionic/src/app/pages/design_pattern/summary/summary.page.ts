@@ -29,20 +29,161 @@ export class SummaryPage implements OnInit {
     var outcome = [];
     var balance = [];
     var categories = [];
+    console.log(income);
+    console.log(outcome);
     this.user_id = +localStorage.getItem("user_id");
 
     if (this.type == "month") {
+      for (let i = 0; i <= 11; i++) {
+        income.push(0);
+        outcome.push(0);
+      }
+      categories = [
+        "มกราคม",
+        "กุมภาพันธ์",
+        "มีนาคม",
+        "เมษายน",
+        "พฤษภาคม",
+        "มิถุนายน",
+        "กรกฎาคม",
+        "สิงหาคม",
+        "กันยายน",
+        "ตุลาคม",
+        "พฤศจิกายน",
+        "ธันวาคม"
+      ];
       this.RetDetailListService.get_static_data_month(this.user_id).subscribe(
         result => {
           result.forEach(element => {
-            categories.push(element.month_name);
             if (element.type_list == "รายรับ") {
-              income.push(element.amount);
+              if (element.month_name == "มกราคม") {
+                if (typeof element.amount === "undefined") {
+                  element.amount = 0;
+                }
+                income[0] = element.amount;
+              } else if (element.month_name == "กุมภาพันธ์") {
+                if (typeof element.amount === "undefined") {
+                  element.amount = 0;
+                }
+                income[1] = element.amount;
+              } else if (element.month_name == "มีนาคม") {
+                if (typeof element.amount === "undefined") {
+                  element.amount = 0;
+                }
+                income[2] = element.amount;
+              } else if (element.month_name == "เมษายน") {
+                if (typeof element.amount === "undefined") {
+                  element.amount = 0;
+                }
+                income[3] = element.amount;
+              } else if (element.month_name == "พฤษภาคม") {
+                if (typeof element.amount === "undefined") {
+                  element.amount = 0;
+                }
+                income[4] = element.amount;
+              } else if (element.month_name == "มิถุนายน") {
+                if (typeof element.amount === "undefined") {
+                  element.amount = 0;
+                }
+                income[5] = element.amount;
+              } else if (element.month_name == "กรกฎาคม") {
+                if (typeof element.amount === "undefined") {
+                  element.amount = 0;
+                }
+                income[6] = element.amount;
+              } else if (element.month_name == "สิงหาคม") {
+                if (typeof element.amount === "undefined") {
+                  element.amount = 0;
+                }
+                income[7] = element.amount;
+              } else if (element.month_name == "กันยายน") {
+                if (typeof element.amount === "undefined") {
+                  element.amount = 0;
+                }
+                income[8] = element.amount;
+              } else if (element.month_name == "ตุลาคม") {
+                if (typeof element.amount === "undefined") {
+                  element.amount = 0;
+                }
+                income[9] = element.amount;
+              } else if (element.month_name == "พฤศจิกายน") {
+                if (typeof element.amount === "undefined") {
+                  element.amount = 0;
+                }
+                income[10] = element.amount;
+              } else if (element.month_name == "ธันวาคม") {
+                if (typeof element.amount === "undefined") {
+                  element.amount = 0;
+                }
+                income[11] = element.amount;
+              }
             } else {
-              outcome.push(element.amount);
+              if (element.month_name == "มกราคม") {
+                if (typeof element.amount === "undefined") {
+                  element.amount = 0;
+                }
+                outcome[0] = element.amount;
+              } else if (element.month_name == "กุมภาพันธ์") {
+                if (typeof element.amount === "undefined") {
+                  element.amount = 0;
+                }
+                outcome[1] = element.amount;
+              } else if (element.month_name == "มีนาคม") {
+                if (typeof element.amount === "undefined") {
+                  element.amount = 0;
+                }
+                outcome[2] = element.amount;
+              } else if (element.month_name == "เมษายน") {
+                if (typeof element.amount === "undefined") {
+                  element.amount = 0;
+                }
+                outcome[3] = element.amount;
+              } else if (element.month_name == "พฤษภาคม") {
+                if (typeof element.amount === "undefined") {
+                  element.amount = 0;
+                }
+                outcome[4] = element.amount;
+              } else if (element.month_name == "มิถุนายน") {
+                if (typeof element.amount === "undefined") {
+                  element.amount = 0;
+                }
+                outcome[5] = element.amount;
+              } else if (element.month_name == "กรกฎาคม") {
+                if (typeof element.amount === "undefined") {
+                  element.amount = 0;
+                }
+                outcome[6] = element.amount;
+              } else if (element.month_name == "สิงหาคม") {
+                if (typeof element.amount === "undefined") {
+                  element.amount = 0;
+                }
+                outcome[7] = element.amount;
+              } else if (element.month_name == "กันยายน") {
+                if (typeof element.amount === "undefined") {
+                  element.amount = 0;
+                }
+                outcome[8] = element.amount;
+              } else if (element.month_name == "ตุลาคม") {
+                if (typeof element.amount === "undefined") {
+                  element.amount = 0;
+                }
+                outcome[9] = element.amount;
+              } else if (element.month_name == "พฤศจิกายน") {
+                if (typeof element.amount === "undefined") {
+                  element.amount = 0;
+                }
+                outcome[10] = element.amount;
+              } else if (element.month_name == "ธันวาคม") {
+                if (typeof element.amount === "undefined") {
+                  element.amount = 0;
+                }
+                outcome[11] = element.amount;
+              }
             }
           });
           categories = Array.from(new Set(categories));
+          var balance_temp = 0;
+          var current_balance = 0;
           for (let i = 0; i < categories.length; i++) {
             if (typeof income[i] === "undefined") {
               income[i] = 0;
@@ -50,9 +191,16 @@ export class SummaryPage implements OnInit {
             if (typeof outcome[i] === "undefined") {
               outcome[i] = 0;
             }
-            balance.push(Math.abs(income[i] - outcome[i]));
-            // console.log(Math.abs(income[i] - outcome[i]));
+            current_balance = income[i] - outcome[i];
+            current_balance = current_balance + balance_temp;
+            balance.push(current_balance);
+            balance_temp = current_balance;
           }
+          console.log(balance);
+          console.log(result);
+          console.log(categories);
+          console.log(income);
+          console.log(outcome);
           let myChart = HighCharts.chart("highcharts", {
             chart: {
               type: "bar"
@@ -70,19 +218,19 @@ export class SummaryPage implements OnInit {
             },
             series: [
               {
-                color: '#48046D',
+                color: "#48046D",
                 name: "รายรับ",
                 type: undefined,
                 data: income
               },
               {
-                color: '#D93E5D',
+                color: "#D93E5D",
                 name: "รายจ่าย",
                 type: undefined,
                 data: outcome
               },
               {
-                color: '#6EC378',
+                color: "#6EC378",
                 name: "คงเหลือ",
                 type: undefined,
                 data: balance
@@ -110,7 +258,7 @@ export class SummaryPage implements OnInit {
             if (typeof outcome[i] === "undefined") {
               outcome[i] = 0;
             }
-            balance.push(Math.abs(income[i] - outcome[i]));
+            balance.push(income[i] - outcome[i]);
           }
           let myChart = HighCharts.chart("highcharts", {
             chart: {
@@ -127,22 +275,22 @@ export class SummaryPage implements OnInit {
                 text: "จำนวนเงิน (บาท)"
               }
             },
-            
+
             series: [
               {
-                color: '#48046D',
+                color: "#48046D",
                 name: "รายรับ",
                 type: undefined,
                 data: income
               },
               {
-                color: '#D93E5D',
+                color: "#D93E5D",
                 name: "รายจ่าย",
                 type: undefined,
                 data: outcome
               },
               {
-                color: '#6EC378',
+                color: "#6EC378",
                 name: "คงเหลือ",
                 type: undefined,
                 data: balance

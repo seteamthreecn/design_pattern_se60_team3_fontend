@@ -2,7 +2,12 @@ import { Component, OnInit } from "@angular/core";
 import { ModalController } from "@ionic/angular";
 import { NativeStorage } from "@ionic-native/native-storage/ngx";
 import { Storage } from "@ionic/storage";
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import {
+  FormBuilder,
+  FormGroup,
+  Validators,
+  FormControl
+} from "@angular/forms";
 import { RetUserService } from "src/app/service/ret-user.service";
 import { Guid } from "guid-typescript";
 import {
@@ -19,13 +24,16 @@ import {
 })
 export class EditProfliePage implements OnInit {
   public radiusmiles = 1;
+  private disabled = false;
   private user_lname: string;
   private user_fname: string;
   private user_username: string;
+  private classfname = true;
+  private classlname = true;
+  private classusername = true;
   private user_email: string;
   private url: string | ArrayBuffer;
   private user_id: number;
-  public onLoginForm: FormGroup;
   public imagePath;
   private uploadedFiles;
   imgURL: any;
@@ -49,8 +57,49 @@ export class EditProfliePage implements OnInit {
 
   ngOnInit() {
     this.get_user_data_by_user_id();
+    if (this.user_fname == "") {
+      this.disabled = true;
+      this.classfname = false;
+    }
+    if (this.user_lname == "") {
+      this.disabled = true;
+      this.classlname = false;
+    }
+    if (this.user_username == "") {
+      this.disabled = true;
+      this.classusername = false;
+    }
   }
-
+  validate_fname($event: any) {
+    var value = $event.target.value;
+    if (value == "") {
+      this.disabled = true;
+      this.classfname = false;
+    } else {
+      this.disabled = false;
+      this.classfname = true;
+    }
+  }
+  validate_lname($event: any) {
+    var value = $event.target.value;
+    if (value == "") {
+      this.disabled = true;
+      this.classlname = false;
+    } else {
+      this.disabled = false;
+      this.classlname = true;
+    }
+  }
+  validate_username($event: any) {
+    var value = $event.target.value;
+    if (value == "") {
+      this.disabled = true;
+      this.classusername = false;
+    } else {
+      this.disabled = false;
+      this.classusername = true;
+    }
+  }
   get_user_data_by_user_id() {
     // Or to get a key/value pair
     this.user_id = +localStorage.getItem("user_id");
