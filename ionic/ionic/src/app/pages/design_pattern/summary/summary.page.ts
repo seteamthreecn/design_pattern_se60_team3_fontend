@@ -48,6 +48,7 @@ export class SummaryPage implements OnInit {
     if (this.type == "month") {
       this.RetDetailListService.get_static_data_month(this.user_id, month, year).subscribe(
         result => {
+          console.log(result)
           if (result.length > 0) {
             this.check_null_chart = 1
 

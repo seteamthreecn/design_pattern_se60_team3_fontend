@@ -30,7 +30,7 @@ export class InsertDataListPage implements OnInit {
   private dts_list: any = []
   private dtl_type_name: any;
 
-  private dtl_amount: any;
+  private dtl_amount = 0;
   private dtl_date: any;
   private dtl_dts_id: any;
   private dtl_description: any;
