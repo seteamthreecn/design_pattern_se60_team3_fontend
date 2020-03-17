@@ -34,7 +34,7 @@
     <ion-row style="background-color: #D93E5D; color: white;">
       <ion-col></ion-col>
       <ion-col class="ion-align-self-center">
-        <h6>ค้นหา :</h6>
+        <h6>ค้นหา</h6>
       </ion-col>
       <ion-col class="ion-align-self-center" *ngIf="type == 'month'">
         <h6>
@@ -57,7 +57,6 @@
   <ion-card style="background-color: #48046D;" *ngIf="check_null_chart == 1">
     <ion-card-content style="text-align: center; color: white;">
       <ion-icon name="cash" style="color: white;" size="medium"></ion-icon>
-      ยอดคงเหลือ :
       {{pie_balance | number}} บาท
     </ion-card-content>
   </ion-card>
