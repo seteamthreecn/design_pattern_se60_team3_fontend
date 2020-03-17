@@ -14,8 +14,10 @@ import { RetDetailSubTypeService } from "../../../../service/ret-detail-sub-type
 import { RetDetailListService } from "../../../../service/ret-detail-list.service";
 import { RetWalletService } from "../../../../service/ret-wallet.service";
 
+
 // Import ret_detail_list
 import { RetDetailListPage } from "../../../ret-detail-list/ret-detail-list.page";
+
 
 
 @Component({
@@ -27,8 +29,8 @@ export class EditDataListPage implements OnInit {
 
   private dts_list: any = []
   private dtl_list: any = []
-  @Input() dts_type:any
-  @Input() dtl_id:any
+  @Input() dts_type: any
+  @Input() dtl_id: any
 
   public radiusmiles = 1;
   public minmaxprice = {
@@ -46,14 +48,14 @@ export class EditDataListPage implements OnInit {
     public toastCtrl: ToastController,
     public RetDetailListService: RetDetailListService,
     public RetWalletService: RetWalletService,
-    public RetDetailSubTypeService:RetDetailSubTypeService
+    public RetDetailSubTypeService: RetDetailSubTypeService
   ) { }
 
   ngOnInit() {
     this.dropdown_sub_type()
     this.edit_data()
 
-    if(this.dtl_list.dtl_description == null || this.dtl_list.dtl_description == ""){
+    if (this.dtl_list.dtl_description == null || this.dtl_list.dtl_description == "") {
       this.dtl_list.dtl_description = ""
     }
   }
@@ -64,14 +66,19 @@ export class EditDataListPage implements OnInit {
 
   async update_data() {
 
-    if(this.dtl_list.dtl_description == undefined){
+    if (this.dtl_list.dtl_description == undefined) {
       this.dtl_list.dtl_description = ""
     }
 
+    const date = new Date(this.dtl_list.dtl_date);
+    date.setDate(date.getDate() + 1);
+    const formatedDate = date.toISOString()
+    this.dtl_list.dtl_date = formatedDate
+    
     this.RetDetailListService.update(this.dtl_list.dtl_id, Math.round(parseFloat(this.dtl_list.dtl_amount)), this.dtl_list.dtl_date, this.dtl_list.dtl_type, this.dtl_list.dtl_dts_id, this.dtl_list.dtl_description).subscribe(result => {
       console.log("update suc")
     })
-    
+
     const loader = await this.loadingCtrl.create({
       duration: 2000
     });
@@ -91,14 +98,14 @@ export class EditDataListPage implements OnInit {
     });
   }
 
-  dropdown_sub_type(){
+  dropdown_sub_type() {
     this.RetDetailSubTypeService.get_detail_sub_type_by_dts_type_id(this.dts_type).subscribe(result => {
       this.dts_list = result
       console.log(this.dts_list)
     })
   }
 
-  edit_data(){
+  edit_data() {
     this.RetDetailListService.get_by_key(this.dtl_id).subscribe(result => {
       this.dtl_list = result[0]
       console.log(this.dtl_list)
