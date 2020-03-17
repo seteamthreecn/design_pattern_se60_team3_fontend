@@ -31,6 +31,7 @@ const monthShortNames = ['ม.ค.', 'ก.พ.', 'มี.ค.', 'เม.ย.', '
 export class RetDetailListPrototypePage implements OnInit {
 
   private data_list: any = [];
+  private day_list: any = [];
 
   private type_name: any;
   private sum_amount: any = 0;
@@ -91,28 +92,34 @@ export class RetDetailListPrototypePage implements OnInit {
   }
 
   get_all() {
-    this.RetDetailListService.get_by_list_type(this.path_type_id, this.month_search, this.year_search, localStorage.getItem('user_id')).subscribe(result => {
-      this.data_list = result
-      console.log(this.data_list)
-      this.sum_amount = 0
+    this.RetDetailListService.get_by_list_type(this.path_type_id, this.month_search, this.year_search, localStorage.getItem('user_id')).subscribe(result_list => {
+      this.data_list = result_list
+      this.RetDetailListService.get_distinct_by_list_type(this.path_type_id, this.month_search, this.year_search, localStorage.getItem('user_id')).subscribe(result_date => {
+        this.day_list = result_date
 
-      if(this.path_type_id == 0){
-        this.type_name = "รายรับ - รายจ่าย"
-      }else if(this.path_type_id == 1){
-        this.type_name = "รายรับ"
-      }else{
-        this.type_name = "รายจ่าย"
-      }
+        console.log(this.data_list)
+        console.log(this.day_list)
 
-      if (this.data_list.length > 0) {
-        for (let i = 0; i < this.data_list.length; i++) {
-          if (this.data_list[i].dtl_type == 1) {
-            this.sum_amount += Number(this.data_list[i].dtl_amount)
-          } else {
-            this.sum_amount -= Number(this.data_list[i].dtl_amount)
+        this.sum_amount = 0
+
+        if (this.path_type_id == 0) {
+          this.type_name = "รายรับ - รายจ่าย"
+        } else if (this.path_type_id == 1) {
+          this.type_name = "รายรับ"
+        } else {
+          this.type_name = "รายจ่าย"
+        }
+
+        if (this.data_list.length > 0) {
+          for (let i = 0; i < this.data_list.length; i++) {
+            if (this.data_list[i].dtl_type == 1) {
+              this.sum_amount += Number(this.data_list[i].dtl_amount)
+            } else {
+              this.sum_amount -= Number(this.data_list[i].dtl_amount)
+            }
           }
         }
-      }
+      })
     })
   }
 

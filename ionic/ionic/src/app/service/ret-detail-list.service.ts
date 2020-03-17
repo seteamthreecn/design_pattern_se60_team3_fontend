@@ -162,4 +162,26 @@ export class RetDetailListService {
       .post("http://localhost:83/ret_detail_list_by_list_type", data)
       .map(res => res.json());
   }
+
+  
+  /*
+   * get_distinct_by_list_type
+   * ..
+   * @input type_list, month_value, year_value, user_id
+   * @output -
+   * @author Chutipong
+   * @Create Date 2563-03-16
+   */
+  get_distinct_by_list_type(type_list: any, month_value: any, year_value: any, user_id: any) {
+    let data = {
+      type_list: type_list,
+      month_value: month_value,
+      year_value: year_value,
+      user_id: user_id
+    };
+
+    return this.http
+      .post("http://localhost:83/distinct_ret_detail_list_by_list_type", data)
+      .map(res => res.json());
+  }
 }
