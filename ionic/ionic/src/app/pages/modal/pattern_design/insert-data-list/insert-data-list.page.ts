@@ -30,7 +30,7 @@ export class InsertDataListPage implements OnInit {
   private dts_list: any = []
   private dtl_type_name: any;
 
-  private dtl_amount = 0;
+  private dtl_amount: any;
   private dtl_date: any;
   private dtl_dts_id: any;
   private dtl_description: any;
@@ -81,9 +81,9 @@ export class InsertDataListPage implements OnInit {
 
     if (this.dtl_description == undefined) {
       this.dtl_description = ""
-    }
+    }   
 
-    this.RetDetailListService.insert(this.dtl_amount, this.dtl_date, this.dts_type, this.dtl_dts_id, this.dtl_description).subscribe(result => {
+    this.RetDetailListService.insert(Math.round(parseFloat(this.dtl_amount)), this.dtl_date, this.dts_type, this.dtl_dts_id, this.dtl_description).subscribe(result => {
       console.log("insert detail list suc")
       this.RetDetailListService.get_last().subscribe(result => {
         this.wall_dtl_id = result[0].dtl_id
