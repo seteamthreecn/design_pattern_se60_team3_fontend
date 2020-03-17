@@ -19,28 +19,23 @@
     </ion-toolbar>
 </ion-header>
 
-<h3 *ngIf="type_name != 'รายรับ - รายจ่าย'"
-    style="text-align: center; color: #D93E5D; font-weight: bold; border-radius: 35px; ">
-    {{type_name}}ทั้งหมด :</h3>
-<h3 *ngIf="type_name == 'รายรับ - รายจ่าย'"
-    style="text-align: center; color: #D93E5D; font-weight: bold; border-radius: 35px; ">ยอดการใช้จ่าย
-    :</h3>
-<ion-card style="background-color: #48046D;">
-    <ion-card-content *ngIf="sum_amount != 0" style="text-align: center; color: white;">
-        <ion-icon name="cash" style="color: white;" size="medium"></ion-icon>
-        {{sum_amount | number: '2.'}} บาท
-    </ion-card-content>
-    <ion-card-content *ngIf="sum_amount == 0" style="text-align: center; color: white;">
-        <ion-icon name="cash" style="color: white;" size="medium"></ion-icon>
-        0 บาท
-    </ion-card-content>
-</ion-card>
-<!-- <h5 style="text-align: center; font-weight: bold;">รายการ{{type_name}}ทั้งหมด</h5> -->
-
-
-
 
 <ion-content>
+    <h3 *ngIf="type_name != 'รายรับ - รายจ่าย'"
+        style="text-align: center; color: #D93E5D; font-weight: bold; border-radius: 35px; ">
+        {{type_name}}ทั้งหมด :</h3>
+    <h3 *ngIf="type_name == 'รายรับ - รายจ่าย'"
+        style="text-align: center; color: #D93E5D; font-weight: bold; border-radius: 35px; ">ยอดการใช้จ่าย :</h3>
+    <ion-card style="background-color: #48046D;">
+        <ion-card-content *ngIf="sum_amount != 0" style="text-align: center; color: white;">
+            <ion-icon name="cash" style="color: white;" size="medium"></ion-icon>
+            {{sum_amount | number: '2.'}} บาท
+        </ion-card-content>
+        <ion-card-content *ngIf="sum_amount == 0" style="text-align: center; color: white;">
+            <ion-icon name="cash" style="color: white;" size="medium"></ion-icon>
+            0 บาท
+        </ion-card-content>
+    </ion-card>
     <ion-card>
         <ion-row style="background-color: #D93E5D; color: white;">
             <ion-col></ion-col>
