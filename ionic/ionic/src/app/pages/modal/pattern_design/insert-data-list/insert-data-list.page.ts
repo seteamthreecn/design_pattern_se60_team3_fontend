@@ -63,6 +63,7 @@ export class InsertDataListPage implements OnInit {
     }
     this.dropdown_sub_type()
     this.wall_user_id = localStorage.getItem('user_id')
+
   }
 
   closeModal() {
@@ -78,7 +79,7 @@ export class InsertDataListPage implements OnInit {
 
   async save_data() {
 
-    if(this.dtl_description == undefined){
+    if (this.dtl_description == undefined) {
       this.dtl_description = ""
     }
 
