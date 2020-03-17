@@ -28,7 +28,7 @@
     </ion-select-option>
   </ion-select>
   <p ion-text [hidden]="hide_type">
-    <ion-text color="warning">
+    <ion-text style="color: #AF3736;">
       กรุณาเลือกประเภทของ{{dtl_type_name}}
     </ion-text>
   </p>
@@ -38,7 +38,7 @@
     <ion-datetime month-short-names="ม.ค., ก.พ., มี.ค., เม.ย., พ.ค., มิ.ย., ก.ค., ส.ค., ก.ย., ต.ค., พ.ย., ธ.ค." placeholder="เลือกวันที่" displayFormat="DD MMM YYYY" pickerFormat="DD MMM YYYY" cancelText="ยกเลิก" doneText="ยืนยัน" [(ngModel)]="dtl_date" (ionChange)="validate_date($event)"></ion-datetime>
   </ion-item>
   <p ion-text [hidden]="class_date">
-    <ion-text color="warning">
+    <ion-text style="color: #AF3736;">
       กรุณาเลือกวันที่
     </ion-text>
   </p>
@@ -48,7 +48,7 @@
     <ion-input (ionChange)="validate_number($event)" type="number" placeholder="จำนวนเงิน (บาท)" min="0" oninput="this.value = Math.abs(this.value)" [(ngModel)]="dtl_amount"></ion-input>
   </ion-item>
   <p ion-text [hidden]="class_number">
-    <ion-text color="warning">
+    <ion-text style="color: #AF3736;">
       กรุณากรอกจำนวนเงิน
     </ion-text>
   </p>
@@ -58,6 +58,6 @@
     <ion-textarea placeholder="รายละเอียด" [(ngModel)]="dtl_description"></ion-textarea>
   </ion-item>
 
-  <ion-button expand="full" color="primary" (click)="save_data()" [disabled]="disabled">บันทึก</ion-button>
+  <ion-button expand="full" style="background-color: #DB4C46;" (click)="save_data()" [disabled]="disabled">บันทึก</ion-button>
 
 </ion-content>
