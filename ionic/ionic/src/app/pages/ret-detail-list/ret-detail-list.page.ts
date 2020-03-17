@@ -150,11 +150,6 @@ export class RetDetailListPage implements OnInit {
 
   // Delete Modal
   async delete_data() {
-
-    this.RetWalletService.delete(this.dtl_id).subscribe(result => {
-      console.log("delete wallet suc")
-      this.delete()
-    })
     const alert = await this.alertCtrl.create({
       header: "ยืนยันการลบรายจ่าย?",
       message: "ต้องการลบรายจ่ายรายการนี้หรือไม่",
@@ -175,6 +170,10 @@ export class RetDetailListPage implements OnInit {
             });
             loader.present();
             loader.onWillDismiss().then(async l => {
+              this.RetWalletService.delete(this.dtl_id).subscribe(result => {
+                console.log("delete wallet suc")
+                this.delete()
+              })
               const toast = await this.toastCtrl.create({
                 showCloseButton: true,
                 message: "ไม่สามารถลบประเภทเรื่องร้องเรียนรายการนี้ได้",

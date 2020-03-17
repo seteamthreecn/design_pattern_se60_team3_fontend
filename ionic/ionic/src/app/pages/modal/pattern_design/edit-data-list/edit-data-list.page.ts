@@ -48,7 +48,8 @@ export class EditDataListPage implements OnInit {
     public RetDetailListService: RetDetailListService,
     public RetWalletService: RetWalletService,
     public RetDetailSubTypeService: RetDetailSubTypeService
-  ) {}
+
+  ) { }
 
   ngOnInit() {
     this.dropdown_sub_type();
@@ -101,19 +102,8 @@ export class EditDataListPage implements OnInit {
 
   async update_data() {
     if (this.dtl_list.dtl_description == undefined) {
-      this.dtl_list.dtl_description = "";
+      this.dtl_list.dtl_description = ""
     }
-
-    this.RetDetailListService.update(
-      this.dtl_list.dtl_id,
-      Math.round(parseFloat(this.dtl_list.dtl_amount)),
-      this.dtl_list.dtl_date,
-      this.dtl_list.dtl_type,
-      this.dtl_list.dtl_dts_id,
-      this.dtl_list.dtl_description
-    ).subscribe(result => {
-      console.log("update suc");
-    });
 
     const loader = await this.loadingCtrl.create({
       duration: 2000
@@ -127,7 +117,14 @@ export class EditDataListPage implements OnInit {
         duration: 3000,
         position: "bottom"
       });
+      const date = new Date(this.dtl_list.dtl_date);
+      date.setDate(date.getDate() + 1);
+      const formatedDate = date.toISOString()
+      this.dtl_list.dtl_date = formatedDate
 
+      this.RetDetailListService.update(this.dtl_list.dtl_id, Math.round(parseFloat(this.dtl_list.dtl_amount)), this.dtl_list.dtl_date, this.dtl_list.dtl_type, this.dtl_list.dtl_dts_id, this.dtl_list.dtl_description).subscribe(result => {
+        console.log("update suc")
+      })
       this.modalCtrl.dismiss();
       toast.present();
       location.reload();
