@@ -11,8 +11,8 @@ export class RetDetailSubTypeService {
 
   /*
 	 * insert
-	 * ..
-	 * @input -
+	 * Insert detail_sub_type by dts_name, dts_type_id
+	 * @input dts_name, dts_type_id
 	 * @output -
 	 * @author Chutipong
 	 * @Create Date 2563-03-09
@@ -29,9 +29,9 @@ export class RetDetailSubTypeService {
 
   /*
 	 * get_by_key
-	 * ..
+	 * Return dts_id, dts_name, dts_type_id by dts_id
 	 * @input dts_id
-	 * @output -
+	 * @output dts_id, dts_name, dts_type_id
 	 * @author Chutipong
 	 * @Create Date 2563-03-09
 	 */
@@ -44,9 +44,9 @@ export class RetDetailSubTypeService {
 
   /*
   * get_all
-  * ..
+  * Return dts_id, dts_name, dts_type_id
   * @input -
-  * @output -
+  * @output dts_id, dts_name, dts_type_id
   * @author Chutipong
   * @Create Date 2563-03-09
   */
@@ -58,9 +58,9 @@ export class RetDetailSubTypeService {
 
   /*
   * get_detail_sub_type_by_dts_type_id
-  * ..
+  * Return dts_id, dts_name, dts_type_id by dts_type_id
   * @input dts_type_id
-  * @output -
+  * @output dts_id, dts_name, dts_type_id
   * @author Chutipong
   * @Create Date 2563-03-09
   */

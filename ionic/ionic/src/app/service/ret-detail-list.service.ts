@@ -10,8 +10,8 @@ export class RetDetailListService {
 
   /*
 	 * insert
-	 * ..
-	 * @input dtl_amount, dtl_date, dtl_type, dtl_dts_id
+	 * Insert detail_list data
+	 * @input dtl_amount, dtl_date, dtl_type, dtl_dts_id, dtl_description
 	 * @output -
 	 * @author Chutipong
 	 * @Create Date 2563-03-09
@@ -33,7 +33,7 @@ export class RetDetailListService {
 
   /*
 	 * update
-	 * ..
+	 * Update detail_list data
 	 * @input dtl_id, dtl_amount, dtl_date, dtl_type, dtl_dts_id
 	 * @output -
 	 * @author Chutipong
@@ -56,7 +56,7 @@ export class RetDetailListService {
 
   /*
    * delete
-   * ..
+   * Delete detail_list data by dtl_id
    * @input dtl_id
    * @output -
    * @author Chutipong
@@ -74,9 +74,13 @@ export class RetDetailListService {
 
   /*
    * get_by_key
-   * ..
+   * Return dtl_id, dtl_amount, dtl_day, dtl_year, dtl_dts_id, dtl_description, 
+   *        dtl_type, dtl_month, dtl_month_number, dtl_dts_name, dtl_date, 
+   *        dtl_type_name
    * @input dtl_id
-   * @output -
+   * @output dtl_id, dtl_amount, dtl_day, dtl_year, dtl_dts_id, dtl_description, 
+   *        dtl_type, dtl_month, dtl_month_number, dtl_dts_name, dtl_date, 
+   *        dtl_type_name
    * @author Chutipong
    * @Create Date 2563-03-09
    */
@@ -93,9 +97,9 @@ export class RetDetailListService {
 
   /*
 	 * get_last
-	 * ..
+	 * Return detail_list data latest
 	 * @input -
-	 * @output -
+	 * @output dtl_id, dtl_amount, dtl_date, dtl_type, dtl_dts_id, dtl_description, dtl_create_date, dtl_modify_date
 	 * @author Chutipong
 	 * @Create Date 2563-03-09
 	 */
@@ -107,9 +111,9 @@ export class RetDetailListService {
 
   /*
    * get_static_data_month
-   * ..
-   * @input -
-   * @output -
+   * Return month_name, month, type_list, amount by user_id, month, years
+   * @input user_id, month, years
+   * @output month_name, month, type_list, amount
    * @author Chutipong
    * @Create Date 2563-03-10
    */
@@ -126,9 +130,9 @@ export class RetDetailListService {
 
   /*
    * get_static_data_year
-   * ..
-   * @input -
-   * @output -
+   * Return YEAR, type_list, amount by user_id, year
+   * @input user_id, year
+   * @output YEAR, type_list, amount
    * @author Chutipong
    * @Create Date 2563-03-10
    */
@@ -144,9 +148,9 @@ export class RetDetailListService {
 
   /*
    * get_by_list_type
-   * ..
+   * Return dtl_id, day, month, year, dtl_amount, dtl_type, dtl_description, dts_name, dtl_date, list_type_name by type_list, month_value, year_value, user_id
    * @input type_list, month_value, year_value, user_id
-   * @output -
+   * @output dtl_id, day, month, year, dtl_amount, dtl_type, dtl_description, dts_name, dtl_date, list_type_name
    * @author Chutipong
    * @Create Date 2563-03-16
    */
@@ -166,9 +170,9 @@ export class RetDetailListService {
   
   /*
    * get_distinct_by_list_type
-   * ..
+   * Return date_data, day, month, year by type_list, month_value, year_value, user_id
    * @input type_list, month_value, year_value, user_id
-   * @output -
+   * @output date_data, day, month, year
    * @author Chutipong
    * @Create Date 2563-03-16
    */

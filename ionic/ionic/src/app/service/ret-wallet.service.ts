@@ -12,9 +12,9 @@ export class RetWalletService {
 
   /*
 	 * get_wallet_list
-	 * Get
-	 * @input dtl_month, dtl_year, dtl_type
-	 * @output -
+	 * Return wall_dtl_id, user_id
+	 * @input dtl_month, dtl_year, dtl_type, dtl_dts_id, wall_user_id
+	 * @output wall_dtl_id, user_id
 	 * @author Chutipong
 	 * @Create Date 2563-03-09
 	 */

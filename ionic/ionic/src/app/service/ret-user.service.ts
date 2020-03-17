@@ -10,9 +10,9 @@ export class RetUserService {
 
   /*
    * get_all
-   * ..
+   * Return user_id , user_username, user_password, user_fname, user_lname, user_phone_no, user_email, user_guid_img
    * @input -
-   * @output -
+   * @output user_id , user_username, user_password, user_fname, user_lname, user_phone_no, user_email, user_guid_img
    * @author Chutipong
    * @Create Date 2563-03-09
    */
@@ -24,7 +24,7 @@ export class RetUserService {
 
   /*
    * insert
-   * ..
+   * Insert user'data
    * @input user_username, user_password, user_fname, user_lname, user_phone_no, user_email, user_guid_img
    * @output -
    * @author Chutipong
@@ -55,9 +55,9 @@ export class RetUserService {
 
   /*
    * get_user_data_by_user_username
-   * ..
+   * Return user_id , user_username, user_password, user_fname, user_lname, user_phone_no, user_email, user_guid_img by user_username
    * @input user_username
-   * @output -
+   * @output user_id , user_username, user_password, user_fname, user_lname, user_phone_no, user_email, user_guid_img
    * @author Chutipong
    * @Create Date 2563-03-09
    */
@@ -70,9 +70,9 @@ export class RetUserService {
 
   /*
    * get_user_data_by_user_id
-   * ..
+   * Return user_id , user_username, user_password, user_fname, user_lname, user_phone_no, user_email, user_guid_img by user_id
    * @input user_id
-   * @output -
+   * @output user_id , user_username, user_password, user_fname, user_lname, user_phone_no, user_email, user_guid_img 
    * @author Chalongchai
    * @Create Date 2563-03-09
    */
@@ -85,7 +85,7 @@ export class RetUserService {
 
   /*
    * update_ret_user_by_user_id
-   * ..
+   * Update user'data by user_username, user_fname, user_lname, user_email, user_id
    * @input user_username, user_fname, user_lname, user_email, user_id
    * @output -
    * @author Chalongchai
@@ -112,7 +112,7 @@ export class RetUserService {
 
   /*
    * uploadimage
-   * ..
+   * Update user_guid_img
    * @input formData
    * @output -
    * @author Chalongchai
