@@ -125,16 +125,4 @@ export class RetUserService {
       console.log("response received is ", response);
     });
   }
-
-  /*
-   * get_img_profile
-   * ..
-   * @input guid
-   * @output -
-   * @author Chalongchai
-   * @Modify Date 2563-03-09
-   */
-  get_img_profile(guid) {
-    return this.http.get("http://localhost:83/" + guid);
-  }
 }

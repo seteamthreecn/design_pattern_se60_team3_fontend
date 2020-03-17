@@ -15,6 +15,7 @@ export class SummaryPage implements OnInit {
 
   private pie_balance;
   private pie_income;
+  public hide = false;
   private pie_outcome;
   private check_null_chart = 0;
 
@@ -54,6 +55,8 @@ export class SummaryPage implements OnInit {
       ).subscribe(result => {
         console.log(result);
         if (result.length > 0) {
+          this.hide = false;
+          console.log(this.hide);
           this.check_null_chart = 1;
 
           if (result.length == 2) {
@@ -73,9 +76,9 @@ export class SummaryPage implements OnInit {
 
           Highcharts.setOptions({
             lang: {
-              thousandsSep: ','
+              thousandsSep: ","
             }
-          })
+          });
 
           var myChart = HighCharts.chart("highcharts", {
             chart: {
@@ -102,33 +105,9 @@ export class SummaryPage implements OnInit {
               }
             ]
           });
-          
         } else {
-          var myChart =  HighCharts.chart("highcharts", {
-            chart: {
-              type: "pie"
-            },
-            title: {
-              text: ""
-            },
-            colors: ["#48046D", "#D93E5D"],
-            series: [
-              {
-                name: "ยอดรวม: ",
-                data: [
-                  {
-                    name: "รายรับ",
-                    y: 0
-                  },
-                  {
-                    name: "รายจ่าย",
-                    y: 0
-                  }
-                ],
-                type: undefined
-              }
-            ]
-          });
+          this.hide = true;
+          console.log(this.hide);
         }
       });
     } else {
@@ -138,6 +117,8 @@ export class SummaryPage implements OnInit {
       ).subscribe(result => {
         console.log(result);
         if (result.length > 0) {
+          this.hide = false;
+          console.log(this.hide);
           this.check_null_chart = 1;
 
           if (result.length == 2) {
@@ -181,31 +162,8 @@ export class SummaryPage implements OnInit {
             ]
           });
         } else {
-          var myChart = HighCharts.chart("highcharts", {
-            chart: {
-              type: "pie"
-            },
-            title: {
-              text: ""
-            },
-            colors: ["#48046D", "#D93E5D"],
-            series: [
-              {
-                name: "ยอดรวม: ",
-                data: [
-                  {
-                    name: "รายรับ",
-                    y: 0
-                  },
-                  {
-                    name: "รายจ่าย",
-                    y: 0
-                  }
-                ],
-                type: undefined
-              }
-            ]
-          });
+          this.hide = true;
+          console.log(this.hide);
         }
       });
     }
