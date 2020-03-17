@@ -113,9 +113,11 @@ export class RetDetailListService {
    * @author Chutipong
    * @Create Date 2563-03-10
    */
-  get_static_data_month(user_id) {
+  get_static_data_month(user_id, month, year) {
     let data = {
-      user_id: user_id
+      user_id: user_id,
+      month: month,
+      year: year
     };  
     return this.http
       .post("http://localhost:83/ret_detail_list_static_month", data)
@@ -123,16 +125,17 @@ export class RetDetailListService {
   }
 
   /*
-   * get_static_data_yaer
+   * get_static_data_year
    * ..
    * @input -
    * @output -
    * @author Chutipong
    * @Create Date 2563-03-10
    */
-  get_static_data_yaer(user_id) {
+  get_static_data_year(user_id, year) {
     let data = {
-      user_id: user_id
+      user_id: user_id,
+      year: year
     };
     return this.http
       .post("http://localhost:83/ret_detail_list_static_year", data)

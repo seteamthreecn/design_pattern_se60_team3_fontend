@@ -21,11 +21,51 @@
     <ion-card-content>
       <ion-item>
         <ion-label style="color: white;">เลือกประเภท</ion-label>
-        <ion-select style="color: white;" ok-text="ตกลง" cancel-text="ยกเลิก" [(ngModel)]="type" (ionChange)="change($event)">
+        <ion-select style="color: white;" ok-text="ตกลง" cancel-text="ยกเลิก" [(ngModel)]="type"
+          (ionChange)="change_type($event)">
           <ion-select-option value="month">รายเดือน</ion-select-option>
           <ion-select-option value="year">รายปี</ion-select-option>
         </ion-select>
       </ion-item>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-row style="background-color: #D93E5D; color: white;">
+      <ion-col></ion-col>
+      <ion-col class="ion-align-self-center">
+        <h6>ค้นหา :</h6>
+      </ion-col>
+      <ion-col class="ion-align-self-center" *ngIf="type == 'month'">
+        <h6>
+          <ion-datetime
+            month-short-names="มกราคม,กุมภาพันธ์,มีนาคม,เมษายน,พฤษภาคม,มิถุนายน,กรกฎาคม,สิงหาคม,กันยายน,ตุลาคม,พฤศจิกายน,ธันวาคม"
+            display-format="MMM YYYY" picker-format="MMM YYYY" [(ngModel)]="date_search"
+            (ionChange)="change_date($event)" cancelText="ยกเลิก" doneText="ยืนยัน"></ion-datetime>
+        </h6>
+      </ion-col>
+      <ion-col class="ion-align-self-center" *ngIf="type == 'year'">
+        <h6>
+          <ion-datetime display-format="YYYY" picker-format="YYYY" [(ngModel)]="date_search"
+            (ionChange)="change_date($event)" cancelText="ยกเลิก" doneText="ยืนยัน"></ion-datetime>
+        </h6>
+      </ion-col>
+      <ion-col></ion-col>
+    </ion-row>
+  </ion-card>
+
+  <ion-card style="background-color: #48046D;" *ngIf="check_null_chart == 1">
+    <ion-card-content style="text-align: center; color: white;">
+      <ion-icon name="cash" style="color: white;" size="medium"></ion-icon>
+      ยอดคงเหลือ :
+      {{pie_balance | number}} บาท
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card style="background-color: #48046D;" *ngIf="check_null_chart != 1">
+    <ion-card-content style="text-align: center; color: white;">
+      <ion-icon name="cash" style="color: white;" size="medium"></ion-icon>
+      ไม่มีข้อมูลในระบบ
     </ion-card-content>
   </ion-card>
 
