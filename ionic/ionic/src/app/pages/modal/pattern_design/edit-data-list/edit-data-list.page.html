@@ -23,14 +23,9 @@
   <br>
 
 <h5 style="font-weight: bold;">ประเภทของ{{dtl_list.dtl_type_name}}:</h5> 
-    <ion-select (ionChange)="validate_type($event)" placeholder="{{dtl_list.dtl_dts_name}}" value="{{dtl_list.dtl_dts_id}}" ok-text="ยืนยัน" cancel-text="ยกเลิก" [(ngModel)]="dtl_list.dtl_dts_id" >
+    <ion-select placeholder="{{dtl_list.dtl_dts_name}}" value="{{dtl_list.dtl_dts_id}}" ok-text="ยืนยัน" cancel-text="ยกเลิก" [(ngModel)]="dtl_list.dtl_dts_id" >
         <ion-select-option  *ngFor="let sub_type of dts_list" value="{{sub_type.dts_id}}">{{sub_type.dts_name}}</ion-select-option>
     </ion-select>
-    <p ion-text [hidden]="hide_type">
-      <ion-text style="color: #AF3736;">
-        กรุณาเลือกประเภทของ{{dtl_type_name}}
-      </ion-text>
-    </p>
 
 <h5 style="font-weight: bold;">วันที่:</h5>
 <ion-item>
