@@ -41,9 +41,7 @@
 
 
 <ion-content>
-    <!-- Part Of Search Data-->
     <ion-card>
-
         <ion-row style="background-color: #D93E5D; color: white;">
             <ion-col></ion-col>
             <ion-col class="ion-align-self-center">
@@ -78,8 +76,8 @@
 
     <ion-list>
         <ion-item-group *ngFor="let list of data_list">
-            <!-- <ion-item-divider *ngIf="list.dtl_type == 1" color="secondary">รายรับ</ion-item-divider>
-            <ion-item-divider *ngIf="list.dtl_type == 2" color="primary">รายจ่าย</ion-item-divider> -->
+            <ion-item-divider *ngIf="list.dtl_type == 1" color="secondary">รายรับ</ion-item-divider>
+            <ion-item-divider *ngIf="list.dtl_type == 2" color="primary">รายจ่าย</ion-item-divider>
             <ion-item-sliding>
                 <ion-item>
                     <ion-label>

@@ -1,41 +1,38 @@
 <ion-header>
   <ion-toolbar color="primary">
-      <ion-buttons slot="start">
-          <ion-menu-button color="secondary"></ion-menu-button>
-      </ion-buttons>
-      <ion-title>
-          <ion-text color="light">
-              <h6 style="text-align: center;">
-                กราฟแสดงข้อมูล
-              </h6>
-          </ion-text>
-      </ion-title>
-      <!-- <ion-buttons slot="end">
-          <ion-button color="primary">
-              <ion-icon name="add-circle" color="light" size=""></ion-icon>
-          </ion-button>
-      </ion-buttons> -->
+    <ion-buttons slot="start">
+      <ion-menu-button color="secondary"></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      <ion-text color="light">
+        <h6 style="text-align: center;">
+          กราฟแสดงข้อมูล
+        </h6>
+      </ion-text>
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
+  <h3 style="text-align: center; color: #D93E5D; font-weight: bold; border-radius: 35px; ">เลือกประเภทของการแสดงข้อมูล
+  </h3>
 
-    <h5 style="text-align: center;">เลือกประเภทของการแสดงข้อมูล</h5>
-    <ion-item>
-        <ion-label>เลือกประเภท</ion-label>
-        <ion-select ok-text="ตกลง" cancel-text="ยกเลิก" [(ngModel)]="type" (ionChange)="change($event)">
+  <ion-card style="background-color: #48046D;">
+    <ion-card-content style="text-align: center; color: white;">
+      <ion-item>
+        <ion-label style="text-align: center; color: white;">เลือกประเภท</ion-label>
+        <ion-select style="text-align: center; color: white;" ok-text="ตกลง" cancel-text="ยกเลิก" [(ngModel)]="type" (ionChange)="change($event)">
           <ion-select-option value="month">รายเดือน</ion-select-option>
           <ion-select-option value="year">รายปี</ion-select-option>
         </ion-select>
       </ion-item>
+    </ion-card-content>
+  </ion-card>
 
-      <ion-card class="welcome-card">
-        <ion-card-header>
-          <!-- <ion-card-title style="text-align: center;">ข้อมูล สถิติ</ion-card-title> -->
-        </ion-card-header>
-        <ion-card-content>
-          <div id="highcharts" style="width:100%; height:400px;"></div>
-        </ion-card-content>
-    </ion-card>
+  <ion-card class="welcome-card">
+    <ion-card-content>
+      <div id="highcharts" style="width:100%; height:400px;"></div>
+    </ion-card-content>
+  </ion-card>
 
 </ion-content>
