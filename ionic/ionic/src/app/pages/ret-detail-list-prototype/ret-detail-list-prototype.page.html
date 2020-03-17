@@ -54,8 +54,8 @@
         </ion-row>
 
     </ion-card>
-    <ion-fab *ngIf="type_name != 'รายรับ - รายจ่าย'" horizontal="end" vertical="bottom" slot="fixed">
-        <ion-fab-button color="primary" (click)="input_data(dtl_type_id)">
+    <ion-fab *ngIf="path_type_id != 0" horizontal="end" vertical="bottom" slot="fixed">
+        <ion-fab-button color="primary" (click)="input_data(path_type_id)">
             <ion-icon name="add"></ion-icon>
         </ion-fab-button>
     </ion-fab>
