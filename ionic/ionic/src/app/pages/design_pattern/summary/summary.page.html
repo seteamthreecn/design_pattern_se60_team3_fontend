@@ -14,24 +14,24 @@
 </ion-header>
 
 <ion-content padding>
-  <h6 style="text-align: center; color: #D93E5D; font-weight: bold; border-radius: 35px; ">เลือกประเภทของการแสดงข้อมูล
-  </h6>
+  <!-- <h6 style="text-align: center; color: #D93E5D; font-weight: bold; border-radius: 35px; ">เลือกประเภทของการแสดงข้อมูล
+  </h6> -->
 
   <ion-card style="background-color: #48046D;">
     <ion-card-content>
-      <ion-item>
-        <ion-label style="color: white;">เลือกประเภท</ion-label>
+      <!-- <ion-item> -->
+        <!-- <ion-label style="color: white;"></ion-label> -->
         <ion-select style="color: white;" ok-text="ตกลง" cancel-text="ยกเลิก" [(ngModel)]="type"
           (ionChange)="change_type($event)">
           <ion-select-option value="month">รายเดือน</ion-select-option>
           <ion-select-option value="year">รายปี</ion-select-option>
         </ion-select>
-      </ion-item>
+      <!-- </ion-item> -->
     </ion-card-content>
   </ion-card>
 
   <ion-card>
-    <ion-row style="background-color: #D93E5D; color: white;">
+    <ion-row style="background-color: #4F315B; color: white;">
       <ion-col></ion-col>
       <ion-col class="ion-align-self-center">
         <h6>ค้นหา</h6>
@@ -54,7 +54,7 @@
     </ion-row>
   </ion-card>
 
-  <ion-card style="background-color: #48046D;" *ngIf="check_null_chart == 1">
+  <ion-card style="background-color: #AF3736;" *ngIf="check_null_chart == 1">
     <ion-card-content style="text-align: center; color: white;">
       <ion-icon name="cash" style="color: white;" size="medium"></ion-icon>
       {{pie_balance | number}} บาท
@@ -70,8 +70,10 @@
 
   <ion-card class="welcome-card">
     <ion-card-content [hidden]="hide">
-      <div id="highcharts" style="width:100%; height:400px;" ></div>
+      <div id="highcharts" style="width:100%; height:150px;" ></div>
     </ion-card-content>
   </ion-card>
+
+  
 
 </ion-content>
