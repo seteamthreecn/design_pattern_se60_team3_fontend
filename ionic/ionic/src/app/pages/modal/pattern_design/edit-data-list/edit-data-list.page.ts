@@ -14,7 +14,6 @@ import { RetDetailSubTypeService } from "../../../../service/ret-detail-sub-type
 import { RetDetailListService } from "../../../../service/ret-detail-list.service";
 import { RetWalletService } from "../../../../service/ret-wallet.service";
 
-
 // Import ret_detail_list
 import { RetDetailListPage } from "../../../ret-detail-list/ret-detail-list.page";
 
@@ -24,10 +23,8 @@ import { RetDetailListPage } from "../../../ret-detail-list/ret-detail-list.page
   styleUrls: ["./edit-data-list.page.scss"]
 })
 export class EditDataListPage implements OnInit {
-
   private dts_list: any = [];
   private dtl_list: any = [];
-  private hide_type = true;
   private class_date = true;
   private class_number = true;
   private disabled = false;
@@ -51,34 +48,18 @@ export class EditDataListPage implements OnInit {
     public RetDetailListService: RetDetailListService,
     public RetWalletService: RetWalletService,
     public RetDetailSubTypeService: RetDetailSubTypeService
-
   ) {}
 
   ngOnInit() {
-    if (
-      this.dtl_list.dtl_amount == 0 ||
-      typeof this.dtl_list.dtl_amount === "undefined"
-    ) {
-      this.class_number = false;
-      this.button_disable();
-    }
-    if (typeof this.dtl_list.dtl_dts_id === "undefined") {
-      this.hide_type = false;
-      this.button_disable();
-    }
-    if (this.dtl_list.dtl_date == "") {
-      this.class_date = false;
-      this.button_disable();
-    }
     this.dropdown_sub_type();
     this.edit_data();
-
     if (
       this.dtl_list.dtl_description == null ||
       this.dtl_list.dtl_description == ""
     ) {
       this.dtl_list.dtl_description = "";
     }
+    console.log(this.dtl_list.dtl_amount);
   }
 
   button_disable() {
@@ -114,23 +95,11 @@ export class EditDataListPage implements OnInit {
     this.button_disable();
   }
 
-
-  validate_type($event: any) {
-    var value = $event.target.value;
-    if (typeof value === "undefined") {
-      this.hide_type = false;
-    } else {
-      this.hide_type = true;
-    }
-    this.button_disable();
-  }
-
   closeModal() {
     this.modalCtrl.dismiss();
   }
 
   async update_data() {
-
     if (this.dtl_list.dtl_description == undefined) {
       this.dtl_list.dtl_description = "";
     }
@@ -166,7 +135,6 @@ export class EditDataListPage implements OnInit {
   }
 
   dropdown_sub_type() {
-
     this.RetDetailSubTypeService.get_detail_sub_type_by_dts_type_id(
       this.dts_type
     ).subscribe(result => {
@@ -179,6 +147,18 @@ export class EditDataListPage implements OnInit {
     this.RetDetailListService.get_by_key(this.dtl_id).subscribe(result => {
       this.dtl_list = result[0];
       console.log(this.dtl_list);
+      console.log(this.dtl_list.dtl_amount);
+      if (
+        this.dtl_list.dtl_amount == 0 ||
+        typeof this.dtl_list.dtl_amount === "undefined"
+      ) {
+        this.class_number = false;
+        this.button_disable();
+      }
+      if (this.dtl_list.dtl_date == "") {
+        this.class_date = false;
+        this.button_disable();
+      }
     });
   }
 }
