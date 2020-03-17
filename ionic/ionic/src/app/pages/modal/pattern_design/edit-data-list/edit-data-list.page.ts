@@ -121,6 +121,7 @@ export class EditDataListPage implements OnInit {
       this.hide_type = false;
     } else {
       this.hide_type = true;
+
     }
     this.button_disable();
   }
@@ -132,19 +133,18 @@ export class EditDataListPage implements OnInit {
   async update_data() {
 
     if (this.dtl_list.dtl_description == undefined) {
-      this.dtl_list.dtl_description = "";
+      this.dtl_list.dtl_description = ""
     }
 
-    this.RetDetailListService.update(
-      this.dtl_list.dtl_id,
-      Math.round(parseFloat(this.dtl_list.dtl_amount)),
-      this.dtl_list.dtl_date,
-      this.dtl_list.dtl_type,
-      this.dtl_list.dtl_dts_id,
-      this.dtl_list.dtl_description
-    ).subscribe(result => {
-      console.log("update suc");
-    });
+    const date = new Date(this.dtl_list.dtl_date);
+    date.setDate(date.getDate() + 1);
+    const formatedDate = date.toISOString()
+    this.dtl_list.dtl_date = formatedDate
+    
+    this.RetDetailListService.update(this.dtl_list.dtl_id, Math.round(parseFloat(this.dtl_list.dtl_amount)), this.dtl_list.dtl_date, this.dtl_list.dtl_type, this.dtl_list.dtl_dts_id, this.dtl_list.dtl_description).subscribe(result => {
+      console.log("update suc")
+    })
+
 
     const loader = await this.loadingCtrl.create({
       duration: 2000
@@ -166,7 +166,6 @@ export class EditDataListPage implements OnInit {
   }
 
   dropdown_sub_type() {
-
     this.RetDetailSubTypeService.get_detail_sub_type_by_dts_type_id(
       this.dts_type
     ).subscribe(result => {
