@@ -35,7 +35,7 @@
         <ion-row style="background-color: #D93E5D; color: white;">
             <ion-col></ion-col>
             <ion-col class="ion-align-self-center">
-                <h6>ค้นหา</h6>
+                <h6>เดือน ปี</h6>
             </ion-col>
             <ion-col class="ion-align-self-center">
                 <h6>
@@ -63,8 +63,8 @@
     </div>
 
 
-    <div *ngFor="let list_date of day_list">
-        <ion-item-divider color="secondary"><ion-icon name="calendar"></ion-icon>&emsp;{{list_date.day + " " + list_date.month + " " + list_date.year}}</ion-item-divider>
+    <div *ngFor="let list_date of day_list" style="color: black;">
+        <ion-item-divider style="color: black;"><ion-icon name="calendar" style="color: black;"></ion-icon>&emsp;{{list_date.day + " " + list_date.month + " " + list_date.year}}</ion-item-divider>
         <ion-item-group *ngFor="let list of data_list">
             <div *ngIf="list.day == list_date.day">  
                 <ion-item-sliding>
